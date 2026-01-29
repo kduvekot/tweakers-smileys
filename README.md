@@ -1,1 +1,83 @@
-# tweakers-smileys
+# Tweakers Smileys Downloader
+
+Download all 64 Tweakers forum smileys (44 SVG + 20 GIF files) easily.
+
+## Quick Start (EASIEST METHOD) ⭐
+
+### Option 1: Shell Script (Recommended)
+
+**Works on Linux, Mac, WSL, or Git Bash on Windows**
+
+```bash
+bash download-all-smileys.sh
+```
+
+That's it! All 64 smileys will be downloaded to a `tweakers-smileys/` folder.
+
+### Option 2: Open HTML Page Locally
+
+1. Open `download-page.html` in your browser (double-click the file)
+2. Click "Download All Smileys" button
+3. Allow multiple downloads when prompted
+4. All files download to your Downloads folder
+
+**Note:** This works best when the HTML file is opened as `file://` from your local computer.
+
+---
+
+## Alternative Methods
+
+### Browser Console Scripts
+
+See [BROWSER_DOWNLOAD_INSTRUCTIONS.md](BROWSER_DOWNLOAD_INSTRUCTIONS.md) for detailed instructions on using JavaScript console scripts.
+
+**Note:** Browser console methods may encounter CORS (Cross-Origin Resource Sharing) issues when running from `gathering.tweakers.net`. The shell script method above is more reliable.
+
+---
+
+## What You Get
+
+All 64 Tweakers smileys:
+- 44 SVG files (scalable vector graphics)
+- 20 GIF files (animated images)
+
+Each file is named according to its original filename:
+- `smile.svg`, `frown.svg`, `wink.svg`, etc.
+- `bonk.gif`, `facepalm.gif`, `pompom.gif`, etc.
+
+---
+
+## Reference
+
+See [SMILEY_REFERENCE.md](SMILEY_REFERENCE.md) for a complete list of all smileys with their codes and direct links.
+
+---
+
+## Requirements
+
+- **Shell script:** `curl` (pre-installed on most systems)
+- **HTML page:** Modern web browser (Chrome, Firefox, Edge, Safari)
+- **Browser console:** Chrome/Edge browser with DevTools
+
+---
+
+## Troubleshooting
+
+**Shell script shows "command not found":**
+- Make sure you have `curl` installed: `which curl`
+- Install curl: `sudo apt install curl` (Ubuntu/Debian) or `brew install curl` (Mac)
+
+**HTML page downloads fail:**
+- Your browser may block multiple downloads. Check browser settings to allow multiple downloads.
+- Some browsers require user interaction for each download when cross-origin.
+
+**Browser console scripts fail with CORS errors:**
+- Use the shell script method instead, or
+- Open the HTML page locally, or
+- Install a CORS-bypass browser extension (not recommended for security reasons)
+
+---
+
+## License
+
+These smileys are property of Tweakers.net. This repository provides tools to download them for personal use.

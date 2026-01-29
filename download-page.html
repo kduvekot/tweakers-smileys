@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweakers Smiley Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .instructions {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+        .button-container {
+            margin: 20px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .progress {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+        }
+        .progress.active {
+            display: block;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #28a745;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .smiley-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .smiley-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .smiley-card img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-bottom: 10px;
+        }
+        .smiley-card a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .smiley-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Tweakers Smiley Downloader</h1>
+
+    <div class="instructions">
+        <h2>Instructions:</h2>
+        <ol>
+            <li><strong>Click "Download All Smileys"</strong> button below</li>
+            <li><strong>Allow multiple downloads</strong> when your browser asks</li>
+            <li>All 64 smiley files will download to your Downloads folder</li>
+        </ol>
+        <p><strong>Note:</strong> The download attribute works best when this page is served from the same domain as the images,
+        or when using Chrome/Edge with appropriate settings.</p>
+    </div>
+
+    <div class="button-container">
+        <button id="downloadBtn" onclick="downloadAllSmileys()">Download All Smileys (64 files)</button>
+        <button onclick="showSmileys()">Show Preview Grid</button>
+    </div>
+
+    <div class="progress" id="progress">
+        <p>Downloading: <span id="progressText">0 / 64</span></p>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <div class="smiley-grid" id="smileyGrid" style="display: none;"></div>
+
+    <script>
+        const smileys = [
+            { filename: 'smile.svg', url: 'https://tweakers.net/g/s/smile.svg' },
+            { filename: 'frown.svg', url: 'https://tweakers.net/g/s/frown.svg' },
+            { filename: 'unhappy.svg', url: 'https://tweakers.net/g/s/unhappy.svg' },
+            { filename: 'wink.svg', url: 'https://tweakers.net/g/s/wink.svg' },
+            { filename: 'devil.svg', url: 'https://tweakers.net/g/s/devil.svg' },
+            { filename: 'puh.svg', url: 'https://tweakers.net/g/s/puh.svg' },
+            { filename: 'puh2.svg', url: 'https://tweakers.net/g/s/puh2.svg' },
+            { filename: 'yummie.svg', url: 'https://tweakers.net/g/s/yummie.svg' },
+            { filename: 'redface.svg', url: 'https://tweakers.net/g/s/redface.svg' },
+            { filename: 'shiny.svg', url: 'https://tweakers.net/g/s/shiny.svg' },
+            { filename: 'cry.svg', url: 'https://tweakers.net/g/s/cry.svg' },
+            { filename: 'coool.svg', url: 'https://tweakers.net/g/s/coool.svg' },
+            { filename: 'clown.svg', url: 'https://tweakers.net/g/s/clown.svg' },
+            { filename: 'biggrin.svg', url: 'https://tweakers.net/g/s/biggrin.svg' },
+            { filename: 'worshippy.svg', url: 'https://tweakers.net/g/s/worshippy.svg' },
+            { filename: 'kwijl.svg', url: 'https://tweakers.net/g/s/kwijl.svg' },
+            { filename: 'heart.svg', url: 'https://tweakers.net/g/s/heart.svg' },
+            { filename: 'yawnee.gif', url: 'https://tweakers.net/g/s/yawnee.gif' },
+            { filename: 'rc5.svg', url: 'https://tweakers.net/g/s/rc5.svg' },
+            { filename: 'nosmile2.svg', url: 'https://tweakers.net/g/s/nosmile2.svg' },
+            { filename: 'shutup.gif', url: 'https://tweakers.net/g/s/shutup.gif' },
+            { filename: 'confused.svg', url: 'https://tweakers.net/g/s/confused.svg' },
+            { filename: 'bonk.gif', url: 'https://tweakers.net/g/s/bonk.gif' },
+            { filename: 'frusty.gif', url: 'https://tweakers.net/g/s/frusty.gif' },
+            { filename: 'hypocrite.gif', url: 'https://tweakers.net/g/s/hypocrite.gif' },
+            { filename: 'sleephappy.gif', url: 'https://tweakers.net/g/s/sleephappy.gif' },
+            { filename: 'sadley.svg', url: 'https://tweakers.net/g/s/sadley.svg' },
+            { filename: 'facepalm.gif', url: 'https://tweakers.net/g/s/facepalm.gif' },
+            { filename: 'tweakers.svg', url: 'https://tweakers.net/g/s/tweakers.svg' },
+            { filename: 'henk.svg', url: 'https://tweakers.net/g/s/henk.svg' },
+            { filename: 'nosmile.gif', url: 'https://tweakers.net/g/s/nosmile.gif' },
+            { filename: 'farewell.gif', url: 'https://tweakers.net/g/s/farewell.gif' },
+            { filename: 'pukey.gif', url: 'https://tweakers.net/g/s/pukey.gif' },
+            { filename: 'nerd.svg', url: 'https://tweakers.net/g/s/nerd.svg' },
+            { filename: 'vork.svg', url: 'https://tweakers.net/g/s/vork.svg' },
+            { filename: 'michel.svg', url: 'https://tweakers.net/g/s/michel.svg' },
+            { filename: 'loveit.svg', url: 'https://tweakers.net/g/s/loveit.svg' },
+            { filename: 'sleepey.gif', url: 'https://tweakers.net/g/s/sleepey.gif' },
+            { filename: 'devilish.svg', url: 'https://tweakers.net/g/s/devilish.svg' },
+            { filename: 'shadey.gif', url: 'https://tweakers.net/g/s/shadey.gif' },
+            { filename: 'bye.gif', url: 'https://tweakers.net/g/s/bye.gif' },
+            { filename: 'thumbsup.svg', url: 'https://tweakers.net/g/s/thumbsup.svg' },
+            { filename: 'ok.svg', url: 'https://tweakers.net/g/s/ok.svg' },
+            { filename: 'bonk3.gif', url: 'https://tweakers.net/g/s/bonk3.gif' },
+            { filename: 'loveys.gif', url: 'https://tweakers.net/g/s/loveys.gif' },
+            { filename: 'sintsmiley.gif', url: 'https://tweakers.net/g/s/sintsmiley.gif' },
+            { filename: 'xmas.svg', url: 'https://tweakers.net/g/s/xmas.svg' },
+            { filename: 'marrysmile.svg', url: 'https://tweakers.net/g/s/marrysmile.svg' },
+            { filename: 'bloos.svg', url: 'https://tweakers.net/g/s/bloos.svg' },
+            { filename: 'eerie.svg', url: 'https://tweakers.net/g/s/eerie.svg' },
+            { filename: 'emo.svg', url: 'https://tweakers.net/g/s/emo.svg' },
+            { filename: 'huh.svg', url: 'https://tweakers.net/g/s/huh.svg' },
+            { filename: 'yes.gif', url: 'https://tweakers.net/g/s/yes.gif' },
+            { filename: 'no.gif', url: 'https://tweakers.net/g/s/no.gif' },
+            { filename: 'pompom.gif', url: 'https://tweakers.net/g/s/pompom.gif' },
+            { filename: 'nopompom.gif', url: 'https://tweakers.net/g/s/nopompom.gif' },
+            { filename: 'lol.gif', url: 'https://tweakers.net/g/s/lol.gif' },
+            { filename: 'hup.gif', url: 'https://tweakers.net/g/s/hup.gif' },
+            { filename: 'oranje.gif', url: 'https://tweakers.net/g/s/oranje.gif' },
+            { filename: 'belgie.gif', url: 'https://tweakers.net/g/s/belgie.gif' },
+            { filename: 'paard.svg', url: 'https://tweakers.net/g/s/paard.svg' },
+            { filename: 'rozewolk.gif', url: 'https://tweakers.net/g/s/rozewolk.gif' },
+            { filename: 'knuf.gif', url: 'https://tweakers.net/g/s/knuf.gif' },
+            { filename: 'yummie-beer.svg', url: 'https://tweakers.net/g/s/yummie-beer.svg' }
+        ];
+
+        function downloadAllSmileys() {
+            const btn = document.getElementById('downloadBtn');
+            const progress = document.getElementById('progress');
+            const progressText = document.getElementById('progressText');
+            const progressFill = document.getElementById('progressFill');
+
+            btn.disabled = true;
+            progress.classList.add('active');
+
+            let count = 0;
+            const delay = 200; // 200ms delay between downloads
+
+            smileys.forEach((smiley, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = smiley.url;
+                    link.download = smiley.filename;
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    count++;
+                    const percent = (count / smileys.length) * 100;
+                    progressText.textContent = `${count} / ${smileys.length}`;
+                    progressFill.style.width = percent + '%';
+
+                    if (count === smileys.length) {
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            alert('All 64 smileys have been downloaded! Check your Downloads folder.');
+                        }, 500);
+                    }
+                }, index * delay);
+            });
+        }
+
+        function showSmileys() {
+            const grid = document.getElementById('smileyGrid');
+            grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
+
+            if (grid.innerHTML === '') {
+                smileys.forEach(smiley => {
+                    const card = document.createElement('div');
+                    card.className = 'smiley-card';
+                    card.innerHTML = `
+                        <img src="${smiley.url}" alt="${smiley.filename}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2250%22>❌</text></svg>'">
+                        <div>${smiley.filename}</div>
+                        <a href="${smiley.url}" download="${smiley.filename}">Download</a>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

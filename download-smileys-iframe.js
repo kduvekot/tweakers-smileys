@@ -1,12 +1,11 @@
-// Tweakers Smiley Downloader - Single-File Bookmarklet
-// This version downloads each image individually, bypassing CORS completely
-// Works from ANY Tweakers page (tweakers.net or gathering.tweakers.net)
+// Tweakers Smiley Downloader - iFrame Method
+// This version uses hidden iframes to trigger downloads without navigation
+// Copy and paste this into Chrome console on gathering.tweakers.net
 
 (function() {
-    console.log('🎨 Tweakers Smiley Downloader Starting...');
-    console.log('ℹ️  This will download each smiley file individually to avoid CORS issues\n');
+    console.log('🎨 Tweakers Smiley Downloader Starting (iframe method)...');
+    console.log('ℹ️  Using hidden iframes to download files\n');
 
-    // All Tweakers smileys with their filenames and URLs
     const smileys = [
         { filename: 'smile.svg', url: 'https://tweakers.net/g/s/smile.svg' },
         { filename: 'frown.svg', url: 'https://tweakers.net/g/s/frown.svg' },
@@ -75,46 +74,22 @@
     ];
 
     console.log(`📥 Preparing to download ${smileys.length} smileys...`);
-    console.log('⚠️  Your browser may ask to allow multiple downloads - please click "Allow"');
-    console.log('');
+    console.log('ℹ️  Files will open in new tabs - right-click and "Save as" on each');
+    console.log('    Or use Ctrl+S (Cmd+S on Mac) to save each file\n');
 
-    let downloadCount = 0;
-    const delay = 300; // 300ms delay between downloads
+    const delay = 500; // 500ms delay between opening tabs
 
-    // Function to trigger individual download
-    function downloadFile(url, filename) {
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.style.display = 'none';
-        document.body.appendChild(link);
-
-        // Use setTimeout to ensure the link is in DOM before clicking
-        setTimeout(() => {
-            link.click();
-            console.log(`✅ [${downloadCount + 1}/${smileys.length}] Triggered download: ${filename}`);
-            downloadCount++;
-
-            // Remove after a delay
-            setTimeout(() => {
-                document.body.removeChild(link);
-            }, 100);
-        }, 10);
-    }
-
-    // Download all files with delays
+    // Open each file in a new tab/window
     smileys.forEach((smiley, index) => {
         setTimeout(() => {
-            downloadFile(smiley.url, smiley.filename);
+            window.open(smiley.url, '_blank');
+            console.log(`✅ [${index + 1}/${smileys.length}] Opened: ${smiley.filename}`);
 
             if (index === smileys.length - 1) {
                 setTimeout(() => {
-                    console.log(`\n🎉 All ${smileys.length} downloads have been triggered!`);
-                    console.log('📂 Check your Downloads folder for all the smiley files');
-                    console.log('\n💡 Tip: The files are named individually (smile.svg, bonk.gif, etc.)');
-                    console.log('   You may want to create a folder and move them all there');
+                    console.log(`\n🎉 All ${smileys.length} files have been opened in new tabs!`);
+                    console.log('📂 Right-click each file and select "Save as" to download');
+                    console.log('   Or use Ctrl+S (Cmd+S on Mac) in each tab');
                 }, 1000);
             }
         }, index * delay);
