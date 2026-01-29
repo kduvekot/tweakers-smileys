@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16">
   <defs>
     <!-- Yellow face gradient for center face -->
-    <radialGradient id="faceGradient" cx="16" cy="8" r="8" gradientUnits="userSpaceOnUse">
+    <radialGradient id="faceGradient" cx="16" cy="7" r="7.5" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FAFAE3"/>
       <stop offset=".23" stop-color="#FFFFA2"/>
       <stop offset=".66" stop-color="#FFEF06"/>
@@ -11,7 +11,7 @@
   
   <!-- Left hand (STATIC) - at bottom left -->
   <g id="leftHand">
-    <ellipse cx="4" cy="13" rx="2.5" ry="2.2" fill="#FFEF06" stroke="#000" stroke-opacity=".9" stroke-width=".7"/>
+    <ellipse cx="4" cy="13" rx="2.5" ry="2" fill="#FFEF06" stroke="#000" stroke-opacity=".9" stroke-width=".7"/>
   </g>
   
   <!-- Center face (STATIC) - laughing with squinting eyes, looking down -->
@@ -20,14 +20,16 @@
     <circle cx="16" cy="8" r="7.9" fill="url(#faceGradient)"/>
     <circle cx="16" cy="8" r="7.5" stroke="#000" stroke-opacity=".9" stroke-width=".8" fill="none"/>
     
-    <!-- Squinting/laughing eyes (horizontal black lines) -->
-    <rect x="12" y="6.5" width="2.8" height="1.3" rx=".55" fill="#000" fill-opacity=".9"/>
-    <rect x="17.2" y="6.5" width="2.8" height="1.3" rx=".55" fill="#000" fill-opacity=".9"/>
+    <!-- Squinting/laughing eyes (horizontal lines) -->
+    <rect x="12" y="6.5" width="2.5" height="1.2" rx=".5" fill="#000" fill-opacity=".9"/>
+    <rect x="17.5" y="6.5" width="2.5" height="1.2" rx=".5" fill="#000" fill-opacity=".9"/>
+    
+    <!-- No visible mouth - face looking down, mouth hidden -->
   </g>
   
   <!-- Right hand (ANIMATED) - bounces up and down -->
   <g id="rightHand" class="bouncing-hand">
-    <ellipse cx="27.5" cy="4" rx="2.3" ry="2.5" fill="#FFEF06" stroke="#000" stroke-opacity=".9" stroke-width=".7"/>
+    <ellipse cx="28" cy="4" rx="2.5" ry="2.5" fill="#FFEF06" stroke="#000" stroke-opacity=".9" stroke-width=".7"/>
   </g>
   
   <style>
@@ -35,9 +37,9 @@
       0%      { transform: translate(0, 0); }      /* Top position */
       16.67%  { transform: translate(0, 3px); }    /* Moving down */
       33.33%  { transform: translate(0, 6px); }    /* Further down */
-      50%     { transform: translate(0, 9px); }    /* Bottom position (aligns with left hand) */
+      50%     { transform: translate(0, 9px); }    /* Bottom position */
       66.67%  { transform: translate(0, 6px); }    /* Moving back up */
-      83.33%  { transform: translate(0, 3px); }    /* Almost back to top */
+      83.33%  { transform: translate(0, 3px); }    /* Almost top */
       100%    { transform: translate(0, 0); }      /* Back to top */
     }
     
