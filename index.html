@@ -108,7 +108,7 @@
 
         .smiley-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -123,8 +123,8 @@
         }
 
         .smiley-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .smiley-image {
@@ -149,6 +149,7 @@
 
         .stats {
             background: #f0f0f0;
+<<<<<<< HEAD
             padding: 20px;
             border-radius: 6px;
             margin-bottom: 20px;
@@ -178,6 +179,18 @@
         }
 
         .badge {
+=======
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .stats p {
+            margin: 5px 0;
+        }
+
+        .legacy-badge {
+>>>>>>> origin/main
             display: inline-block;
             background: #ff9800;
             color: white;
@@ -186,6 +199,7 @@
             font-size: 0.7em;
             margin-left: 5px;
         }
+<<<<<<< HEAD
 
         .badge-new {
             background: #4caf50;
@@ -196,10 +210,13 @@
             padding: 40px;
             color: #999;
         }
+=======
+>>>>>>> origin/main
     </style>
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
         <h1>🙂 Tweakers Smileys Collection</h1>
         <p class="description">Complete collection of Tweakers forum smileys - SVG conversions, current GIFs, and legacy versions.</p>
 
@@ -349,3 +366,85 @@
     </script>
 </body>
 </html>
+=======
+        <h1>Tweakers Smileys Collection</h1>
+        <p class="description">Complete collection of all Tweakers forum smileys, including current and legacy versions.</p>
+
+        <div class="stats">
+            <p><strong>Total Smileys:</strong> <span id="total-count">Loading...</span></p>
+            <p><strong>SVG Files:</strong> <span id="svg-count">0</span></p>
+            <p><strong>Current GIF Files:</strong> <span id="gif-count">0</span></p>
+            <p><strong>Legacy GIF Files:</strong> <span id="old-gif-count">0</span></p>
+        </div>
+
+        <h2>SVG Smileys (Current)</h2>
+        <div class="smiley-grid" id="svg-grid"></div>
+
+        <h2>Animated GIF Smileys (Current)</h2>
+        <div class="smiley-grid" id="gif-grid"></div>
+
+        <h2>Legacy GIF Smileys <span class="legacy-badge">LEGACY</span></h2>
+        <div class="smiley-grid" id="old-gif-grid"></div>
+    </div>
+
+    <script>
+        async function loadSmileys() {
+            const types = [
+                { dir: 'tweakers-smileys/svg', ext: 'svg', gridId: 'svg-grid', countId: 'svg-count' },
+                { dir: 'tweakers-smileys/gif', ext: 'gif', gridId: 'gif-grid', countId: 'gif-count' },
+                { dir: 'tweakers-smileys/old-gif', ext: 'gif', gridId: 'old-gif-grid', countId: 'old-gif-count' }
+            ];
+
+            let totalCount = 0;
+
+            for (const type of types) {
+                try {
+                    const response = await fetch(`${type.dir}/`);
+                    const text = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(text, 'text/html');
+                    const links = Array.from(doc.querySelectorAll('a'))
+                        .map(a => a.getAttribute('href'))
+                        .filter(href => href && href.endsWith(`.${type.ext}`));
+
+                    const grid = document.getElementById(type.gridId);
+                    const count = links.length;
+                    totalCount += count;
+
+                    document.getElementById(type.countId).textContent = count;
+
+                    links.forEach(filename => {
+                        const card = document.createElement('div');
+                        card.className = 'smiley-card';
+
+                        const img = document.createElement('img');
+                        img.src = `${type.dir}/${filename}`;
+                        img.alt = filename;
+                        img.className = 'smiley-image';
+
+                        const name = document.createElement('div');
+                        name.className = 'smiley-name';
+                        name.textContent = filename.replace(`.${type.ext}`, '');
+
+                        const typeLabel = document.createElement('div');
+                        typeLabel.className = 'smiley-type';
+                        typeLabel.textContent = type.ext.toUpperCase();
+
+                        card.appendChild(img);
+                        card.appendChild(name);
+                        card.appendChild(typeLabel);
+                        grid.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error(`Error loading ${type.dir}:`, error);
+                }
+            }
+
+            document.getElementById('total-count').textContent = totalCount;
+        }
+
+        loadSmileys();
+    </script>
+</body>
+</html>
+>>>>>>> origin/main
