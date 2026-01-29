@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Yes Smiley Animation Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .demo-item {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .demo-item h3 {
+      margin: 0 0 15px 0;
+      color: #555;
+      font-size: 14px;
+    }
+    
+    .smiley-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+    }
+    
+    .comparison {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    
+    .comparison h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .keyframes-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    
+    .keyframes-table th,
+    .keyframes-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .keyframes-table th {
+      background: #f5f5f5;
+      font-weight: 600;
+    }
+    
+    .keyframes-table code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Yes Smiley - CSS Animation Derived from 4 SVG Frames</h1>
+  
+  <div class="demo-grid">
+    <div class="demo-item">
+      <h3>Original GIF</h3>
+      <div class="smiley-container">
+        <img src="old-gif/yes.gif?v=9d35b26" alt="Original GIF" style="width: 64px; height: 64px; image-rendering: pixelated;">
+      </div>
+    </div>
+    
+    <div class="demo-item">
+      <h3>CSS Animated SVG (New)</h3>
+      <div class="smiley-container">
+        <img src="yes-animated.svg?v=9d35b26" alt="CSS Animated SVG" style="width: 64px; height: 64px;">
+      </div>
+    </div>
+    
+    <div class="demo-item">
+      <h3>At 16×16 (Actual Size)</h3>
+      <div class="smiley-container">
+        <img src="yes-animated.svg?v=9d35b26" alt="Actual size" style="width: 16px; height: 16px;">
+      </div>
+    </div>
+    
+    <div class="demo-item">
+      <h3>At 128×128 (Large)</h3>
+      <div class="smiley-container">
+        <img src="yes-animated.svg?v=9d35b26" alt="Large size" style="width: 128px; height: 128px;">
+      </div>
+    </div>
+  </div>
+  
+  <div class="comparison">
+    <h2>Animation Breakdown</h2>
+    <p>The animation cycles through 4 frames with smooth transitions. Duration: 0.7s (700ms) per cycle.</p>
+    
+    <table class="keyframes-table">
+      <thead>
+        <tr>
+          <th>Keyframe</th>
+          <th>Frame</th>
+          <th>Eyes Transform</th>
+          <th>Mouth Transform</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0%</td>
+          <td>Frame 0</td>
+          <td><code>translateY(0) scaleY(1)</code></td>
+          <td><code>translateY(0)</code></td>
+          <td>Neutral position, full-height eyes</td>
+        </tr>
+        <tr>
+          <td>25%</td>
+          <td>Frame 1</td>
+          <td><code>translateY(1px) scaleY(1)</code></td>
+          <td><code>translateY(0.5px)</code></td>
+          <td>Slight nod down, full-height eyes</td>
+        </tr>
+        <tr>
+          <td>50%</td>
+          <td>Frame 2</td>
+          <td><code>translateY(4px) scaleY(0.5)</code></td>
+          <td><code>translateY(2.5px)</code></td>
+          <td><strong>Maximum nod with squinted eyes</strong></td>
+        </tr>
+        <tr>
+          <td>75%</td>
+          <td>Frame 3</td>
+          <td><code>translateY(1px) scaleY(1)</code></td>
+          <td><code>translateY(0.5px)</code></td>
+          <td>Returning to slight nod (same as frame 1)</td>
+        </tr>
+        <tr>
+          <td>100%</td>
+          <td>Frame 0</td>
+          <td><code>translateY(0) scaleY(1)</code></td>
+          <td><code>translateY(0)</code></td>
+          <td>Back to neutral (loop)</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h3 style="margin-top: 30px;">Key Discoveries Applied:</h3>
+    <ul>
+      <li><strong>Eye repositioning:</strong> Eyes move down (translateY) from neutral to maximum nod</li>
+      <li><strong>Eye squinting:</strong> Eyes compress vertically (scaleY: 0.5) at maximum nod</li>
+      <li><strong>Mouth repositioning:</strong> Mouth moves down independently from eyes</li>
+      <li><strong>Stable outline:</strong> Face circle remains static, only features animate</li>
+      <li><strong>Smooth transitions:</strong> CSS handles interpolation between keyframes</li>
+    </ul>
+  </div>
+</body>
+</html>
