@@ -54,8 +54,8 @@
         <rect x="5.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
         <!-- Right eye -->
         <rect x="9.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
-        <!-- Frown mouth (original width from unhappy.svg) -->
-        <path d="M13.25 11.25C13 9 12 8.4 10.83 8c-.75-.25-1.33-.25-2.33-.25m-4.75 3.5C4 9 5 8.4 6.17 8c.75-.25 1.33-.25 2.33-.25"
+        <!-- Frown mouth (adjusted right corner to stay inside circle) -->
+        <path d="M12.5 11.25C12.25 9 11.25 8.4 10.08 8c-.75-.25-1.33-.25-2.33-.25m-4 3.5C4 9 5 8.4 6.17 8c.75-.25 1.33-.25 2.33-.25"
               stroke="#000" stroke-opacity=".9" stroke-width="1.1" fill="none"/>
     </g>
 </svg>
