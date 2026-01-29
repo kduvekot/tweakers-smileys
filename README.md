@@ -43,13 +43,21 @@ See [BROWSER_DOWNLOAD_INSTRUCTIONS.md](BROWSER_DOWNLOAD_INSTRUCTIONS.md) for det
 
 ## What You Get
 
-All 64 Tweakers smileys:
-- 44 SVG files (scalable vector graphics)
-- 20 GIF files (animated images)
+All 64 Tweakers smileys **PLUS 35 legacy GIF versions**:
+- 38 SVG files (scalable vector graphics) - current versions
+- 26 GIF files (animated images) - current versions
+- 35 old GIF files (legacy versions of current SVGs)
+
+**Total: 99 smiley files** organized into folders:
+- `svg/` - Current SVG versions
+- `gif/` - Current animated GIFs
+- `old-gif/` - Legacy GIF versions (discovered via testing)
 
 Each file is named according to its original filename:
-- `smile.svg`, `frown.svg`, `wink.svg`, etc.
-- `bonk.gif`, `facepalm.gif`, `pompom.gif`, etc.
+- Current: `smile.svg`, `frown.svg`, `bonk.gif`, `facepalm.gif`, etc.
+- Legacy: `smile.gif`, `frown.gif`, `heart.gif`, etc. (in `old-gif/` folder)
+
+See `old-gif/README.md` in the zip for details about the legacy versions.
 
 ---
 
