@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16">
+  <defs>
+    <!-- Standard yellow face gradient -->
+    <radialGradient id="faceGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                    gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+    
+    <!-- Smaller gradient for small face -->
+    <radialGradient id="smallFaceGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                    gradientTransform="rotate(59.99 .72 5.4) scale(6.5)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Large left face (STATIC) -->
+  <g id="largeFace">
+    <!-- Face circle -->
+    <circle cx="8" cy="8" r="7.9" fill="url(#faceGradient)"/>
+    <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75" fill="none"/>
+    
+    <!-- Squinting/laughing eyes (horizontal lines) -->
+    <rect x="4.5" y="5.5" width="2.5" height="1" rx=".4" fill="#000" fill-opacity=".9"/>
+    <rect x="9" y="5.5" width="2.5" height="1" rx=".4" fill="#000" fill-opacity=".9"/>
+    
+    <!-- Wide grin/smile -->
+    <path d="M 4 9.5 Q 8 12.5 12 9.5" stroke="#000" stroke-opacity=".9" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Small right face (ANIMATED) -->
+  <g id="smallFace" class="bouncing-face">
+    <!-- Face circle -->
+    <circle cx="24" cy="5" r="3.8" fill="url(#smallFaceGradient)"/>
+    <circle cx="24" cy="5" r="3.5" stroke="#000" stroke-opacity=".9" stroke-width=".5" fill="none"/>
+    
+    <!-- Small round eyes -->
+    <circle cx="22.5" cy="4" r=".6" fill="#000" fill-opacity=".9"/>
+    <circle cx="25.5" cy="4" r=".6" fill="#000" fill-opacity=".9"/>
+    
+    <!-- Small smile -->
+    <path d="M 22.5 6 Q 24 6.8 25.5 6" stroke="#000" stroke-opacity=".9" stroke-width=".6" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Left arm/hand -->
+  <ellipse cx="2" cy="11" rx="1.5" ry="2" fill="#FFEF06" stroke="#000" stroke-opacity=".9" stroke-width=".5"/>
+  
+  <!-- Right arm/hand -->
+  <ellipse cx="18" cy="4" rx="1.2" ry="1.8" fill="#FFEF06" stroke="#000" stroke-opacity=".9" stroke-width=".4"/>
+  
+  <style>
+    @keyframes bounce {
+      0%      { transform: translate(0, 0); }
+      16.67%  { transform: translate(0, 2px); }
+      33.33%  { transform: translate(0, 4px); }
+      50%     { transform: translate(0, 6px); }
+      66.67%  { transform: translate(0, 4px); }
+      83.33%  { transform: translate(0, 2px); }
+      100%    { transform: translate(0, 0); }
+    }
+    
+    .bouncing-face {
+      animation: bounce 0.06s infinite;
+      transform-origin: center;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .bouncing-face {
+        animation: none;
+      }
+    }
+  </style>
+</svg>

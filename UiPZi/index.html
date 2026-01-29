@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Smiley Conversion - Live Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .subtitle {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .comparison {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .item h2 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .display-area {
+            background: #fff;
+            border: 2px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        img, object {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .info h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .info ul {
+            margin-left: 20px;
+        }
+        
+        .info li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        .link {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .link a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>LoL Smiley: GIF → SVG Conversion</h1>
+    <p class="subtitle">Live preview from branch: claude/convert-lol-smiley-UiPZi</p>
+    
+    <div class="comparison">
+        <div class="item">
+            <h2>Original GIF (29×15px)</h2>
+            <div class="display-area">
+                <img src="tweakers-smileys/gif/lol.gif?v=e126ae3" style="width: 290px; height: 150px;">
+            </div>
+        </div>
+        
+        <div class="item">
+            <h2>SVG Conversion (32×16px)</h2>
+            <div class="display-area">
+                <object data="lol-conversion/lol-animated.svg" type="image/svg+xml" style="width: 320px; height: 160px;"></object>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <h2>Animation Specifications</h2>
+        <ul>
+            <li><strong>Total Frames:</strong> 6 frames (4 unique)</li>
+            <li><strong>Frame Duration:</strong> 10ms per frame (uniform)</li>
+            <li><strong>Total Duration:</strong> 60ms (0.06 seconds) - very fast!</li>
+            <li><strong>Animation Pattern:</strong> 0 → 1 → 2 → 3 → 2 → 1 → repeat</li>
+            <li><strong>Movement:</strong> Small right face bounces vertically</li>
+            <li><strong>Static Elements:</strong> Large left face with squinting eyes remains completely static</li>
+        </ul>
+    </div>
+    
+    <div class="link">
+        <p><strong>Full Comparison Page:</strong> <a href="lol-conversion/lol-animation-demo.html?v=e126ae3">View detailed frame-by-frame analysis</a></p>
+    </div>
+</body>
+</html>
