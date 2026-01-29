@@ -1,6 +1,6 @@
 <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    @keyframes nod{0%,100%{transform:translateY(0) scaleY(1) rotate(0deg)}14%{transform:translateY(1px) scaleY(0.95) rotate(-3deg)}29%{transform:translateY(2px) scaleY(0.9) rotate(-5deg)}43%{transform:translateY(1px) scaleY(0.95) rotate(-3deg)}57%{transform:translateY(0) scaleY(1) rotate(0deg)}71%{transform:translateY(-1px) scaleY(1.05) rotate(2deg)}}
+    @keyframes nod{0%,57%,to{transform:translateY(0)}14%{transform:translateY(1px)}29%{transform:translateY(2px)}43%{transform:translateY(1px)}71%{transform:translateY(-1px)}}
     @media(prefers-reduced-motion){*{animation:none!important}}
   </style>
   <defs>
@@ -12,8 +12,8 @@
     </radialGradient>
   </defs>
 
-  <!-- Animated group for nodding effect with combined transforms -->
-  <g style="animation:nod .7s linear infinite;transform-origin:50% 50%">
+  <!-- Animated group for nodding effect -->
+  <g style="animation:nod .7s linear infinite">
     <!-- Base yellow face with gradient -->
     <circle cx="8" cy="8" r="7.9" fill="url(#a)"/>
     <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
