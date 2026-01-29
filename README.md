@@ -4,7 +4,13 @@ Download all 64 Tweakers forum smileys (44 SVG + 20 GIF files) easily.
 
 ## Quick Start (EASIEST METHOD) ⭐
 
-### Option 1: Shell Script (Recommended)
+### Option 1: Direct Download (Easiest!)
+
+**All smileys are already included in this repository!**
+
+Just download **`tweakers-smileys.zip`** from this repo - it contains all 64 smileys ready to use.
+
+### Option 2: Shell Script
 
 **Works on Linux, Mac, WSL, or Git Bash on Windows**
 
@@ -14,7 +20,7 @@ bash download-all-smileys.sh
 
 That's it! All 64 smileys will be downloaded to a `tweakers-smileys/` folder.
 
-### Option 2: Open HTML Page Locally
+### Option 3: Open HTML Page Locally
 
 1. Open `download-page.html` in your browser (double-click the file)
 2. Click "Download All Smileys" button
