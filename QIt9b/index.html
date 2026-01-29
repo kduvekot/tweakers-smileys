@@ -41,15 +41,74 @@
             border-bottom: 2px solid #e30513;
         }
 
+        h3 {
+            color: #555;
+            margin: 10px 0;
+        }
+
         .description {
             color: #666;
             margin-bottom: 30px;
             font-size: 1.1em;
         }
 
+        .featured {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 5px solid #ffef06;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .featured h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 1.4em;
+        }
+
+        .featured p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-top: 5px;
+            transition: all 0.2s;
+        }
+
+        .button-primary {
+            background: #e30513;
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #c00410;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(227, 5, 19, 0.3);
+        }
+
+        .button-secondary {
+            background: #333;
+            color: white;
+        }
+
+        .button-secondary:hover {
+            background: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
         .smiley-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -64,8 +123,8 @@
         }
 
         .smiley-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .smiley-image {
@@ -90,16 +149,35 @@
 
         .stats {
             background: #f0f0f0;
-            padding: 15px;
+            padding: 20px;
             border-radius: 6px;
             margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
-        .stats p {
-            margin: 5px 0;
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
         }
 
-        .legacy-badge {
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e30513;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .badge {
             display: inline-block;
             background: #ff9800;
             color: white;
@@ -108,86 +186,165 @@
             font-size: 0.7em;
             margin-left: 5px;
         }
+
+        .badge-new {
+            background: #4caf50;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Tweakers Smileys Collection</h1>
-        <p class="description">Complete collection of all Tweakers forum smileys, including current and legacy versions.</p>
+        <h1>🙂 Tweakers Smileys Collection</h1>
+        <p class="description">Complete collection of Tweakers forum smileys - SVG conversions, current GIFs, and legacy versions.</p>
 
         <div class="stats">
-            <p><strong>Total Smileys:</strong> <span id="total-count">Loading...</span></p>
-            <p><strong>SVG Files:</strong> <span id="svg-count">0</span></p>
-            <p><strong>Current GIF Files:</strong> <span id="gif-count">0</span></p>
-            <p><strong>Legacy GIF Files:</strong> <span id="old-gif-count">0</span></p>
+            <div class="stat-item">
+                <span class="stat-number" id="total-count">0</span>
+                <div class="stat-label">Total Smileys</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="svg-count">0</span>
+                <div class="stat-label">SVG Files</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="new-svg-count">0</span>
+                <div class="stat-label">New Conversions</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="gif-count">0</span>
+                <div class="stat-label">Current GIFs</div>
+            </div>
         </div>
 
-        <h2>SVG Smileys (Current)</h2>
-        <div class="smiley-grid" id="svg-grid"></div>
+        <div class="featured">
+            <h3>🎯 Featured: Yes Smiley Conversion Project</h3>
+            <p>Complete GIF → SVG animation conversion with detailed frame-by-frame analysis. See how yes.gif was converted to yes.svg with realistic nodding animation using combined transforms (translate + scale + rotate).</p>
+            <p><strong>Highlights:</strong></p>
+            <ul style="margin-left: 20px; margin-bottom: 15px; line-height: 1.8;">
+                <li>7 intermediate SVG frames showing each transform state</li>
+                <li>Side-by-side GIF vs SVG frame comparison</li>
+                <li>Complete documentation of the conversion process</li>
+                <li>Transform values and CSS animation code</li>
+            </ul>
+            <a href="yes-smiley-conversion/frame-comparison.html" class="button button-primary">View Frame Analysis →</a>
+            <a href="yes-smiley-conversion/README.md" class="button button-secondary">Read Documentation</a>
+        </div>
 
-        <h2>Animated GIF Smileys (Current)</h2>
-        <div class="smiley-grid" id="gif-grid"></div>
+        <h2>New SVG Conversions <span class="badge badge-new">NEW</span></h2>
+        <div class="smiley-grid">
+            <div class="smiley-card">
+                <img src="tweakers-smileys/new-svg/yes.svg" alt="yes" class="smiley-image">
+                <div class="smiley-name">yes</div>
+                <div class="smiley-type">SVG (Animated)</div>
+            </div>
+        </div>
 
-        <h2>Legacy GIF Smileys <span class="legacy-badge">LEGACY</span></h2>
-        <div class="smiley-grid" id="old-gif-grid"></div>
+        <h2>SVG Smileys (Current Collection)</h2>
+        <div class="smiley-grid" id="svg-grid">
+            <div class="loading">Loading SVG smileys...</div>
+        </div>
+
+        <h2>Animated GIF Smileys (To Be Converted)</h2>
+        <div class="smiley-grid" id="gif-grid">
+            <div class="loading">Loading GIF smileys...</div>
+        </div>
+
+        <h2>Legacy GIF Smileys <span class="badge">LEGACY</span></h2>
+        <div class="smiley-grid" id="old-gif-grid">
+            <div class="loading">Loading legacy smileys...</div>
+        </div>
     </div>
 
     <script>
-        async function loadSmileys() {
-            const types = [
-                { dir: 'tweakers-smileys/svg', ext: 'svg', gridId: 'svg-grid', countId: 'svg-count' },
-                { dir: 'tweakers-smileys/gif', ext: 'gif', gridId: 'gif-grid', countId: 'gif-count' },
-                { dir: 'tweakers-smileys/old-gif', ext: 'gif', gridId: 'old-gif-grid', countId: 'old-gif-count' }
-            ];
+        // Manually defined file lists (since GitHub Pages doesn't support directory listing)
+        const smileys = {
+            svg: [
+                'biggrin', 'confused', 'coool', 'clown', 'bloos', 'devil', 'heart', 'cry',
+                'eerie', 'emo', 'frown', 'devilish', 'huh', 'henk', 'kwijl', 'michel',
+                'marrysmile', 'loveit', 'nosmile2', 'puh2', 'nerd', 'paard', 'puh', 'ok',
+                'redface', 'sadley', 'rc5', 'shiny', 'tweakers', 'smile', 'thumbsup',
+                'xmas', 'vork', 'wink', 'worshippy', 'unhappy', 'yummie', 'yummie-beer'
+            ],
+            newSvg: ['yes'],
+            gif: [
+                'belgie', 'bonk', 'bonk3', 'bye', 'facepalm', 'farewell', 'frusty', 'hup',
+                'hypocrite', 'knuf', 'lol', 'loveys', 'no', 'nopompom', 'nosmile', 'oranje',
+                'pompom', 'pukey', 'rozewolk', 'shadey', 'shutup', 'sintsmiley', 'sleepey',
+                'sleephappy', 'yawnee', 'yes'
+            ],
+            oldGif: [
+                'angry', 'beleefd', 'big', 'big2', 'bloos', 'bril', 'clown', 'confused',
+                'cool', 'cry', 'cry2', 'confused2', 'devil', 'eerie', 'emo', 'frown',
+                'kwijl', 'lach', 'marrysmile', 'michel', 'nose', 'nosmile2', 'ok', 'paard',
+                'puh', 'puh2', 'redface', 'sadley', 'sexy', 'shiny', 'smile', 'smooch',
+                'tongue', 'wink', 'worshippy'
+            ]
+        };
 
-            let totalCount = 0;
+        function createSmileyCard(name, type, dir) {
+            const ext = type === 'svg' ? 'svg' : 'gif';
+            const card = document.createElement('div');
+            card.className = 'smiley-card';
 
-            for (const type of types) {
-                try {
-                    const response = await fetch(`${type.dir}/`);
-                    const text = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(text, 'text/html');
-                    const links = Array.from(doc.querySelectorAll('a'))
-                        .map(a => a.getAttribute('href'))
-                        .filter(href => href && href.endsWith(`.${type.ext}`));
+            const img = document.createElement('img');
+            img.src = `${dir}/${name}.${ext}`;
+            img.alt = name;
+            img.className = 'smiley-image';
 
-                    const grid = document.getElementById(type.gridId);
-                    const count = links.length;
-                    totalCount += count;
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'smiley-name';
+            nameDiv.textContent = name;
 
-                    document.getElementById(type.countId).textContent = count;
+            const typeLabel = document.createElement('div');
+            typeLabel.className = 'smiley-type';
+            typeLabel.textContent = type.toUpperCase();
 
-                    links.forEach(filename => {
-                        const card = document.createElement('div');
-                        card.className = 'smiley-card';
+            card.appendChild(img);
+            card.appendChild(nameDiv);
+            card.appendChild(typeLabel);
 
-                        const img = document.createElement('img');
-                        img.src = `${type.dir}/${filename}`;
-                        img.alt = filename;
-                        img.className = 'smiley-image';
-
-                        const name = document.createElement('div');
-                        name.className = 'smiley-name';
-                        name.textContent = filename.replace(`.${type.ext}`, '');
-
-                        const typeLabel = document.createElement('div');
-                        typeLabel.className = 'smiley-type';
-                        typeLabel.textContent = type.ext.toUpperCase();
-
-                        card.appendChild(img);
-                        card.appendChild(name);
-                        card.appendChild(typeLabel);
-                        grid.appendChild(card);
-                    });
-                } catch (error) {
-                    console.error(`Error loading ${type.dir}:`, error);
-                }
-            }
-
-            document.getElementById('total-count').textContent = totalCount;
+            return card;
         }
 
+        function loadSmileys() {
+            // SVG smileys
+            const svgGrid = document.getElementById('svg-grid');
+            svgGrid.innerHTML = '';
+            smileys.svg.forEach(name => {
+                svgGrid.appendChild(createSmileyCard(name, 'svg', 'tweakers-smileys/svg'));
+            });
+            document.getElementById('svg-count').textContent = smileys.svg.length;
+
+            // New SVG conversions
+            document.getElementById('new-svg-count').textContent = smileys.newSvg.length;
+
+            // GIF smileys
+            const gifGrid = document.getElementById('gif-grid');
+            gifGrid.innerHTML = '';
+            smileys.gif.forEach(name => {
+                gifGrid.appendChild(createSmileyCard(name, 'gif', 'tweakers-smileys/gif'));
+            });
+            document.getElementById('gif-count').textContent = smileys.gif.length;
+
+            // Legacy GIF smileys
+            const oldGifGrid = document.getElementById('old-gif-grid');
+            oldGifGrid.innerHTML = '';
+            smileys.oldGif.forEach(name => {
+                oldGifGrid.appendChild(createSmileyCard(name, 'gif (legacy)', 'tweakers-smileys/old-gif'));
+            });
+
+            // Total count
+            const total = smileys.svg.length + smileys.newSvg.length + smileys.gif.length + smileys.oldGif.length;
+            document.getElementById('total-count').textContent = total;
+        }
+
+        // Load smileys when page loads
         loadSmileys();
     </script>
 </body>
