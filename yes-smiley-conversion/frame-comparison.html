@@ -252,6 +252,64 @@ Full frame</div>
     </div>
 
     <div class="section">
+      <h2>SVG Frame Matching - Iterative Process</h2>
+      <div class="info-box">
+        <h4>🎯 Goal: Create Pixel-Accurate SVG Versions of Each GIF Frame</h4>
+        <p><strong>Method:</strong> Create SVG → Convert to PNG → Compare with RMSE → Iterate until match is optimal</p>
+        <p><strong>RMSE:</strong> Root Mean Square Error - lower is better (0.0 = perfect match, 1.0 = completely different)</p>
+      </div>
+
+      <h3 style="margin-top: 30px;">Frame 0: Neutral Position</h3>
+      <div class="frames-grid">
+        <div class="frame">
+          <h3>Original GIF</h3>
+          <img src="frames/frame-display-0.png" alt="Original Frame 0">
+          <div class="transform">Reference
+15×15px</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Ground truth</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v1</h3>
+          <img src="svg-frames/frame-0-test.png" alt="SVG v1">
+          <div class="transform">RMSE
+0.568</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">First attempt</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v2</h3>
+          <img src="svg-frames/frame-0-test-v2.png" alt="SVG v2">
+          <div class="transform">RMSE
+0.645</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Simplified ❌</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v3 ✅</h3>
+          <img src="svg-frames/frame-0-test-v3.png" alt="SVG v3">
+          <div class="transform">RMSE
+0.560</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;"><strong>Best match</strong></p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 30px;">Visual Comparisons (4x magnification)</h3>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 20px; margin: 20px 0;">
+        <div style="text-align: center;">
+          <h4>Version 3 Comparison (Best)</h4>
+          <img src="svg-frames/comparison-0-v3.png" alt="Frame 0 v3 comparison" style="width: auto; max-width: 100%; border: 2px solid #4caf50; border-radius: 8px;">
+          <p style="margin-top: 10px; font-size: 12px; color: #666;">Left: Original GIF | Middle: SVG Render | Right: Difference Map (red = mismatch)</p>
+        </div>
+      </div>
+
+      <div class="legend">
+        <p><strong>Frame 0 Status:</strong> ✅ Complete (RMSE = 0.560)</p>
+        <p><strong>Next:</strong> Frames 1, 2, 3 - Awaiting validation of approach</p>
+      </div>
+    </div>
+
+    <div class="section">
       <h2>SVG Keyframes (Proposed - 7 States)</h2>
       <div class="legend">
         <strong>Transform Approach:</strong> SVG uses 7 keyframes for smoother animation. Each shows the smiley with transforms applied.
