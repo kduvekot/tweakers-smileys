@@ -4,36 +4,115 @@ on:
   push:
     branches:
       - main
-      - claude/github-pages-deployment-lO2AE
+      - 'claude/**'
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout current branch
         uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: source
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Extract short code from branch name
+        id: extract
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          if [ "$BRANCH_NAME" = "main" ]; then
+            echo "shortcode=" >> $GITHUB_OUTPUT
+            echo "target_dir=." >> $GITHUB_OUTPUT
+            echo "is_main=true" >> $GITHUB_OUTPUT
+          else
+            # Extract shortcode (last 5 characters after the last hyphen)
+            SHORTCODE=$(echo "$BRANCH_NAME" | grep -oP '(?<=-)[^-]+$')
+            echo "shortcode=$SHORTCODE" >> $GITHUB_OUTPUT
+            echo "target_dir=$SHORTCODE" >> $GITHUB_OUTPUT
+            echo "is_main=false" >> $GITHUB_OUTPUT
+          fi
+          echo "Branch: $BRANCH_NAME"
+          echo "Shortcode: $SHORTCODE"
+          cat $GITHUB_OUTPUT
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+        continue-on-error: true
+
+      - name: Initialize gh-pages if needed
+        run: |
+          if [ ! -d "gh-pages/.git" ]; then
+            echo "Initializing gh-pages branch"
+            mkdir -p gh-pages
+            cd gh-pages
+            git init
+            git checkout -b gh-pages
+            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            echo "# GitHub Pages" > README.md
+            git add README.md
+            git commit -m "Initialize gh-pages"
+            git push -u origin gh-pages
+          fi
+
+      - name: Configure git
+        working-directory: gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to root (main branch)
+        if: steps.extract.outputs.is_main == 'true'
+        run: |
+          cd gh-pages
+          # Remove all files except subdirectories (feature branch previews)
+          find . -maxdepth 1 -type f ! -name '.git*' -delete
+          # Copy all files from source
+          cp -r ../source/* .
+          # Remove workflow files and other github specific files from deployment
+          rm -rf .github
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy main branch"
+            git push origin gh-pages
+          fi
+
+      - name: Deploy to subdirectory (feature branch)
+        if: steps.extract.outputs.is_main == 'false'
+        run: |
+          cd gh-pages
+          SHORTCODE="${{ steps.extract.outputs.shortcode }}"
+          # Create or update the subdirectory
+          mkdir -p "$SHORTCODE"
+          # Remove old contents
+          rm -rf "$SHORTCODE"/*
+          # Copy new contents
+          cp -r ../source/* "$SHORTCODE/"
+          # Remove workflow files from deployment
+          rm -rf "$SHORTCODE/.github"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy feature branch preview: ${{ github.ref_name }} → /$SHORTCODE/"
+            git push origin gh-pages
+          fi
+
+      - name: Comment deployment URL
+        if: steps.extract.outputs.is_main == 'false'
+        run: |
+          SHORTCODE="${{ steps.extract.outputs.shortcode }}"
+          echo "🚀 Preview deployed to: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/$SHORTCODE/"
