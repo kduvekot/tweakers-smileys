@@ -2,7 +2,34 @@
 
 Download all Tweakers smileys using your browser while logged in.
 
-## Quick Start
+## Method 1: Individual Downloads (RECOMMENDED - No CORS issues!)
+
+This method downloads each smiley as a separate file. Works from any Tweakers page!
+
+1. **Go to any Tweakers.net page** (like gathering.tweakers.net)
+2. **Open Chrome DevTools Console**:
+   - Press `F12` or `Ctrl+Shift+J` (Windows/Linux)
+   - Press `Cmd+Option+J` (Mac)
+   - Or right-click anywhere and select "Inspect" → "Console" tab
+
+3. **Copy the entire script** from `download-smileys-bookmarklet.js`
+
+4. **Paste into the console** and press Enter
+
+5. **Allow multiple downloads** - Your browser will ask permission to download multiple files. Click "Allow"
+
+6. **Wait for completion** - The script will:
+   - Trigger 64 individual downloads (one per smiley)
+   - Each file downloads with its correct name (smile.svg, bonk.gif, etc.)
+   - All files go to your Downloads folder
+
+**Tip:** After downloading, create a folder called "tweakers-smileys" and move all the files there.
+
+---
+
+## Method 2: Zip File Download (May have CORS issues)
+
+This method tries to create a single zip file, but may fail due to browser security restrictions.
 
 1. **Log into Tweakers.net** in Google Chrome
 2. **Open Chrome DevTools Console**:
@@ -16,9 +43,11 @@ Download all Tweakers smileys using your browser while logged in.
 
 5. **Wait for the download** - The script will:
    - Load the JSZip library
-   - Download all 64 smileys using your logged-in session
+   - Try to download all 64 smileys
    - Create a zip file
    - Automatically download `tweakers-smileys.zip` to your Downloads folder
+
+**Note:** If this fails with CORS errors, use Method 1 instead.
 
 ## What It Does
 

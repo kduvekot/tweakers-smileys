@@ -1,23 +1,10 @@
-// Tweakers Smiley Downloader - Browser Console Script
-// Copy and paste this entire script into Chrome DevTools Console while logged into Tweakers.net
-// This script bypasses CORS by using images loaded in hidden iframes
+// Tweakers Smiley Downloader - Single-File Bookmarklet
+// This version downloads each image individually, bypassing CORS completely
+// Works from ANY Tweakers page (tweakers.net or gathering.tweakers.net)
 
-(async function() {
+(function() {
     console.log('🎨 Tweakers Smiley Downloader Starting...');
-
-    // Load JSZip library dynamically
-    if (typeof JSZip === 'undefined') {
-        console.log('📦 Loading JSZip library...');
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-        document.head.appendChild(script);
-
-        await new Promise((resolve, reject) => {
-            script.onload = resolve;
-            script.onerror = reject;
-        });
-        console.log('✅ JSZip loaded successfully');
-    }
+    console.log('ℹ️  This will download each smiley file individually to avoid CORS issues\n');
 
     // All Tweakers smileys with their filenames and URLs
     const smileys = [
@@ -87,104 +74,40 @@
         { filename: 'yummie-beer.svg', url: 'https://tweakers.net/g/s/yummie-beer.svg' }
     ];
 
-    console.log(`📥 Downloading ${smileys.length} smileys using image conversion method...`);
-    console.log('ℹ️  This works around CORS restrictions by loading images and converting to canvas');
+    console.log(`📥 Preparing to download ${smileys.length} smileys...`);
+    console.log('⚠️  Your browser may ask to allow multiple downloads - please click "Allow"');
+    console.log('');
 
-    const zip = new JSZip();
-    let successCount = 0;
-    let failCount = 0;
+    let downloadCount = 0;
+    const delay = 300; // 300ms delay between downloads
 
-    // Helper function to convert image to blob using canvas
-    async function downloadImageAsBlob(url, filename) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous'; // Try to request CORS
-
-            img.onload = function() {
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width || 100;
-                    canvas.height = img.height || 100;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-
-                    canvas.toBlob((blob) => {
-                        if (blob) {
-                            resolve(blob);
-                        } else {
-                            reject(new Error('Failed to create blob'));
-                        }
-                    }, filename.endsWith('.svg') ? 'image/svg+xml' : 'image/gif');
-                } catch (err) {
-                    reject(err);
-                }
-            };
-
-            img.onerror = function() {
-                // If image loading fails, try to fetch the SVG as text (works for SVGs)
-                if (filename.endsWith('.svg')) {
-                    fetch(url, { mode: 'cors' })
-                        .then(r => r.text())
-                        .then(text => {
-                            const blob = new Blob([text], { type: 'image/svg+xml' });
-                            resolve(blob);
-                        })
-                        .catch(reject);
-                } else {
-                    reject(new Error('Image load failed'));
-                }
-            };
-
-            img.src = url;
-        });
-    }
-
-    // Download all smileys with better error handling
-    for (let i = 0; i < smileys.length; i++) {
-        const smiley = smileys[i];
-        try {
-            console.log(`[${i + 1}/${smileys.length}] Fetching ${smiley.filename}...`);
-
-            const blob = await downloadImageAsBlob(smiley.url, smiley.filename);
-            zip.file(smiley.filename, blob);
-            successCount++;
-
-        } catch (error) {
-            console.warn(`⚠️  ${smiley.filename}: ${error.message}`);
-            failCount++;
-        }
-
-        // Small delay to avoid overwhelming the browser
-        if (i % 10 === 0 && i > 0) {
-            await new Promise(resolve => setTimeout(resolve, 100));
-        }
-    }
-
-    console.log(`\n📊 Download Summary:`);
-    console.log(`   ✅ Success: ${successCount}`);
-    console.log(`   ⚠️  Failed: ${failCount}`);
-
-    if (successCount > 0) {
-        console.log('\n📦 Creating zip file...');
-        const zipBlob = await zip.generateAsync({ type: 'blob' });
-
-        // Trigger download
+    // Function to trigger individual download
+    function downloadFile(url, filename) {
         const link = document.createElement('a');
-        link.href = URL.createObjectURL(zipBlob);
-        link.download = 'tweakers-smileys.zip';
+        link.href = url;
+        link.download = filename;
+        link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
-        URL.revokeObjectURL(link.href);
-
-        console.log(`✅ Downloaded ${successCount} smileys! Check your downloads folder for tweakers-smileys.zip`);
-    } else {
-        console.error('❌ No smileys were downloaded successfully.');
-        console.log('\nℹ️  Alternative: Try running this script from https://tweakers.net instead of gathering.tweakers.net');
-        console.log('   Or install a CORS extension like "CORS Unblock" for Chrome');
+        console.log(`✅ [${downloadCount + 1}/${smileys.length}] Triggered download: ${filename}`);
+        downloadCount++;
     }
 
-})().catch(error => {
-    console.error('❌ Script error:', error);
-});
+    // Download all files with delays
+    smileys.forEach((smiley, index) => {
+        setTimeout(() => {
+            downloadFile(smiley.url, smiley.filename);
+
+            if (index === smileys.length - 1) {
+                setTimeout(() => {
+                    console.log(`\n🎉 All ${smileys.length} downloads have been triggered!`);
+                    console.log('📂 Check your Downloads folder for all the smiley files');
+                    console.log('\n💡 Tip: The files are named individually (smile.svg, bonk.gif, etc.)');
+                    console.log('   You may want to create a folder and move them all there');
+                }, 1000);
+            }
+        }, index * delay);
+    });
+
+})();
