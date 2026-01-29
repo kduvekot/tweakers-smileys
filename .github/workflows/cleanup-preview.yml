@@ -1,0 +1,47 @@
+name: Cleanup Preview Deployment
+
+on:
+  delete:
+    branches:
+      - 'claude/**'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract short code from deleted branch
+        id: extract
+        run: |
+          BRANCH_NAME="${{ github.event.ref }}"
+          # Extract shortcode (last 5 characters after the last hyphen)
+          SHORTCODE=$(echo "$BRANCH_NAME" | grep -oP '(?<=-)[^-]+$')
+          echo "shortcode=$SHORTCODE" >> $GITHUB_OUTPUT
+          echo "Cleaning up preview for branch: $BRANCH_NAME"
+          echo "Shortcode to remove: $SHORTCODE"
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Remove preview directory
+        run: |
+          SHORTCODE="${{ steps.extract.outputs.shortcode }}"
+          if [ -d "$SHORTCODE" ]; then
+            echo "Removing directory: $SHORTCODE"
+            rm -rf "$SHORTCODE"
+            git add -A
+            git commit -m "Clean up preview deployment: ${{ github.event.ref }} (/$SHORTCODE/)"
+            git push origin gh-pages
+            echo "✅ Preview deployment removed: /$SHORTCODE/"
+          else
+            echo "⚠️ Directory $SHORTCODE not found, nothing to clean up"
+          fi
