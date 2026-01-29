@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yes Smiley - Frame-by-Frame Comparison</title>
+  <style>
+    body {
+      font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 3px solid #ffef06;
+      padding-bottom: 10px;
+    }
+    .original {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .frames-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .frame {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .frame img {
+      width: 64px;
+      height: 64px;
+      display: block;
+      margin: 0 auto 15px;
+      image-rendering: pixelated;
+    }
+    .frame h3 {
+      font-size: 14px;
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    .frame .transform {
+      font-size: 11px;
+      color: #666;
+      background: #f5f5f5;
+      padding: 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .comparison-section {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .side-by-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .item {
+      text-align: center;
+    }
+    .item img {
+      width: 128px;
+      height: 128px;
+      display: block;
+      margin: 20px auto;
+    }
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    .analysis {
+      background: #fffef0;
+      border-left: 4px solid #ffef06;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #f5f5f5;
+      font-weight: 600;
+    }
+    tr:hover {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤔 Yes Smiley: Frame-by-Frame Analysis</h1>
+
+  <div class="original">
+    <h2>Original GIF Animation</h2>
+    <div style="text-align: center;">
+      <img src="yes.gif" style="width: 128px; height: 128px; image-rendering: pixelated;" alt="yes.gif">
+      <p><strong>Source:</strong> yes.gif (15×15 pixels, 7 frames, ~0.7s loop)</p>
+    </div>
+  </div>
+
+  <div class="analysis">
+    <h3>🔍 Problem Identified</h3>
+    <p>The current <code>yes.svg</code> only uses <code>translateY()</code> which creates a "bouncing" effect, not a realistic "nodding yes" motion.</p>
+    <p><strong>Missing:</strong> Head tilt (rotation) and perspective compression (scaleY) to simulate 3D nodding motion.</p>
+  </div>
+
+  <div class="comparison-section">
+    <h2>Proposed Frame Breakdown with Transforms</h2>
+    <p>Each frame shows how the smiley should look with combined transforms: <code>translate + scale + rotate</code></p>
+
+    <div class="frames-grid">
+      <div class="frame">
+        <h3>Frame 1</h3>
+        <img src="intermediate-svgs/frame-1-neutral.svg" alt="Frame 1">
+        <div class="transform">
+translateY(0)
+scaleY(1)
+rotate(0°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Neutral / Rest</p>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 2</h3>
+        <img src="intermediate-svgs/frame-2-nod-down-start.svg" alt="Frame 2">
+        <div class="transform">
+translateY(1px)
+scaleY(0.95)
+rotate(-3°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Begin nod down</p>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 3</h3>
+        <img src="intermediate-svgs/frame-3-nod-down-max.svg" alt="Frame 3">
+        <div class="transform">
+translateY(2px)
+scaleY(0.9)
+rotate(-5°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Max nod down</p>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 4</h3>
+        <img src="intermediate-svgs/frame-4-returning.svg" alt="Frame 4">
+        <div class="transform">
+translateY(1px)
+scaleY(0.95)
+rotate(-3°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Returning up</p>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 5</h3>
+        <img src="intermediate-svgs/frame-5-neutral-passing.svg" alt="Frame 5">
+        <div class="transform">
+translateY(0)
+scaleY(1)
+rotate(0°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Pass through neutral</p>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 6</h3>
+        <img src="intermediate-svgs/frame-6-nod-up.svg" alt="Frame 6">
+        <div class="transform">
+translateY(-1px)
+scaleY(1.05)
+rotate(2°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Slight nod up</p>
+      </div>
+
+      <div class="frame">
+        <h3>Frame 7</h3>
+        <img src="intermediate-svgs/frame-7-return-neutral.svg" alt="Frame 7">
+        <div class="transform">
+translateY(0)
+scaleY(1)
+rotate(0°)
+        </div>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">Return to neutral</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="comparison-section">
+    <h2>Transform Values Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Frame</th>
+          <th>Keyframe %</th>
+          <th>translateY</th>
+          <th>scaleY</th>
+          <th>rotate</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>0%</td>
+          <td>0px</td>
+          <td>1.0</td>
+          <td>0°</td>
+          <td>Neutral starting position</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>14%</td>
+          <td>1px</td>
+          <td>0.95</td>
+          <td>-3°</td>
+          <td>Beginning downward nod (head tilting forward)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>29%</td>
+          <td>2px</td>
+          <td>0.9</td>
+          <td>-5°</td>
+          <td>Maximum downward nod (chin toward chest)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>43%</td>
+          <td>1px</td>
+          <td>0.95</td>
+          <td>-3°</td>
+          <td>Returning from max nod</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>57%</td>
+          <td>0px</td>
+          <td>1.0</td>
+          <td>0°</td>
+          <td>Passing through neutral</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>71%</td>
+          <td>-1px</td>
+          <td>1.05</td>
+          <td>2°</td>
+          <td>Slight upward nod (head tilting back)</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>100%</td>
+          <td>0px</td>
+          <td>1.0</td>
+          <td>0°</td>
+          <td>Return to neutral (loop point)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comparison-section">
+    <h2>Proposed CSS Animation Code</h2>
+    <pre style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 8px; overflow-x: auto;"><code>@keyframes nod {
+  0%, 100% {
+    transform: translateY(0) scaleY(1) rotate(0deg);
+  }
+  14% {
+    transform: translateY(1px) scaleY(0.95) rotate(-3deg);
+  }
+  29% {
+    transform: translateY(2px) scaleY(0.9) rotate(-5deg);
+  }
+  43% {
+    transform: translateY(1px) scaleY(0.95) rotate(-3deg);
+  }
+  57% {
+    transform: translateY(0) scaleY(1) rotate(0deg);
+  }
+  71% {
+    transform: translateY(-1px) scaleY(1.05) rotate(2deg);
+  }
+}
+
+@media(prefers-reduced-motion) {
+  * {
+    animation: none !important;
+  }
+}</code></pre>
+  </div>
+
+  <div class="comparison-section">
+    <h2>Current vs Proposed</h2>
+    <div class="side-by-side">
+      <div class="item">
+        <h3>❌ Current (Bouncing Only)</h3>
+        <img src="yes-current.svg" alt="Current yes.svg">
+        <code style="display: block; margin-top: 10px;">translateY() only</code>
+        <p style="margin-top: 15px; color: #666; font-size: 14px;">Just moves up and down vertically. No perspective or tilt.</p>
+      </div>
+      <div class="item">
+        <h3>✅ Proposed (Realistic Nodding)</h3>
+        <p style="font-size: 14px; color: #888; margin: 20px 0;">(Will be created after validation)</p>
+        <code style="display: block; margin-top: 10px;">translate + scale + rotate</code>
+        <p style="margin-top: 15px; color: #666; font-size: 14px;">Combines vertical movement, compression, and rotation for realistic nodding.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="analysis">
+    <h3>📝 Next Steps</h3>
+    <ol>
+      <li>Review the 7 intermediate frames above</li>
+      <li>Validate that the transforms look correct</li>
+      <li>Fine-tune rotation and scale values if needed</li>
+      <li>Create final yes.svg with combined transforms</li>
+      <li>Test animation at different sizes</li>
+      <li>Compare side-by-side with original GIF</li>
+    </ol>
+  </div>
+</body>
+</html>
