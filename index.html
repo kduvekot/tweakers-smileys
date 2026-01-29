@@ -133,6 +133,8 @@
     </div>
 
     <script>
+        const CACHE_BUST_VERSION = "eba8926";
+
         async function loadSmileys() {
             const types = [
                 { dir: 'tweakers-smileys/svg', ext: 'svg', gridId: 'svg-grid', countId: 'svg-count' },
@@ -163,7 +165,7 @@
                         card.className = 'smiley-card';
 
                         const img = document.createElement('img');
-                        img.src = `${type.dir}/${filename}`;
+                        img.src = `${type.dir}/${filename}?v=${CACHE_BUST_VERSION}`;
                         img.alt = filename;
                         img.className = 'smiley-image';
 
