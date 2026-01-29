@@ -22,4 +22,4 @@ See `tweakers-smileys/old-gif/README.md` for details about the legacy versions.
 
 ## License
 
-These smileys are property of Tweakers.net.
+These smileys are property of Tweakers.net..
