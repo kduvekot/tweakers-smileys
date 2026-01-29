@@ -85,42 +85,62 @@
   </style>
 </head>
 <body>
-  <h1>Yes Smiley - CSS Animation Derived from 4 SVG Frames</h1>
-  
+  <h1>Yes Smiley - Animation Comparison</h1>
+
   <div class="demo-grid">
     <div class="demo-item">
       <h3>Original GIF</h3>
       <div class="smiley-container">
-        <img src="yes.gif?v=f36fdbe" alt="Original GIF" style="width: 64px; height: 64px; image-rendering: pixelated;">
+        <img src="yes.gif?v=b7d8d94" alt="Original GIF" style="width: 64px; height: 64px; image-rendering: pixelated;">
       </div>
+      <p style="font-size: 12px; color: #666; margin-top: 10px;">Reference animation</p>
     </div>
-    
+
     <div class="demo-item">
-      <h3>CSS Animated SVG (New)</h3>
+      <h3>Separate Animations</h3>
       <div class="smiley-container">
-        <img src="yes-animated.svg?v=f36fdbe" alt="CSS Animated SVG" style="width: 64px; height: 64px;">
+        <img src="yes-animated.svg?v=b7d8d94" alt="Separate animations" style="width: 64px; height: 64px;">
       </div>
+      <p style="font-size: 12px; color: #666; margin-top: 10px;">Eyes: translateY + scaleY<br>Mouth: translateY only</p>
     </div>
-    
+
     <div class="demo-item">
-      <h3>At 16×16 (Actual Size)</h3>
+      <h3>Worshippy Style</h3>
       <div class="smiley-container">
-        <img src="yes-animated.svg?v=f36fdbe" alt="Actual size" style="width: 16px; height: 16px;">
+        <img src="yes-animated-worshippy-style.svg?v=b7d8d94" alt="Worshippy style" style="width: 64px; height: 64px;">
       </div>
+      <p style="font-size: 12px; color: #666; margin-top: 10px;">Eyes + mouth unified<br>scale(1, 0.5) affects both</p>
     </div>
-    
-    <div class="demo-item">
-      <h3>At 128×128 (Large)</h3>
-      <div class="smiley-container">
-        <img src="yes-animated.svg?v=f36fdbe" alt="Large size" style="width: 128px; height: 128px;">
+  </div>
+
+  <div class="comparison" style="background: #fff3cd; border-left: 4px solid #ff9800;">
+    <h2 style="margin-top: 0;">🔍 Key Difference</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div>
+        <h3 style="color: #333; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Separate Animations (Current)</h3>
+        <ul style="font-size: 14px; line-height: 1.8;">
+          <li>Eyes animate with <code>translateY + scaleY</code></li>
+          <li>Mouth animates with <code>translateY</code> only</li>
+          <li>Mouth <strong>keeps its shape</strong> during nod</li>
+          <li>More control over each element</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: #333; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Worshippy Style (Unified)</h3>
+        <ul style="font-size: 14px; line-height: 1.8;">
+          <li>Eyes + mouth in one group</li>
+          <li>Both animate with <code>translate + scale</code></li>
+          <li>Mouth <strong>gets flatter</strong> during nod (50% height)</li>
+          <li>Simpler code, matches worshippy.svg pattern</li>
+        </ul>
       </div>
     </div>
   </div>
   
   <div class="comparison">
-    <h2>Animation Breakdown</h2>
+    <h2>Animation Breakdown - Separate Animations Version</h2>
     <p>The animation cycles through 4 frames with smooth transitions. Duration: 0.7s (700ms) per cycle.</p>
-    
+
     <table class="keyframes-table">
       <thead>
         <tr>
@@ -149,8 +169,8 @@
         <tr>
           <td>50%</td>
           <td>Frame 2</td>
-          <td><code>translateY(4px) scaleY(0.5)</code></td>
-          <td><code>translateY(2.5px)</code></td>
+          <td><code>translateY(4.25px) scaleY(0.5)</code></td>
+          <td><code>translateY(2.65px)</code></td>
           <td><strong>Maximum nod with squinted eyes</strong></td>
         </tr>
         <tr>
@@ -169,14 +189,60 @@
         </tr>
       </tbody>
     </table>
-    
-    <h3 style="margin-top: 30px;">Key Discoveries Applied:</h3>
-    <ul>
-      <li><strong>Eye repositioning:</strong> Eyes move down (translateY) from neutral to maximum nod</li>
-      <li><strong>Eye squinting:</strong> Eyes compress vertically (scaleY: 0.5) at maximum nod</li>
-      <li><strong>Mouth repositioning:</strong> Mouth moves down independently from eyes</li>
-      <li><strong>Stable outline:</strong> Face circle remains static, only features animate</li>
-      <li><strong>Smooth transitions:</strong> CSS handles interpolation between keyframes</li>
+  </div>
+
+  <div class="comparison">
+    <h2>Animation Breakdown - Worshippy Style (Unified)</h2>
+    <p>Eyes and mouth animate together as one group. Scale affects both elements.</p>
+
+    <table class="keyframes-table">
+      <thead>
+        <tr>
+          <th>Keyframe</th>
+          <th>Frame</th>
+          <th>Unified Transform (Eyes + Mouth)</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0%</td>
+          <td>Frame 0</td>
+          <td><code>translate(0, 0) scale(1, 1)</code></td>
+          <td>Neutral position, normal proportions</td>
+        </tr>
+        <tr>
+          <td>25%</td>
+          <td>Frame 1</td>
+          <td><code>translate(0, 1px) scale(1, 1)</code></td>
+          <td>Slight nod down, normal proportions</td>
+        </tr>
+        <tr>
+          <td>50%</td>
+          <td>Frame 2</td>
+          <td><code>translate(0, 4.5px) scale(1, 0.5)</code></td>
+          <td><strong>Maximum nod - eyes AND mouth squish!</strong></td>
+        </tr>
+        <tr>
+          <td>75%</td>
+          <td>Frame 3</td>
+          <td><code>translate(0, 1px) scale(1, 1)</code></td>
+          <td>Returning to slight nod (same as frame 1)</td>
+        </tr>
+        <tr>
+          <td>100%</td>
+          <td>Frame 0</td>
+          <td><code>translate(0, 0) scale(1, 1)</code></td>
+          <td>Back to neutral (loop)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 30px;">Comparison with worshippy.svg:</h3>
+    <ul style="line-height: 1.8;">
+      <li><strong>worshippy.svg:</strong> Uses <code>translate(0, 8px) scale(1, 0.5)</code> - goes down 8px</li>
+      <li><strong>yes.svg (unified):</strong> Uses <code>translate(0, 4.5px) scale(1, 0.5)</code> - goes down 4.5px</li>
+      <li><strong>Reason:</strong> Worshippy is "worship" motion (bowing deeply), yes is gentle nodding</li>
     </ul>
   </div>
 </body>
