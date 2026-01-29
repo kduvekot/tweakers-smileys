@@ -315,7 +315,159 @@ Full frame</div>
       </div>
       <div class="legend">
         <p><strong>Frame 0 Status:</strong> ✅ Complete (RMSE = 0.560)</p>
-        <p><strong>Next:</strong> Frames 1, 2, 3 - Awaiting validation of approach</p>
+      </div>
+
+      <h3 style="margin-top: 50px;">Frame 1: Slight Nod Down</h3>
+      <div class="frames-grid">
+        <div class="frame">
+          <h3>Original GIF</h3>
+          <img src="frames/frame-display-1.png" alt="Original Frame 1">
+          <div class="transform">Reference
+15×15px</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Ground truth</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v1</h3>
+          <img src="svg-frames/frame-1-test-v1.png" alt="SVG v1">
+          <div class="transform">translate(0, 1)
+RMSE: 0.578</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Simple shift</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v2 ✅</h3>
+          <img src="svg-frames/frame-1-test-v2.png" alt="SVG v2">
+          <div class="transform">translate(0, 0.7)
+scale(1, 0.98)
+RMSE: 0.569</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;"><strong>Best match</strong></p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v3</h3>
+          <img src="svg-frames/frame-1-test-v3.png" alt="SVG v3">
+          <div class="transform">translate(0, 0.6)
+scale(1, 0.99)
+RMSE: 0.570</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Close second</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 20px; background: #fafafa; border-radius: 8px; border: 2px solid #4caf50; margin-top: 20px;">
+        <h4>Frame 1 SVG (v2 Final)</h4>
+        <img src="svg-frames/frame-1-final.svg" alt="Frame 1 Final SVG" style="width: 60px; height: 60px; display: inline-block; margin: 15px; border: 1px solid #ddd;">
+        <p style="font-size: 12px; color: #666;"><strong>Actual SVG rendered in browser</strong></p>
+        <a href="svg-frames/frame-1-final.svg" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #4caf50; color: white; text-decoration: none; border-radius: 4px; font-size: 12px;">View SVG Source</a>
+      </div>
+
+      <div class="legend" style="margin-top: 20px;">
+        <p><strong>Frame 1 Status:</strong> ✅ Complete (RMSE = 0.569)</p>
+      </div>
+
+      <h3 style="margin-top: 50px;">Frame 2: Maximum Nod Down</h3>
+      <div class="frames-grid">
+        <div class="frame">
+          <h3>Original GIF</h3>
+          <img src="frames/frame-display-2.png" alt="Original Frame 2">
+          <div class="transform">Reference
+15×15px</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Ground truth</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v1</h3>
+          <img src="svg-frames/frame-2-test-v1.png" alt="SVG v1">
+          <div class="transform">translate(0, 1.5)
+scale(1, 0.95)
+RMSE: 0.621</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Moderate</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v2 ✅</h3>
+          <img src="svg-frames/frame-2-test-v2.png" alt="SVG v2">
+          <div class="transform">translate(0, 2)
+scale(1, 0.92)
+RMSE: 0.619</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;"><strong>Best match</strong></p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v3</h3>
+          <img src="svg-frames/frame-2-test-v3.png" alt="SVG v3">
+          <div class="transform">translate(0, 1.8)
+scale(1, 0.93)
+RMSE: 0.620</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Close second</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 20px; background: #fafafa; border-radius: 8px; border: 2px solid #4caf50; margin-top: 20px;">
+        <h4>Frame 2 SVG (v2 Final)</h4>
+        <img src="svg-frames/frame-2-final.svg" alt="Frame 2 Final SVG" style="width: 60px; height: 60px; display: inline-block; margin: 15px; border: 1px solid #ddd;">
+        <p style="font-size: 12px; color: #666;"><strong>Actual SVG rendered in browser</strong></p>
+        <a href="svg-frames/frame-2-final.svg" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #4caf50; color: white; text-decoration: none; border-radius: 4px; font-size: 12px;">View SVG Source</a>
+      </div>
+
+      <div class="legend" style="margin-top: 20px;">
+        <p><strong>Frame 2 Status:</strong> ✅ Complete (RMSE = 0.619)</p>
+      </div>
+
+      <h3 style="margin-top: 50px;">Frame 3: Returning to Neutral</h3>
+      <div class="frames-grid">
+        <div class="frame">
+          <h3>Original GIF</h3>
+          <img src="frames/frame-display-3.png" alt="Original Frame 3">
+          <div class="transform">Reference
+15×15px</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Ground truth</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v1</h3>
+          <img src="svg-frames/frame-3-test-v1.png" alt="SVG v1">
+          <div class="transform">translate(0, 0.8)
+scale(1, 0.97)
+RMSE: 0.569</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Good</p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v2 ✅</h3>
+          <img src="svg-frames/frame-3-test-v2.png" alt="SVG v2">
+          <div class="transform">translate(0, 1)
+scale(1, 0.96)
+RMSE: 0.568</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;"><strong>Best match</strong></p>
+        </div>
+
+        <div class="frame">
+          <h3>SVG v3</h3>
+          <img src="svg-frames/frame-3-test-v3.png" alt="SVG v3">
+          <div class="transform">translate(0, 0.6)
+scale(1, 0.975)
+RMSE: 0.572</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Good</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 20px; background: #fafafa; border-radius: 8px; border: 2px solid #4caf50; margin-top: 20px;">
+        <h4>Frame 3 SVG (v2 Final)</h4>
+        <img src="svg-frames/frame-3-final.svg" alt="Frame 3 Final SVG" style="width: 60px; height: 60px; display: inline-block; margin: 15px; border: 1px solid #ddd;">
+        <p style="font-size: 12px; color: #666;"><strong>Actual SVG rendered in browser</strong></p>
+        <a href="svg-frames/frame-3-final.svg" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #4caf50; color: white; text-decoration: none; border-radius: 4px; font-size: 12px;">View SVG Source</a>
+      </div>
+
+      <div class="legend" style="margin-top: 20px;">
+        <p><strong>Frame 3 Status:</strong> ✅ Complete (RMSE = 0.568)</p>
+        <p style="margin-top: 10px;"><strong>🎉 All 4 Frames Complete!</strong></p>
+        <ul style="margin-top: 10px; list-style: none; padding-left: 0;">
+          <li>✅ Frame 0: RMSE 0.560 (neutral)</li>
+          <li>✅ Frame 1: RMSE 0.569 (slight nod down)</li>
+          <li>✅ Frame 2: RMSE 0.619 (maximum nod down)</li>
+          <li>✅ Frame 3: RMSE 0.568 (returning to neutral)</li>
+        </ul>
       </div>
     </div>
 
