@@ -69,10 +69,13 @@
         }
 
         .smiley-image {
-            width: 64px;
-            height: 64px;
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            max-height: 100px;
             margin: 10px auto;
             display: block;
+            object-fit: contain;
         }
 
         .smiley-name {
@@ -134,58 +137,60 @@
 
     <script>
         async function loadSmileys() {
-            const types = [
-                { dir: 'tweakers-smileys/svg', ext: 'svg', gridId: 'svg-grid', countId: 'svg-count' },
-                { dir: 'tweakers-smileys/gif', ext: 'gif', gridId: 'gif-grid', countId: 'gif-count' },
-                { dir: 'tweakers-smileys/old-gif', ext: 'gif', gridId: 'old-gif-grid', countId: 'old-gif-count' }
-            ];
+            const categoryMap = {
+                'svg': { gridId: 'svg-grid', countId: 'svg-count', ext: 'svg' },
+                'gif': { gridId: 'gif-grid', countId: 'gif-count', ext: 'gif' },
+                'old-gif': { gridId: 'old-gif-grid', countId: 'old-gif-count', ext: 'gif' }
+            };
 
             let totalCount = 0;
 
-            for (const type of types) {
-                try {
-                    const response = await fetch(`${type.dir}/`);
-                    const text = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(text, 'text/html');
-                    const links = Array.from(doc.querySelectorAll('a'))
-                        .map(a => a.getAttribute('href'))
-                        .filter(href => href && href.endsWith(`.${type.ext}`));
+            try {
+                const response = await fetch('smileys.json');
+                const data = await response.json();
 
-                    const grid = document.getElementById(type.gridId);
-                    const count = links.length;
+                for (const [category, categoryInfo] of Object.entries(data)) {
+                    const config = categoryMap[category];
+                    if (!config) continue;
+
+                    const grid = document.getElementById(config.gridId);
+                    const files = categoryInfo.files || [];
+                    const count = files.length;
                     totalCount += count;
 
-                    document.getElementById(type.countId).textContent = count;
+                    document.getElementById(config.countId).textContent = count;
 
-                    links.forEach(filename => {
+                    files.forEach(filename => {
                         const card = document.createElement('div');
                         card.className = 'smiley-card';
 
                         const img = document.createElement('img');
-                        img.src = `${type.dir}/${filename}`;
+                        img.src = `tweakers-smileys/${category}/${filename}`;
                         img.alt = filename;
                         img.className = 'smiley-image';
+                        img.onerror = function() {
+                            console.warn(`Failed to load: ${filename}`);
+                        };
 
                         const name = document.createElement('div');
                         name.className = 'smiley-name';
-                        name.textContent = filename.replace(`.${type.ext}`, '');
+                        name.textContent = filename.replace(/\.(svg|gif)$/, '');
 
                         const typeLabel = document.createElement('div');
                         typeLabel.className = 'smiley-type';
-                        typeLabel.textContent = type.ext.toUpperCase();
+                        typeLabel.textContent = config.ext.toUpperCase();
 
                         card.appendChild(img);
                         card.appendChild(name);
                         card.appendChild(typeLabel);
                         grid.appendChild(card);
                     });
-                } catch (error) {
-                    console.error(`Error loading ${type.dir}:`, error);
                 }
+                document.getElementById('total-count').textContent = totalCount;
+            } catch (error) {
+                console.error('Error loading smileys:', error);
+                document.getElementById('total-count').textContent = 'Error loading data';
             }
-
-            document.getElementById('total-count').textContent = totalCount;
         }
 
         loadSmileys();
