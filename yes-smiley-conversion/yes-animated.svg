@@ -1,29 +1,29 @@
-<svg width="16" height="16" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .67 5.06) scale(11.99)">
+    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
       <stop stop-color="#FAFAE3"/>
       <stop offset=".23" stop-color="#FFFFA2"/>
       <stop offset=".66" stop-color="#FFEF06"/>
       <stop offset="1" stop-color="#C7B300"/>
     </radialGradient>
   </defs>
-  
+
   <style>
     @keyframes nod-eyes {
       0% {
-        /* Frame 0: neutral position, full height */
+        /* Frame 0: neutral position at y=4, full height */
         transform: translateY(0px) scaleY(1);
       }
       25% {
-        /* Frame 1: moved down 1px, full height */
+        /* Frame 1: moved to y=5 (down 1px), full height */
         transform: translateY(1px) scaleY(1);
       }
       50% {
-        /* Frame 2: moved down 4px, squinted to 50% height */
-        transform: translateY(4px) scaleY(0.5);
+        /* Frame 2: moved to y=8.25 (down 4.25px), squinted to 50% height */
+        transform: translateY(4.25px) scaleY(0.5);
       }
       75% {
-        /* Frame 3: moved down 1px, full height (same as frame 1) */
+        /* Frame 3: moved to y=5 (down 1px), full height (same as frame 1) */
         transform: translateY(1px) scaleY(1);
       }
       100% {
@@ -31,22 +31,22 @@
         transform: translateY(0px) scaleY(1);
       }
     }
-    
+
     @keyframes nod-mouth {
       0% {
-        /* Frame 0: neutral position */
+        /* Frame 0: neutral position at y=7.75 */
         transform: translateY(0px);
       }
       25% {
-        /* Frame 1: moved down 0.5px */
+        /* Frame 1: moved to y=8.25 (down 0.5px) */
         transform: translateY(0.5px);
       }
       50% {
-        /* Frame 2: moved down 2.5px */
-        transform: translateY(2.5px);
+        /* Frame 2: moved to y=10.4 (down 2.65px) */
+        transform: translateY(2.65px);
       }
       75% {
-        /* Frame 3: moved down 0.5px (same as frame 1) */
+        /* Frame 3: moved to y=8.25 (down 0.5px, same as frame 1) */
         transform: translateY(0.5px);
       }
       100% {
@@ -54,16 +54,16 @@
         transform: translateY(0px);
       }
     }
-    
+
     .eyes {
       animation: nod-eyes 0.7s infinite;
       transform-origin: center;
     }
-    
+
     .mouth {
       animation: nod-mouth 0.7s infinite;
     }
-    
+
     @media (prefers-reduced-motion: reduce) {
       * {
         animation: none !important;
@@ -72,17 +72,17 @@
   </style>
 
   <!-- Face circle (static) -->
-  <circle cx="7.5" cy="7.5" r="7.41" fill="url(#grad)"/>
-  <circle cx="7.5" cy="7.5" r="7.15" stroke="#000" stroke-opacity=".9" stroke-width=".7"/>
+  <circle cx="8" cy="8" r="7.9" fill="url(#grad)"/>
+  <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
 
-  <!-- Eyes (animated group) -->
+  <!-- Eyes (animated group) - standard 2×2 size -->
   <g class="eyes">
-    <rect x="5.15" y="3.75" width="1.88" height="1.88" rx=".47" fill="#000" fill-opacity=".9"/>
-    <rect x="8.9" y="3.75" width="1.88" height="1.88" rx=".47" fill="#000" fill-opacity=".9"/>
+    <rect x="5.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+    <rect x="9.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
   </g>
 
   <!-- Mouth (animated) -->
   <g class="mouth">
-    <path d="M11.95 7.27c-.09.7-.75 1.91-2.03 2.34-.7.23-1.25.23-2.18.23m-4.22-2.57c.09.7.75 1.91 2.03 2.34.7.23 1.25.23 2.18.23" stroke="#000" stroke-opacity=".9" stroke-width="1.03"/>
+    <path d="M12.75 7.75c-.1.75-.8 2.04-2.17 2.5-.75.25-1.33.25-2.33.25m-4.5-2.75c.1.75.8 2.04 2.17 2.5.75.25 1.33.25 2.33.25" stroke="#000" stroke-opacity=".9" stroke-width="1.1"/>
   </g>
 </svg>
