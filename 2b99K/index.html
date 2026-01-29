@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweakers Smileys Collection</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #e30513;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #333;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e30513;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .smiley-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .smiley-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .smiley-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .smiley-image {
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            max-height: 100px;
+            margin: 10px auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .smiley-name {
+            font-weight: 500;
+            color: #333;
+            word-break: break-word;
+            font-size: 0.9em;
+        }
+
+        .smiley-type {
+            font-size: 0.75em;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .stats {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .stats p {
+            margin: 5px 0;
+        }
+
+        .legacy-badge {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7em;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tweakers Smileys Collection</h1>
+        <p class="description">Complete collection of all Tweakers forum smileys, including current and legacy versions.</p>
+
+        <div class="stats">
+            <p><strong>Total Smileys:</strong> <span id="total-count">Loading...</span></p>
+            <p><strong>SVG Files:</strong> <span id="svg-count">0</span></p>
+            <p><strong>Current GIF Files:</strong> <span id="gif-count">0</span></p>
+            <p><strong>Legacy GIF Files:</strong> <span id="old-gif-count">0</span></p>
+        </div>
+
+        <h2>SVG Smileys (Current)</h2>
+        <div class="smiley-grid" id="svg-grid"></div>
+
+        <h2>Animated GIF Smileys (Current)</h2>
+        <div class="smiley-grid" id="gif-grid"></div>
+
+        <h2>Legacy GIF Smileys <span class="legacy-badge">LEGACY</span></h2>
+        <div class="smiley-grid" id="old-gif-grid"></div>
+    </div>
+
+    <script>
+        const CACHE_BUST_VERSION = "76b207d";
+
+        async function loadSmileys() {
+            const categoryMap = {
+                'svg': { gridId: 'svg-grid', countId: 'svg-count', ext: 'svg' },
+                'gif': { gridId: 'gif-grid', countId: 'gif-count', ext: 'gif' },
+                'old-gif': { gridId: 'old-gif-grid', countId: 'old-gif-count', ext: 'gif' }
+            };
+
+            let totalCount = 0;
+
+            try {
+                const response = await fetch('smileys.json');
+                const data = await response.json();
+
+                for (const [category, categoryInfo] of Object.entries(data)) {
+                    const config = categoryMap[category];
+                    if (!config) continue;
+
+                    const grid = document.getElementById(config.gridId);
+                    const files = categoryInfo.files || [];
+                    const count = files.length;
+                    totalCount += count;
+
+                    document.getElementById(config.countId).textContent = count;
+
+                    files.forEach(filename => {
+                        const card = document.createElement('div');
+                        card.className = 'smiley-card';
+
+                        const img = document.createElement('img');
+                        img.src = `tweakers-smileys/${category}/${filename}?v=${CACHE_BUST_VERSION}`;
+                        img.alt = filename;
+                        img.className = 'smiley-image';
+                        img.onerror = function() {
+                            console.warn(`Failed to load: ${filename}`);
+                        };
+
+                        const name = document.createElement('div');
+                        name.className = 'smiley-name';
+                        name.textContent = filename.replace(/\.(svg|gif)$/, '');
+
+                        const typeLabel = document.createElement('div');
+                        typeLabel.className = 'smiley-type';
+                        typeLabel.textContent = config.ext.toUpperCase();
+
+                        card.appendChild(img);
+                        card.appendChild(name);
+                        card.appendChild(typeLabel);
+                        grid.appendChild(card);
+                    });
+                }
+                document.getElementById('total-count').textContent = totalCount;
+            } catch (error) {
+                console.error('Error loading smileys:', error);
+                document.getElementById('total-count').textContent = 'Error loading data';
+            }
+        }
+
+        loadSmileys();
+    </script>
+</body>
+</html>
