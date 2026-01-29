@@ -49,6 +49,12 @@
     }
     .frames-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .frames-grid-7 {
+      display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 15px;
       margin: 20px 0;
@@ -65,7 +71,7 @@
       margin-bottom: 10px;
       color: #333;
     }
-    .frame canvas, .frame img {
+    .frame img {
       width: 60px;
       height: 60px;
       display: block;
@@ -84,12 +90,6 @@
       white-space: pre-wrap;
       word-break: break-all;
       line-height: 1.3;
-    }
-    .comparison-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 20px 0;
     }
     .side-by-side {
       display: flex;
@@ -116,6 +116,17 @@
       border-left: 4px solid #ffef06;
       padding: 20px;
       margin: 20px 0;
+    }
+    .info-box {
+      background: #e8f4f8;
+      border-left: 4px solid #2196f3;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .info-box h4 {
+      margin: 0 0 10px 0;
+      color: #1976d2;
     }
     table {
       width: 100%;
@@ -182,8 +193,8 @@
     <div class="section">
       <h2>Original GIF Animation</h2>
       <div class="original-gif">
-        <img src="yes.gif" alt="yes.gif animated" id="originalGif">
-        <p style="margin-top: 15px;"><strong>yes.gif</strong> - 15×15 pixels, 7 frames, ~0.7s loop</p>
+        <img src="yes.gif" alt="yes.gif animated">
+        <p style="margin-top: 15px;"><strong>yes.gif</strong> - 15×15 pixels, 4 frames, ~0.1s loop</p>
       </div>
     </div>
 
@@ -193,61 +204,62 @@
       <p><strong>Solution:</strong> Combine translate + scale + rotate for realistic nodding with head tilt and perspective.</p>
     </div>
 
-    <div class="section">
-      <h2>GIF Frames (Original)</h2>
-      <div class="legend">
-        <strong>Note:</strong> Individual GIF frames extracted and displayed below. Each frame shows the actual pixel data from yes.gif.
-      </div>
-      <div class="frames-grid" id="gifFrames">
-        <!-- GIF frames will be inserted here by JavaScript -->
-      </div>
+    <div class="info-box">
+      <h4>📊 Frame Count Clarification</h4>
+      <p><strong>GIF Frames:</strong> 4 actual frames (shown below)</p>
+      <p><strong>SVG Keyframes:</strong> 7 animation states (showing more granular transform progression)</p>
+      <p>The GIF uses 4 frames with overlay positioning for efficiency. The SVG animation uses 7 keyframes (0%, 14%, 29%, 43%, 57%, 71%, 100%) to create smoother motion with explicit transform values at each stage.</p>
     </div>
 
     <div class="section">
-      <h2>SVG Frames (Proposed)</h2>
+      <h2>GIF Frames (Original - 4 Frames)</h2>
       <div class="legend">
-        <strong>Transform Approach:</strong> Each SVG frame shows the smiley with proposed transforms applied to match the GIF frame above.
+        <strong>Extracted frames:</strong> These are the 4 actual frames from yes.gif, coalesced to show complete images.
       </div>
       <div class="frames-grid">
         <div class="frame">
           <h3>Frame 1</h3>
-          <img src="intermediate-svgs/frame-1-neutral.svg" alt="SVG Frame 1">
-          <div class="transform">Y: 0px
-S: 1.0
-R: 0°</div>
-          <p style="font-size: 11px; margin-top: 8px; color: #888;">Neutral</p>
+          <img src="frames/frame-display-0.png" alt="GIF Frame 1">
+          <div class="transform">15×15px
+Full frame</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Base position</p>
         </div>
 
         <div class="frame">
           <h3>Frame 2</h3>
-          <img src="intermediate-svgs/frame-2-nod-down-start.svg" alt="SVG Frame 2">
-          <div class="transform">Y: 1px
-S: 0.95
-R: -3°</div>
-          <p style="font-size: 11px; margin-top: 8px; color: #888;">Nod start</p>
+          <img src="frames/frame-display-1.png" alt="GIF Frame 2">
+          <div class="transform">Overlay
+11×9 at 2,3</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Nod down</p>
         </div>
 
         <div class="frame">
           <h3>Frame 3</h3>
-          <img src="intermediate-svgs/frame-3-nod-down-max.svg" alt="SVG Frame 3">
-          <div class="transform">Y: 2px
-S: 0.9
-R: -5°</div>
+          <img src="frames/frame-display-2.png" alt="GIF Frame 3">
+          <div class="transform">Overlay
+11×9 at 2,5</div>
           <p style="font-size: 11px; margin-top: 8px; color: #888;">Max down</p>
         </div>
 
         <div class="frame">
           <h3>Frame 4</h3>
-          <img src="intermediate-svgs/frame-4-returning.svg" alt="SVG Frame 4">
-          <div class="transform">Y: 1px
-S: 0.95
-R: -3°</div>
-          <p style="font-size: 11px; margin-top: 8px; color: #888;">Returning</p>
+          <img src="frames/frame-display-3.png" alt="GIF Frame 4">
+          <div class="transform">Overlay
+11×9 at 2,5</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Return</p>
         </div>
+      </div>
+    </div>
 
+    <div class="section">
+      <h2>SVG Keyframes (Proposed - 7 States)</h2>
+      <div class="legend">
+        <strong>Transform Approach:</strong> SVG uses 7 keyframes for smoother animation. Each shows the smiley with transforms applied.
+      </div>
+      <div class="frames-grid-7">
         <div class="frame">
-          <h3>Frame 5</h3>
-          <img src="intermediate-svgs/frame-5-neutral-passing.svg" alt="SVG Frame 5">
+          <h3>0%</h3>
+          <img src="intermediate-svgs/frame-1-neutral.svg" alt="SVG Keyframe 1">
           <div class="transform">Y: 0px
 S: 1.0
 R: 0°</div>
@@ -255,21 +267,57 @@ R: 0°</div>
         </div>
 
         <div class="frame">
-          <h3>Frame 6</h3>
-          <img src="intermediate-svgs/frame-6-nod-up.svg" alt="SVG Frame 6">
-          <div class="transform">Y: -1px
-S: 1.05
-R: 2°</div>
-          <p style="font-size: 11px; margin-top: 8px; color: #888;">Nod up</p>
+          <h3>14%</h3>
+          <img src="intermediate-svgs/frame-2-nod-down-start.svg" alt="SVG Keyframe 2">
+          <div class="transform">Y: 1px
+S: 0.95
+R: -3°</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Start</p>
         </div>
 
         <div class="frame">
-          <h3>Frame 7</h3>
-          <img src="intermediate-svgs/frame-7-return-neutral.svg" alt="SVG Frame 7">
+          <h3>29%</h3>
+          <img src="intermediate-svgs/frame-3-nod-down-max.svg" alt="SVG Keyframe 3">
+          <div class="transform">Y: 2px
+S: 0.9
+R: -5°</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Max</p>
+        </div>
+
+        <div class="frame">
+          <h3>43%</h3>
+          <img src="intermediate-svgs/frame-4-returning.svg" alt="SVG Keyframe 4">
+          <div class="transform">Y: 1px
+S: 0.95
+R: -3°</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Return</p>
+        </div>
+
+        <div class="frame">
+          <h3>57%</h3>
+          <img src="intermediate-svgs/frame-5-neutral-passing.svg" alt="SVG Keyframe 5">
           <div class="transform">Y: 0px
 S: 1.0
 R: 0°</div>
-          <p style="font-size: 11px; margin-top: 8px; color: #888;">Return</p>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Pass</p>
+        </div>
+
+        <div class="frame">
+          <h3>71%</h3>
+          <img src="intermediate-svgs/frame-6-nod-up.svg" alt="SVG Keyframe 6">
+          <div class="transform">Y: -1px
+S: 1.05
+R: 2°</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Up</p>
+        </div>
+
+        <div class="frame">
+          <h3>100%</h3>
+          <img src="intermediate-svgs/frame-7-return-neutral.svg" alt="SVG Keyframe 7">
+          <div class="transform">Y: 0px
+S: 1.0
+R: 0°</div>
+          <p style="font-size: 11px; margin-top: 8px; color: #888;">Loop</p>
         </div>
       </div>
     </div>
@@ -279,7 +327,7 @@ R: 0°</div>
       <table>
         <thead>
           <tr>
-            <th>Frame</th>
+            <th>Keyframe</th>
             <th>%</th>
             <th>translateY</th>
             <th>scaleY</th>
@@ -344,73 +392,5 @@ R: 0°</div>
     </div>
 
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/gifuct-js@2.1.2/dist/gifuct-js.min.js"></script>
-  <script>
-    // Extract and display individual GIF frames
-    async function extractGifFrames() {
-      const gifContainer = document.getElementById('gifFrames');
-
-      try {
-        const response = await fetch('yes.gif');
-        const buffer = await response.arrayBuffer();
-        const gif = window.gifuct.parseGIF(buffer);
-        const frames = window.gifuct.decompressFrames(gif, true);
-
-        console.log(`Extracted ${frames.length} frames from GIF`);
-
-        frames.forEach((frame, index) => {
-          const frameDiv = document.createElement('div');
-          frameDiv.className = 'frame';
-
-          const title = document.createElement('h3');
-          title.textContent = `Frame ${index + 1}`;
-
-          const canvas = document.createElement('canvas');
-          canvas.width = frame.dims.width;
-          canvas.height = frame.dims.height;
-          const ctx = canvas.getContext('2d');
-
-          // Create ImageData and draw frame
-          const imageData = ctx.createImageData(frame.dims.width, frame.dims.height);
-          imageData.data.set(frame.patch);
-          ctx.putImageData(imageData, 0, 0);
-
-          const info = document.createElement('div');
-          info.className = 'transform';
-          info.textContent = `GIF Frame\n${frame.dims.width}×${frame.dims.height}px`;
-
-          frameDiv.appendChild(title);
-          frameDiv.appendChild(canvas);
-          frameDiv.appendChild(info);
-          gifContainer.appendChild(frameDiv);
-        });
-      } catch (error) {
-        console.error('Error extracting GIF frames:', error);
-        gifContainer.innerHTML = '<p style="color: red;">Error loading GIF frames. Displaying placeholder.</p>';
-
-        // Fallback: show the animated GIF 7 times
-        for (let i = 1; i <= 7; i++) {
-          const frameDiv = document.createElement('div');
-          frameDiv.className = 'frame';
-          frameDiv.innerHTML = `
-            <h3>Frame ${i}</h3>
-            <img src="yes.gif" alt="GIF Frame ${i}" style="width: 60px; height: 60px;">
-            <div class="transform">GIF Frame\n(animated)</div>
-          `;
-          gifContainer.appendChild(frameDiv);
-        }
-      }
-    }
-
-    // Load frames when page loads
-    if (window.gifuct) {
-      extractGifFrames();
-    } else {
-      console.error('gifuct-js library not loaded');
-      document.getElementById('gifFrames').innerHTML = '<p>Loading GIF frame extractor...</p>';
-      setTimeout(extractGifFrames, 1000);
-    }
-  </script>
 </body>
 </html>
