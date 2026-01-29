@@ -8,13 +8,18 @@
     </radialGradient>
   </defs>
 
+  <!-- Face circle - IDENTICAL in all frames -->
   <circle cx="7.5" cy="7.5" r="7.41" fill="url(#a)"/>
+
+  <!-- Face outline - IDENTICAL in all frames -->
   <circle cx="7.5" cy="7.5" r="7.15" stroke="#000" stroke-opacity=".9" stroke-width=".7"/>
-  
-  <!-- Eyes SQUINTED - 50% height reduction, moved down to y=7.75 -->
-  <rect x="5.15" y="7.75" width="1.88" height="0.94" rx=".235" fill="#000" fill-opacity=".9"/>
-  <rect x="8.9" y="7.75" width="1.88" height="0.94" rx=".235" fill="#000" fill-opacity=".9"/>
-  
-  <!-- Smile moved down significantly -->
+
+  <!-- Left eye - SQUINTED (50% height reduction) at y=8 -->
+  <rect x="5.15" y="8" width="1.88" height="0.94" rx=".235" fill="#000" fill-opacity=".9"/>
+
+  <!-- Right eye - SQUINTED (50% height reduction) at y=8 -->
+  <rect x="8.9" y="8" width="1.88" height="0.94" rx=".235" fill="#000" fill-opacity=".9"/>
+
+  <!-- Smile - repositioned down 2.5px -->
   <path d="M11.95 9.77c-.09.7-.75 1.91-2.03 2.34-.7.23-1.25.23-2.18.23m-4.22-2.57c.09.7.75 1.91 2.03 2.34.7.23 1.25.23 2.18.23" stroke="#000" stroke-opacity=".9" stroke-width="1.03"/>
 </svg>
