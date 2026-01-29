@@ -20,15 +20,18 @@ def add_cache_busting_to_html(content: str, version: str) -> str:
     """
     Add cache-busting query parameters to resource references in HTML.
 
-    This handles:
-    - External CSS/JS: <link href="style.css"> -> <link href="style.css?v=VERSION">
-    - External JS: <script src="app.js"> -> <script src="app.js?v=VERSION">
-    - Image tags: <img src="image.png"> -> <img src="image.png?v=VERSION">
+    This handles ANY file type with an extension:
+    - Static resources: <link href="style.css"> -> <link href="style.css?v=VERSION">
+    - JavaScript: <script src="app.js"> -> <script src="app.js?v=VERSION">
+    - Images: <img src="image.png"> -> <img src="image.png?v=VERSION">
+    - Media: <video src="video.mp4"> -> <video src="video.mp4?v=VERSION">
+    - Any extension: .css, .js, .png, .mp3, .wav, .mp4, .pdf, .zip, etc.
     - Inline JS: Inject version constant for dynamic URL construction
     """
 
     # Resource extensions that should get cache-busting
-    resource_extensions = r'\.(css|js|png|jpg|jpeg|gif|svg|webp|ico)'
+    # Match ANY file with an extension (generic pattern)
+    resource_extensions = r'\.[a-zA-Z0-9_-]+'
 
     # Pattern 1: href and src attributes (static resources)
     # <link href="file.css"> or <img src="image.png">
