@@ -42,6 +42,15 @@ jobs:
           echo "Shortcode: $SHORTCODE"
           cat $GITHUB_OUTPUT
 
+      - name: Generate version identifier
+        id: version
+        working-directory: source
+        run: |
+          # Use short commit hash as version identifier
+          VERSION=$(git rev-parse --short HEAD)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Cache-busting version: $VERSION"
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
@@ -71,6 +80,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add cache-busting to HTML files
+        run: |
+          python3 source/scripts/add-cache-busting.py \
+            --source-dir source \
+            --version ${{ steps.version.outputs.version }}
 
       - name: Deploy to root (main branch)
         if: steps.extract.outputs.is_main == 'true'
