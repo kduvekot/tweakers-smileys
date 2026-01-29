@@ -2,14 +2,14 @@
     <style>
         @keyframes shake-no {
             0%, 100% { transform: translate(0, 0); }
-            5%       { transform: translate(3px, 4px); }
-            14%      { transform: translate(2px, 5px); }
-            28%      { transform: translate(4px, 5px) scaleX(0.88); }
-            42%      { transform: translate(2px, 5px); }
-            56%      { transform: translate(-2px, 5px); }
-            70%      { transform: translate(-4px, 5px) scaleX(0.88); }
-            84%      { transform: translate(-2px, 5px); }
-            95%      { transform: translate(2px, 5px); }
+            5%       { transform: translate(3px, 1px); }
+            14%      { transform: translate(2px, 1px); }
+            28%      { transform: translate(4px, 1px); }
+            42%      { transform: translate(2px, 1px); }
+            56%      { transform: translate(-2px, 1px); }
+            70%      { transform: translate(-4px, 1px); }
+            84%      { transform: translate(-2px, 1px); }
+            95%      { transform: translate(1px, 1px); }
         }
         .face-features {
             animation: shake-no 1.1s infinite;
