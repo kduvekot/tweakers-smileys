@@ -124,12 +124,11 @@
     <div class="info">
         <h2>Animation Specifications</h2>
         <ul>
-            <li><strong>Total Frames:</strong> 6 frames (4 unique)</li>
-            <li><strong>Frame Duration:</strong> 100ms per frame (uniform)</li>
-            <li><strong>Total Duration:</strong> 600ms (0.6 seconds)</li>
-            <li><strong>Animation Pattern:</strong> 0 → 1 → 2 → 3 → 2 → 1 → repeat</li>
-            <li><strong>Movement:</strong> Right hand bounces vertically (translate 11px down, squish to 40%, skew -10°)</li>
-            <li><strong>Static Elements:</strong> Face with squinting eyes (Y=13) + left hand remain completely static</li>
+            <li><strong>Total Duration:</strong> 750ms (125ms per frame equivalent) - slightly slower than original</li>
+            <li><strong>Animation Pattern:</strong> Smooth continuous bounce (up → 1/3 down → 2/3 down → full down → 2/3 down → 1/3 down → up)</li>
+            <li><strong>Movement:</strong> Right hand bounces smoothly without holding at bottom (unlike worship)</li>
+            <li><strong>Keyframes:</strong> 6 intermediate positions for smooth motion matching GIF's 6-frame cycle</li>
+            <li><strong>Static Elements:</strong> Face with half-height squinting eyes (Y=13) + left hand in down position</li>
         </ul>
     </div>
     
@@ -137,6 +136,7 @@
         <p><strong>Detailed Analysis Pages:</strong></p>
         <ul style="margin-left: 20px; margin-top: 10px;">
             <li><a href="lol-conversion/lol-complete-comparison.html">⭐ Complete LoL SVG Proposal (with face variations)</a></li>
+            <li><a href="lol-conversion/timing-variations-comparison.html">Timing Variations: Smooth Bounce (600ms / 750ms / 900ms)</a></li>
             <li><a href="lol-conversion/face-comparison-analysis.html">Face Comparison: Actual Size vs GIF (Winner: Y=13)</a></li>
             <li><a href="lol-conversion/lol-detailed-verification.html">Hand Position Verification (raised vs down)</a></li>
             <li><a href="lol-conversion/lol-face-variations-preview.html">Face Variations: Squinting Eye Positions</a></li>
