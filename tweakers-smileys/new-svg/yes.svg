@@ -1,10 +1,6 @@
-<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @keyframes nod{0%,100%{transform:translateY(0) scaleY(1) rotate(0deg)}14%{transform:translateY(1px) scaleY(0.95) rotate(-3deg)}29%{transform:translateY(2px) scaleY(0.9) rotate(-5deg)}43%{transform:translateY(1px) scaleY(0.95) rotate(-3deg)}57%{transform:translateY(0) scaleY(1) rotate(0deg)}71%{transform:translateY(-1px) scaleY(1.05) rotate(2deg)}}
-    @media(prefers-reduced-motion){*{animation:none!important}}
-  </style>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
+    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
       <stop stop-color="#FAFAE3"/>
       <stop offset=".23" stop-color="#FFFFA2"/>
       <stop offset=".66" stop-color="#FFEF06"/>
@@ -12,17 +8,81 @@
     </radialGradient>
   </defs>
 
-  <!-- Animated group for nodding effect with combined transforms -->
-  <g style="animation:nod .7s linear infinite;transform-origin:50% 50%">
-    <!-- Base yellow face with gradient -->
-    <circle cx="8" cy="8" r="7.9" fill="url(#a)"/>
-    <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+  <style>
+    @keyframes nod-eyes {
+      0% {
+        /* Frame 0: neutral position at y=4, full height */
+        transform: translateY(0px) scaleY(1);
+      }
+      25% {
+        /* Frame 1: moved to y=5 (down 1px), full height */
+        transform: translateY(1px) scaleY(1);
+      }
+      50% {
+        /* Frame 2: moved to y=8.25 (down 4.25px), squinted to 50% height */
+        transform: translateY(4.25px) scaleY(0.5);
+      }
+      75% {
+        /* Frame 3: moved to y=5 (down 1px), full height (same as frame 1) */
+        transform: translateY(1px) scaleY(1);
+      }
+      100% {
+        /* Back to frame 0 */
+        transform: translateY(0px) scaleY(1);
+      }
+    }
 
-    <!-- Eyes -->
+    @keyframes nod-mouth {
+      0% {
+        /* Frame 0: neutral position at y=7.75 */
+        transform: translateY(0px);
+      }
+      25% {
+        /* Frame 1: moved to y=8.25 (down 0.5px) */
+        transform: translateY(0.5px);
+      }
+      50% {
+        /* Frame 2: moved to y=10.4 (down 2.65px) */
+        transform: translateY(2.65px);
+      }
+      75% {
+        /* Frame 3: moved to y=8.25 (down 0.5px, same as frame 1) */
+        transform: translateY(0.5px);
+      }
+      100% {
+        /* Back to frame 0 */
+        transform: translateY(0px);
+      }
+    }
+
+    .eyes {
+      animation: nod-eyes 0.7s infinite;
+      transform-origin: center;
+    }
+
+    .mouth {
+      animation: nod-mouth 0.7s infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <!-- Face circle (static) -->
+  <circle cx="8" cy="8" r="7.9" fill="url(#grad)"/>
+  <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+
+  <!-- Eyes (animated group) - standard 2×2 size -->
+  <g class="eyes">
     <rect x="5.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
     <rect x="9.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+  </g>
 
-    <!-- Smile -->
+  <!-- Mouth (animated) -->
+  <g class="mouth">
     <path d="M12.75 7.75c-.1.75-.8 2.04-2.17 2.5-.75.25-1.33.25-2.33.25m-4.5-2.75c.1.75.8 2.04 2.17 2.5.75.25 1.33.25 2.33.25" stroke="#000" stroke-opacity=".9" stroke-width="1.1"/>
   </g>
 </svg>
