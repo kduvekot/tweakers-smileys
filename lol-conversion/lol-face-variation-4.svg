@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <defs>
+        <radialGradient id="a" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fafae3"/>
+            <stop offset=".23" stop-color="#ffffa2"/>
+            <stop offset=".66" stop-color="#ffef06"/>
+            <stop offset="1" stop-color="#c7b300"/>
+        </radialGradient>
+    </defs>
+    <!-- Face circle (static, not animated) -->
+    <circle cx="8" cy="8" r="7.9" fill="url(#a)"/>
+    <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+
+    <!-- Eyes at Y=13 (extremely low, near bottom) -->
+    <rect x="5.5" y="13" width="2" height="2" rx=".5" fill-opacity=".9"/>
+    <rect x="9.5" y="13" width="2" height="2" rx=".5" fill-opacity=".9"/>
+</svg>
