@@ -2,6 +2,8 @@
 
 Complete collection of all Tweakers forum smileys, including current and legacy versions.
 
+**🌐 View the collection online:** https://kduvekot.github.io/tweakers-smileys
+
 ## Contents
 
 All 64 Tweakers smileys **PLUS 35 legacy GIF versions**:
