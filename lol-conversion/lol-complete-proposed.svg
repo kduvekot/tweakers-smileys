@@ -35,9 +35,9 @@
     <g transform="translate(8,0)">
         <circle cx="8" cy="8" r="7.9" fill="url(#face)"/>
         <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
-        <!-- Squinting eyes positioned very low (Y=12) - half height for squinting -->
-        <rect x="5.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
-        <rect x="9.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
+        <!-- Squinting eyes positioned very low (Y=13) - half height for squinting - best match to GIF -->
+        <rect x="5.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
+        <rect x="9.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
     </g>
 
     <!-- Left hand: STATIC at lowest position (translate down 11px, squish to 40%, skew 10deg) -->
