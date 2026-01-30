@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worship SVG - Frame-by-Frame Transition Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        h1 { margin-bottom: 20px; color: #333; }
+        h2 { margin: 40px 0 20px 0; color: #555; border-bottom: 3px solid #007bff; padding-bottom: 10px; }
+        h3 { margin: 30px 0 15px 0; color: #007bff; }
+        .info {
+            background: #fff3cd;
+            border: 2px solid #856404;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .component-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .transition {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .state-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+            align-items: center;
+        }
+        .state-box {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+        .state-box h4 {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #495057;
+            font-weight: 600;
+        }
+        .svg-container {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            display: inline-block;
+        }
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            font-size: 14px;
+        }
+        .keyframe-info {
+            background: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .diff-note {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-link">← Back to Main Preview</a>
+    
+    <h1>Worship SVG: Component-by-Component Transition Analysis</h1>
+    
+    <div class="info">
+        <h3>Animation Overview</h3>
+        <p><strong>Total Duration:</strong> 2000ms (2 seconds)</p>
+        <p><strong>Animation Type:</strong> Linear infinite (bowing motion)</p>
+        <p><strong>Components:</strong> Center Face + Left Hand + Right Hand</p>
+        <p><strong>Key States:</strong> 0% (up) → 15% (going down) → 50% (down, held) → 65% (rising) → 100% (up)</p>
+    </div>
+
+    <!-- FACE ANALYSIS -->
+    <div class="component-section">
+        <h2>1. Center Face Transitions</h2>
+        
+        <div class="keyframe-info">
+            <strong>Face Animation (a1):</strong><br>
+            0%, 65%, 100%: <code>translate(0,0) scale(1)</code> — Normal<br>
+            15%, 50%: <code>translate(0,8px) scale(1,.5)</code> — Bowing down
+        </div>
+        
+        <!-- Transition: 0% to 15% -->
+        <div class="transition">
+            <h3>Transition: 0% → 15% (Going Down)</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (0ms) - Normal</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 17 16">
+                            <defs>
+                                <radialGradient id="face0" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,0) scale(1,1)">
+                                <circle cx="8" cy="8" r="7.9" fill="url(#face0)" transform="translate(0.5)"/>
+                                <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75" transform="translate(0.5)"/>
+                                <rect x="6" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <rect x="10" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <path d="M13.25 7.75c-.1.75-.8 2.043-2.17 2.5-.75.25-1.33.25-2.33.25M4.25 7.75c.1.75.8 2.043 2.17 2.5.75.25 1.33.25 2.33.25" fill="none" stroke="#000" stroke-width="1.1" stroke-opacity=".9"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4>15% (300ms) - Bowing</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 17 16">
+                            <defs>
+                                <radialGradient id="face15" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,8) scale(1,0.5)">
+                                <circle cx="8" cy="8" r="7.9" fill="url(#face15)" transform="translate(0.5)"/>
+                                <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75" transform="translate(0.5)"/>
+                                <rect x="6" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <rect x="10" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <path d="M13.25 7.75c-.1.75-.8 2.043-2.17 2.5-.75.25-1.33.25-2.33.25M4.25 7.75c.1.75.8 2.043 2.17 2.5.75.25 1.33.25 2.33.25" fill="none" stroke="#000" stroke-width="1.1" stroke-opacity=".9"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Changes</h4>
+                    <div class="explanation">
+                        <strong>What changed:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Y position: 0 → +8px (moved down)</li>
+                            <li>Vertical scale: 1 → 0.5 (squished to 50% height)</li>
+                            <li>Face appears to "bow down"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transition: 50% to 65% -->
+        <div class="transition">
+            <h3>Transition: 50% → 65% (Rising Back Up)</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>50% (1000ms) - Down (Held)</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 17 16">
+                            <defs>
+                                <radialGradient id="face50" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,8) scale(1,0.5)">
+                                <circle cx="8" cy="8" r="7.9" fill="url(#face50)" transform="translate(0.5)"/>
+                                <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75" transform="translate(0.5)"/>
+                                <rect x="6" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <rect x="10" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <path d="M13.25 7.75c-.1.75-.8 2.043-2.17 2.5-.75.25-1.33.25-2.33.25M4.25 7.75c.1.75.8 2.043 2.17 2.5.75.25 1.33.25 2.33.25" fill="none" stroke="#000" stroke-width="1.1" stroke-opacity=".9"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4>65% (1300ms) - Back Up</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 17 16">
+                            <defs>
+                                <radialGradient id="face65" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,0) scale(1,1)">
+                                <circle cx="8" cy="8" r="7.9" fill="url(#face65)" transform="translate(0.5)"/>
+                                <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75" transform="translate(0.5)"/>
+                                <rect x="6" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <rect x="10" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                                <path d="M13.25 7.75c-.1.75-.8 2.043-2.17 2.5-.75.25-1.33.25-2.33.25M4.25 7.75c.1.75.8 2.043 2.17 2.5.75.25 1.33.25 2.33.25" fill="none" stroke="#000" stroke-width="1.1" stroke-opacity=".9"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Changes</h4>
+                    <div class="explanation">
+                        <strong>What changed:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Y position: +8px → 0 (moved up)</li>
+                            <li>Vertical scale: 0.5 → 1 (expanded back to full height)</li>
+                            <li>Face returns to normal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT HAND ANALYSIS -->
+    <div class="component-section">
+        <h2>2. Left Hand Transitions</h2>
+        
+        <div class="keyframe-info">
+            <strong>Left Hand Animation (a2 + a2l):</strong><br>
+            0%: <code>translate(0) + skewX(0)</code> — Up<br>
+            15%, 50%: <code>translate(0,11px) scale(1,.4) + skewX(10deg)</code> — Down & skewed<br>
+            65%, 100%: <code>translate(0) scale(1) + skewX(0)</code> — Back up
+        </div>
+        
+        <!-- Transition: 0% to 15% -->
+        <div class="transition">
+            <h3>Transition: 0% → 15% (Going Down)</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (0ms) - Up</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 10 16">
+                            <defs>
+                                <radialGradient id="lh0" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,0) scale(1,1) skewX(0)">
+                                <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lh0)" stroke="#ccba00" stroke-width=".5"/>
+                                <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4>15% (300ms) - Down</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 10 16">
+                            <defs>
+                                <radialGradient id="lh15" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,11) scale(1,0.4) skewX(10)">
+                                <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lh15)" stroke="#ccba00" stroke-width=".5"/>
+                                <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Changes</h4>
+                    <div class="explanation">
+                        <strong>What changed:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Y position: 0 → +11px (moved down)</li>
+                            <li>Vertical scale: 1 → 0.4 (squished to 40% height)</li>
+                            <li>Skew: 0 → 10deg (tilted right)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT HAND ANALYSIS -->
+    <div class="component-section">
+        <h2>3. Right Hand Transitions</h2>
+        
+        <div class="keyframe-info">
+            <strong>Right Hand Animation (a2 + a2r):</strong><br>
+            0%: <code>translate(0) + skewX(0)</code> — Up<br>
+            15%, 50%: <code>translate(0,11px) scale(1,.4) + skewX(-10deg)</code> — Down & skewed<br>
+            65%, 100%: <code>translate(0) scale(1) + skewX(0)</code> — Back up
+        </div>
+        
+        <!-- Transition: 0% to 15% -->
+        <div class="transition">
+            <h3>Transition: 0% → 15% (Going Down)</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (0ms) - Up</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="24 0 10 16">
+                            <defs>
+                                <radialGradient id="rh0" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,0) scale(1,1) skewX(0)">
+                                <path d="M25.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#rh0)" stroke="#ccba00" stroke-width=".5"/>
+                                <path d="M26.656 4.281c.162 0 .323.036.469.106V3.031a1.093 1.093 0 0 1 1.616-.96 1.094 1.094 0 0 1 2.134.335v.262a1.093 1.093 0 0 1 1.562.988v3.281a3.438 3.438 0 0 1-6.874 0V5.375a1.095 1.095 0 0 1 1.093-1.094Zm-.468 2.657a2.812 2.812 0 1 0 5.625 0V3.655a.469.469 0 0 0-.938 0v1.719a.312.312 0 1 1-.625 0V2.406a.469.469 0 0 0-.937 0v2.656a.312.312 0 1 1-.625 0v-2.03a.469.469 0 0 0-.938 0V5.87a1.878 1.878 0 0 1 1.563 1.849.312.312 0 1 1-.625 0 1.252 1.252 0 0 0-1.25-1.25.313.313 0 0 1-.313-.313v-.781a.469.469 0 0 0-.937 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4>15% (300ms) - Down</h4>
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="24 0 10 16">
+                            <defs>
+                                <radialGradient id="rh15" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
+                                    <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                                    <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                                </radialGradient>
+                            </defs>
+                            <g transform="translate(0,11) scale(1,0.4) skewX(-10)">
+                                <path d="M25.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#rh15)" stroke="#ccba00" stroke-width=".5"/>
+                                <path d="M26.656 4.281c.162 0 .323.036.469.106V3.031a1.093 1.093 0 0 1 1.616-.96 1.094 1.094 0 0 1 2.134.335v.262a1.093 1.093 0 0 1 1.562.988v3.281a3.438 3.438 0 0 1-6.874 0V5.375a1.095 1.095 0 0 1 1.093-1.094Zm-.468 2.657a2.812 2.812 0 1 0 5.625 0V3.655a.469.469 0 0 0-.938 0v1.719a.312.312 0 1 1-.625 0V2.406a.469.469 0 0 0-.937 0v2.656a.312.312 0 1 1-.625 0v-2.03a.469.469 0 0 0-.938 0V5.87a1.878 1.878 0 0 1 1.563 1.849.312.312 0 1 1-.625 0 1.252 1.252 0 0 0-1.25-1.25.313.313 0 0 1-.313-.313v-.781a.469.469 0 0 0-.937 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Changes</h4>
+                    <div class="explanation">
+                        <strong>What changed:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Y position: 0 → +11px (moved down)</li>
+                            <li>Vertical scale: 1 → 0.4 (squished to 40% height)</li>
+                            <li>Skew: 0 → -10deg (tilted left)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info" style="margin-top: 40px;">
+        <h3>Summary of Worship Animation</h3>
+        <p><strong>All three components animate together in coordination:</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>Face:</strong> Moves down 8px and squishes vertically to 50% (bowing motion)</li>
+            <li><strong>Both Hands:</strong> Move down 11px and squish to 40% height (hands going down)</li>
+            <li><strong>Left Hand:</strong> Additionally skews 10deg right (hand angle)</li>
+            <li><strong>Right Hand:</strong> Additionally skews 10deg left (mirror of left hand)</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>This creates a synchronized "bowing/worshipping" motion where everything goes down together and comes back up together.</strong></p>
+    </div>
+
+    <a href="../lol-frame-transition-analysis.html" class="back-link" style="margin-top: 20px;">View LoL GIF Transition Analysis →</a>
+</body>
+</html>
