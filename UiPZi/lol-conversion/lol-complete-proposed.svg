@@ -37,9 +37,9 @@
     <g transform="translate(9,0)">
         <circle cx="8" cy="8" r="7.9" fill="url(#face)"/>
         <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
-        <!-- Squinting eyes positioned very low (Y=12) - half height for squinting - variant 3 -->
-        <rect x="5.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
-        <rect x="9.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
+        <!-- Squinting eyes positioned low (Y=11.5) - half height for squinting - adjusted up 0.5px -->
+        <rect x="5.5" y="11.5" width="2" height="1" rx=".5" fill-opacity=".9"/>
+        <rect x="9.5" y="11.5" width="2" height="1" rx=".5" fill-opacity=".9"/>
     </g>
 
     <!-- Left hand: STATIC at lowest position (translate down 13px, squish to 25%, skew 10deg) - flat on floor -->
