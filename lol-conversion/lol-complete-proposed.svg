@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16">
     <style>
-        .ani{animation:bounce 0.75s linear infinite}
+        .ani{animation:bounce 0.6s linear infinite}
         @keyframes bounce{
             0%,100%{transform:translate(0,0) scale(1,1) skewX(0deg)}
             16.67%,83.33%{transform:translate(0,3.67px) scale(1,0.85) skewX(-3.33deg)}
@@ -37,9 +37,9 @@
     <g transform="translate(8,0)">
         <circle cx="8" cy="8" r="7.9" fill="url(#face)"/>
         <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
-        <!-- Squinting eyes positioned very low (Y=13) - half height for squinting - best match to GIF -->
-        <rect x="5.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
-        <rect x="9.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
+        <!-- Squinting eyes positioned very low (Y=12) - half height for squinting - variant 3 -->
+        <rect x="5.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
+        <rect x="9.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
     </g>
 
     <!-- Left hand: STATIC at lowest position (translate down 11px, squish to 40%, skew 10deg) -->
