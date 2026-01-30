@@ -1,0 +1,26 @@
+HAND POSITIONING COMPARISON:
+
+Old version (tweakers-smileys/new-svg/lol.svg) - 32×16px:
+- Face center: x=16 (cx="16" - no translate group)
+- Left hand: starts at x=0, path edge at M8.125, so right edge at ~x=8.125
+  Distance from face: 16 - 8.125 = 7.875px
+- Right hand: path starts at M25.875 (left edge of mirrored hand)
+  Distance from face: 25.875 - 16 = 9.875px
+  
+  ASYMMETRY: Right hand is 2px farther from face (9.875 vs 7.875)
+
+Current version (lol-complete-proposed.svg) - 34×16px:
+- Face center: x=17 (translate(9,0) + cx="8")
+- Left hand: translate(1,...) + path edge M8.125 = right edge at x=9.125
+  Distance from face: 17 - 9.125 = 7.875px
+- Right hand: translate(25,...) + path start M1.875 = left edge at x=26.875
+  Distance from face: 26.875 - 17 = 9.875px
+  
+  ASYMMETRY: Right hand is 2px farther from face (9.875 vs 7.875)
+  
+ISSUE: Both versions have the same 2px asymmetry!
+
+PROPOSED FIX: Move right hand from translate(25,0) to translate(23,0)
+- New right hand left edge: 23 + 1.875 = 24.875
+- Distance from face: 24.875 - 17 = 7.875px
+- This matches the left hand distance exactly (7.875px)
