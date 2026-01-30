@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Yes Smiley Animation Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .demo-item {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .demo-item h3 {
+      margin: 0 0 15px 0;
+      color: #555;
+      font-size: 14px;
+    }
+    
+    .smiley-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+    }
+    
+    .comparison {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    
+    .comparison h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .keyframes-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    
+    .keyframes-table th,
+    .keyframes-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .keyframes-table th {
+      background: #f5f5f5;
+      font-weight: 600;
+    }
+    
+    .keyframes-table code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Yes Smiley - Animation Comparison</h1>
+
+  <div class="demo-grid">
+    <div class="demo-item">
+      <h3>Original GIF</h3>
+      <div class="smiley-container">
+        <img src="yes.gif?v=66bf452" alt="Original GIF" style="width: 64px; height: 64px; image-rendering: pixelated;">
+      </div>
+      <p style="font-size: 12px; color: #666; margin-top: 10px;">Reference animation</p>
+    </div>
+
+    <div class="demo-item">
+      <h3>Separate Animations</h3>
+      <div class="smiley-container">
+        <img src="yes-animated.svg?v=66bf452" alt="Separate animations" style="width: 64px; height: 64px;">
+      </div>
+      <p style="font-size: 12px; color: #666; margin-top: 10px;">Eyes: translateY + scaleY<br>Mouth: translateY only</p>
+    </div>
+
+    <div class="demo-item">
+      <h3>Worshippy Style</h3>
+      <div class="smiley-container">
+        <img src="yes-animated-worshippy-style.svg?v=66bf452" alt="Worshippy style" style="width: 64px; height: 64px;">
+      </div>
+      <p style="font-size: 12px; color: #666; margin-top: 10px;">Eyes + mouth unified<br>scale(1, 0.5) affects both</p>
+    </div>
+  </div>
+
+  <div class="comparison" style="background: #fff3cd; border-left: 4px solid #ff9800;">
+    <h2 style="margin-top: 0;">🔍 Key Difference</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div>
+        <h3 style="color: #333; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Separate Animations (Current)</h3>
+        <ul style="font-size: 14px; line-height: 1.8;">
+          <li>Eyes animate with <code>translateY + scaleY</code></li>
+          <li>Mouth animates with <code>translateY</code> only</li>
+          <li>Mouth <strong>keeps its shape</strong> during nod</li>
+          <li>More control over each element</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: #333; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Worshippy Style (Unified)</h3>
+        <ul style="font-size: 14px; line-height: 1.8;">
+          <li>Eyes + mouth in one group</li>
+          <li>Both animate with <code>translate + scale</code></li>
+          <li>Mouth <strong>gets flatter</strong> during nod (50% height)</li>
+          <li>Simpler code, matches worshippy.svg pattern</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="comparison">
+    <h2>Animation Breakdown - Separate Animations Version</h2>
+    <p>The animation cycles through 4 frames with smooth transitions. Duration: 0.7s (700ms) per cycle.</p>
+
+    <table class="keyframes-table">
+      <thead>
+        <tr>
+          <th>Keyframe</th>
+          <th>Frame</th>
+          <th>Eyes Transform</th>
+          <th>Mouth Transform</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0%</td>
+          <td>Frame 0</td>
+          <td><code>translateY(0) scaleY(1)</code></td>
+          <td><code>translateY(0)</code></td>
+          <td>Neutral position, full-height eyes</td>
+        </tr>
+        <tr>
+          <td>25%</td>
+          <td>Frame 1</td>
+          <td><code>translateY(1px) scaleY(1)</code></td>
+          <td><code>translateY(0.5px)</code></td>
+          <td>Slight nod down, full-height eyes</td>
+        </tr>
+        <tr>
+          <td>50%</td>
+          <td>Frame 2</td>
+          <td><code>translateY(4.25px) scaleY(0.5)</code></td>
+          <td><code>translateY(2.65px)</code></td>
+          <td><strong>Maximum nod with squinted eyes</strong></td>
+        </tr>
+        <tr>
+          <td>75%</td>
+          <td>Frame 3</td>
+          <td><code>translateY(1px) scaleY(1)</code></td>
+          <td><code>translateY(0.5px)</code></td>
+          <td>Returning to slight nod (same as frame 1)</td>
+        </tr>
+        <tr>
+          <td>100%</td>
+          <td>Frame 0</td>
+          <td><code>translateY(0) scaleY(1)</code></td>
+          <td><code>translateY(0)</code></td>
+          <td>Back to neutral (loop)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comparison">
+    <h2>Animation Breakdown - Worshippy Style (Unified)</h2>
+    <p>Eyes and mouth animate together as one group. Scale affects both elements.</p>
+
+    <table class="keyframes-table">
+      <thead>
+        <tr>
+          <th>Keyframe</th>
+          <th>Frame</th>
+          <th>Unified Transform (Eyes + Mouth)</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0%</td>
+          <td>Frame 0</td>
+          <td><code>translate(0, 0) scale(1, 1)</code></td>
+          <td>Neutral position, normal proportions</td>
+        </tr>
+        <tr>
+          <td>25%</td>
+          <td>Frame 1</td>
+          <td><code>translate(0, 1px) scale(1, 1)</code></td>
+          <td>Slight nod down, normal proportions</td>
+        </tr>
+        <tr>
+          <td>50%</td>
+          <td>Frame 2</td>
+          <td><code>translate(0, 4.5px) scale(1, 0.5)</code></td>
+          <td><strong>Maximum nod - eyes AND mouth squish!</strong></td>
+        </tr>
+        <tr>
+          <td>75%</td>
+          <td>Frame 3</td>
+          <td><code>translate(0, 1px) scale(1, 1)</code></td>
+          <td>Returning to slight nod (same as frame 1)</td>
+        </tr>
+        <tr>
+          <td>100%</td>
+          <td>Frame 0</td>
+          <td><code>translate(0, 0) scale(1, 1)</code></td>
+          <td>Back to neutral (loop)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 30px;">Comparison with worshippy.svg:</h3>
+    <ul style="line-height: 1.8;">
+      <li><strong>worshippy.svg:</strong> Uses <code>translate(0, 8px) scale(1, 0.5)</code> - goes down 8px</li>
+      <li><strong>yes.svg (unified):</strong> Uses <code>translate(0, 4.5px) scale(1, 0.5)</code> - goes down 4.5px</li>
+      <li><strong>Reason:</strong> Worshippy is "worship" motion (bowing deeply), yes is gentle nodding</li>
+    </ul>
+  </div>
+</body>
+</html>
