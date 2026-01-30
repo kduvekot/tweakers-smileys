@@ -30,7 +30,7 @@
 
         .comparison-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-bottom: 30px;
         }
@@ -78,10 +78,16 @@
             color: #0066cc;
         }
 
-        img, object {
+        img {
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+        }
+
+        .display-area iframe {
+            border: none;
+            width: 320px;
+            height: 160px;
         }
 
         .info {
@@ -158,31 +164,31 @@
             <h2>Original GIF</h2>
             <p class="timing"><strong>600ms</strong> total (100ms per frame)</p>
             <div class="display-area">
-                <img src="../tweakers-smileys/gif/lol.gif?v=1965283" style="width: 290px; height: 150px;">
+                <img src="../tweakers-smileys/gif/lol.gif?v=8b7c1e6" style="width: 290px; height: 150px;">
             </div>
         </div>
 
         <div class="item">
             <h2>Variation 1: 600ms</h2>
-            <p class="timing"><strong>600ms</strong> total (100ms per frame) - SAME AS ORIGINAL</p>
+            <p class="timing"><strong>600ms</strong> total - SAME AS ORIGINAL</p>
             <div class="display-area">
-                <object data="lol-timing-variation-600ms.svg" type="image/svg+xml" style="width: 320px; height: 160px;"></object>
+                <iframe src="lol-timing-variation-600ms.svg?v=8b7c1e6"></iframe>
             </div>
         </div>
 
         <div class="item">
-            <h2>Variation 2: 750ms</h2>
-            <p class="timing"><strong>750ms</strong> total (125ms per frame) - 25% SLOWER</p>
+            <h2>Variation 2: 750ms (DEFAULT)</h2>
+            <p class="timing"><strong>750ms</strong> total - 25% SLOWER</p>
             <div class="display-area">
-                <object data="lol-timing-variation-750ms.svg" type="image/svg+xml" style="width: 320px; height: 160px;"></object>
+                <iframe src="lol-timing-variation-750ms.svg?v=8b7c1e6"></iframe>
             </div>
         </div>
 
         <div class="item">
             <h2>Variation 3: 900ms</h2>
-            <p class="timing"><strong>900ms</strong> total (150ms per frame) - 50% SLOWER</p>
+            <p class="timing"><strong>900ms</strong> total - 50% SLOWER</p>
             <div class="display-area">
-                <object data="lol-timing-variation-900ms.svg" type="image/svg+xml" style="width: 320px; height: 160px;"></object>
+                <iframe src="lol-timing-variation-900ms.svg?v=8b7c1e6"></iframe>
             </div>
         </div>
     </div>
@@ -190,10 +196,10 @@
     <div class="keyframes">
         <h2>Animation Keyframes (Smooth Continuous Bounce)</h2>
         <pre>@keyframes bounce {
-    0%, 100%    { transform: translate(0, 0px)     scale(1, 1)    skewX(0)      }  /* Up position */
+    0%, 100%       { transform: translate(0, 0px)     scale(1, 1)    skewX(0)      }  /* Up */
     16.67%, 83.33% { transform: translate(0, 3.67px)  scale(1, 0.85) skewX(-3.33)  }  /* 1/3 down */
     33.33%, 66.67% { transform: translate(0, 7.33px)  scale(1, 0.7)  skewX(-6.67)  }  /* 2/3 down */
-    50%         { transform: translate(0, 11px)    scale(1, 0.4)  skewX(-10)    }  /* Full down */
+    50%            { transform: translate(0, 11px)    scale(1, 0.4)  skewX(-10)    }  /* Full down */
 }</pre>
         <div class="note">
             <strong>Pattern:</strong> Up → 1/3 down → 2/3 down → Full down → 2/3 down → 1/3 down → Up (repeat)<br>
