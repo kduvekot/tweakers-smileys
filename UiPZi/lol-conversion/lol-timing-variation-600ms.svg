@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16">
     <style>
-        .ani{animation:0.75s linear infinite}
+        .ani{animation:0.6s linear infinite}
         @keyframes bounce{
             0%,100%{transform:translate(0,0) scale(1,1) skewX(0)}
             16.67%,83.33%{transform:translate(0,3.67px) scale(1,0.85) skewX(-3.33)}
@@ -10,21 +10,18 @@
         @media(prefers-reduced-motion){.ani{animation:none}}
     </style>
     <defs>
-        <!-- Face gradient -->
         <radialGradient id="face" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
             <stop stop-color="#fafae3"/>
             <stop offset=".23" stop-color="#ffffa2"/>
             <stop offset=".66" stop-color="#ffef06"/>
             <stop offset="1" stop-color="#c7b300"/>
         </radialGradient>
-        <!-- Left hand gradient -->
         <radialGradient id="lefthand" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
             <stop stop-color="#fafae3"/>
             <stop offset=".23" stop-color="#ffffa2"/>
             <stop offset=".66" stop-color="#ffef06"/>
             <stop offset="1" stop-color="#c7b300"/>
         </radialGradient>
-        <!-- Right hand gradient -->
         <radialGradient id="righthand" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
             <stop stop-color="#fafae3"/>
             <stop offset=".23" stop-color="#ffffa2"/>
@@ -33,22 +30,18 @@
         </radialGradient>
     </defs>
 
-    <!-- Face: centered in 32×16 canvas at x=16, static -->
     <g transform="translate(8,0)">
         <circle cx="8" cy="8" r="7.9" fill="url(#face)"/>
         <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
-        <!-- Squinting eyes positioned very low (Y=13) - half height for squinting - best match to GIF -->
         <rect x="5.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
         <rect x="9.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
     </g>
 
-    <!-- Left hand: STATIC at lowest position (translate down 11px, squish to 40%, skew 10deg) -->
     <g transform="translate(0,11) scale(1,0.4) skewX(10)">
         <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lefthand)" stroke="#ccba00" stroke-width=".5"/>
         <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
     </g>
 
-    <!-- Right hand: ANIMATED bouncing (600ms cycle matching LoL GIF) -->
     <g transform="translate(24,0)">
         <g class="ani" style="animation-name:bounce">
             <path d="M1.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#righthand)" stroke="#ccba00" stroke-width=".5"/>
