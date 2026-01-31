@@ -27,6 +27,8 @@ CHECKSUMS_FILE="gh_${VERSION}_checksums.txt"
 # Version check configuration
 CHECK_FOR_UPDATES="${GH_CHECK_UPDATES:-true}"  # Set to "false" to disable
 VERSION_CHECK_TIMEOUT=2  # seconds (fast fail if API is slow)
+VERSION_CHECK_CACHE_HOURS="${GH_VERSION_CHECK_CACHE_HOURS:-24}"  # Check once per day by default
+VERSION_CACHE_FILE="${HOME}/.cache/gh-version-last-check"
 
 # Colors for output
 RED='\033[0;31m'
@@ -52,10 +54,23 @@ info() {
     echo -e "${BLUE}[gh-install INFO]${NC} $*" >&2
 }
 
-# Check for newer version available (non-blocking)
+# Check for newer version available (non-blocking, cached)
 check_for_updates() {
     if [ "$CHECK_FOR_UPDATES" != "true" ]; then
         return 0
+    fi
+
+    # Check if we've checked recently (cache mechanism)
+    if [ -f "$VERSION_CACHE_FILE" ]; then
+        local cache_age_seconds=$(( $(date +%s) - $(stat -c %Y "$VERSION_CACHE_FILE" 2>/dev/null || echo 0) ))
+        local cache_max_age=$(( VERSION_CHECK_CACHE_HOURS * 3600 ))
+
+        if [ "$cache_age_seconds" -lt "$cache_max_age" ]; then
+            # Cache is still valid, skip check
+            local hours_remaining=$(( (cache_max_age - cache_age_seconds) / 3600 ))
+            info "Version check cached (checked ${hours_remaining}h ago, rechecks in $((cache_max_age / 3600))h intervals)"
+            return 0
+        fi
     fi
 
     info "Checking for updates..."
@@ -68,6 +83,10 @@ check_for_updates() {
     if latest_version=$(curl -fsSL --max-time "$VERSION_CHECK_TIMEOUT" "$api_url" 2>/dev/null | grep -o '"tag_name": *"[^"]*"' | cut -d'"' -f4 | tr -d 'v'); then
 
         if [ -n "$latest_version" ]; then
+            # Update cache file
+            mkdir -p "$(dirname "$VERSION_CACHE_FILE")"
+            touch "$VERSION_CACHE_FILE"
+
             # Compare versions (simple string comparison works for x.y.z format)
             if [ "$latest_version" != "$VERSION" ]; then
                 echo ""
@@ -79,7 +98,7 @@ check_for_updates() {
                 warn "  Release notes:"
                 warn "  https://github.com/cli/cli/releases/tag/v${latest_version}"
                 warn ""
-                warn "  To update, change VERSION in .claude/install-gh.sh"
+                warn "  To update, change VERSION in .claude/install-gh-with-version-check.sh"
                 warn "  Or set: export GH_SETUP_VERSION=${latest_version}"
                 warn "════════════════════════════════════════════════════════════"
                 echo ""
