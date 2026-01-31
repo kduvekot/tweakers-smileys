@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL GIF Frame-by-Frame Transition Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        h1 { margin-bottom: 20px; color: #333; }
+        h2 { margin: 40px 0 20px 0; color: #555; }
+        .info {
+            background: #fff3cd;
+            border: 2px solid #856404;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .info h3 { margin-bottom: 10px; color: #856404; }
+        .transition {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .transition h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+            color: #007bff;
+        }
+        .frame-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .frame-box {
+            text-align: center;
+        }
+        .frame-box h4 {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .frame-box img {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            border: 2px solid #ddd;
+            background: white;
+        }
+        .explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        .legend {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+        }
+        .legend h3 { margin-bottom: 15px; color: #007bff; }
+        .legend ul { margin-left: 20px; }
+        .legend li { margin-bottom: 8px; color: #555; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <a href="../index.html?v=7bf8837" class="back-link">← Back to Main Preview</a>
+    
+    <h1>LoL Smiley: Frame-by-Frame Transition Analysis</h1>
+    
+    <div class="info">
+        <h3>Purpose of This Analysis</h3>
+        <p>This page shows exactly which pixels change between consecutive frames of the LoL GIF animation.</p>
+        <p><strong>Red pixels</strong> indicate changes. Areas with <strong>no red</strong> are completely static (unchanged).</p>
+    </div>
+    
+    <div class="legend">
+        <h3>How to Read the Diffs</h3>
+        <ul>
+            <li><strong>Bright Red:</strong> Pixels that changed significantly between frames</li>
+            <li><strong>Transparent/No Color:</strong> Pixels that stayed exactly the same</li>
+            <li><strong>Layout:</strong> Original frame on left, next frame in middle, diff showing changes on right</li>
+        </ul>
+    </div>
+    
+    <!-- Transition 0 to 1 -->
+    <div class="transition">
+        <h3>Transition: Frame 0 → Frame 1</h3>
+        <div class="frame-layout">
+            <div class="frame-box">
+                <h4>Frame 0</h4>
+                <img src="frames/frame-0-mega.png?v=7bf8837" alt="Frame 0" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Frame 1</h4>
+                <img src="frames/frame-1-mega.png?v=7bf8837" alt="Frame 1" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Diff (Red = Changed)</h4>
+                <img src="analysis/frame-transitions/diff-0-to-1-mega.png?v=7bf8837" alt="Diff 0 to 1" width="290">
+            </div>
+        </div>
+        <div class="explanation">
+            <strong>What Changed:</strong> Only the right hand moved downward.
+        </div>
+    </div>
+    
+    <!-- Transition 1 to 2 -->
+    <div class="transition">
+        <h3>Transition: Frame 1 → Frame 2</h3>
+        <div class="frame-layout">
+            <div class="frame-box">
+                <h4>Frame 1</h4>
+                <img src="frames/frame-1-mega.png?v=7bf8837" alt="Frame 1" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Frame 2</h4>
+                <img src="frames/frame-2-mega.png?v=7bf8837" alt="Frame 2" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Diff (Red = Changed)</h4>
+                <img src="analysis/frame-transitions/diff-1-to-2-mega.png?v=7bf8837" alt="Diff 1 to 2" width="290">
+            </div>
+        </div>
+        <div class="explanation">
+            <strong>What Changed:</strong> Only the right hand continued moving downward.
+        </div>
+    </div>
+    
+    <!-- Transition 2 to 3 -->
+    <div class="transition">
+        <h3>Transition: Frame 2 → Frame 3</h3>
+        <div class="frame-layout">
+            <div class="frame-box">
+                <h4>Frame 2</h4>
+                <img src="frames/frame-2-mega.png?v=7bf8837" alt="Frame 2" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Frame 3</h4>
+                <img src="frames/frame-3-mega.png?v=7bf8837" alt="Frame 3" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Diff (Red = Changed)</h4>
+                <img src="analysis/frame-transitions/diff-2-to-3-mega.png?v=7bf8837" alt="Diff 2 to 3" width="290">
+            </div>
+        </div>
+        <div class="explanation">
+            <strong>What Changed:</strong> Only the right hand reached its lowest position.
+        </div>
+    </div>
+    
+    <!-- Transition 3 to 4 -->
+    <div class="transition">
+        <h3>Transition: Frame 3 → Frame 4</h3>
+        <div class="frame-layout">
+            <div class="frame-box">
+                <h4>Frame 3</h4>
+                <img src="frames/frame-3-mega.png?v=7bf8837" alt="Frame 3" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Frame 4</h4>
+                <img src="frames/frame-4-mega.png?v=7bf8837" alt="Frame 4" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Diff (Red = Changed)</h4>
+                <img src="analysis/frame-transitions/diff-3-to-4-mega.png?v=7bf8837" alt="Diff 3 to 4" width="290">
+            </div>
+        </div>
+        <div class="explanation">
+            <strong>What Changed:</strong> Only the right hand started moving back upward.
+        </div>
+    </div>
+    
+    <!-- Transition 4 to 5 -->
+    <div class="transition">
+        <h3>Transition: Frame 4 → Frame 5</h3>
+        <div class="frame-layout">
+            <div class="frame-box">
+                <h4>Frame 4</h4>
+                <img src="frames/frame-4-mega.png?v=7bf8837" alt="Frame 4" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Frame 5</h4>
+                <img src="frames/frame-5-mega.png?v=7bf8837" alt="Frame 5" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Diff (Red = Changed)</h4>
+                <img src="analysis/frame-transitions/diff-4-to-5-mega.png?v=7bf8837" alt="Diff 4 to 5" width="290">
+            </div>
+        </div>
+        <div class="explanation">
+            <strong>What Changed:</strong> Only the right hand continued moving upward.
+        </div>
+    </div>
+    
+    <!-- Transition 5 to 0 (loop) -->
+    <div class="transition">
+        <h3>Transition: Frame 5 → Frame 0 (Loop Back)</h3>
+        <div class="frame-layout">
+            <div class="frame-box">
+                <h4>Frame 5</h4>
+                <img src="frames/frame-5-mega.png?v=7bf8837" alt="Frame 5" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Frame 0</h4>
+                <img src="frames/frame-0-mega.png?v=7bf8837" alt="Frame 0" width="290">
+            </div>
+            <div class="frame-box">
+                <h4>Diff (Red = Changed)</h4>
+                <img src="analysis/frame-transitions/diff-5-to-0-mega.png?v=7bf8837" alt="Diff 5 to 0" width="290">
+            </div>
+        </div>
+        <div class="explanation">
+            <strong>What Changed:</strong> Only the right hand returned to top position, completing the loop.
+        </div>
+    </div>
+    
+    <h2>Conclusion from Frame-by-Frame Analysis</h2>
+    <div class="info">
+        <h3>What is STATIC (No red pixels in any diff):</h3>
+        <ul>
+            <li><strong>✅ Center Face:</strong> Completely unchanged across all frames</li>
+            <li><strong>✅ Left Hand:</strong> Completely unchanged across all frames</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">What is ANIMATED (Red pixels in diffs):</h3>
+        <ul>
+            <li><strong>🔴 Right Hand ONLY:</strong> Bounces up and down through all 6 frames</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">Verdict:</h3>
+        <p><strong>Only the RIGHT HAND animates. The face and left hand are completely static.</strong></p>
+    </div>
+    
+    <a href="lol-animation-demo.html?v=7bf8837" class="back-link" style="margin-top: 20px;">View Original Demo Page →</a>
+</body>
+</html>
