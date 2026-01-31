@@ -114,21 +114,16 @@
         }
 
         /* Scale up SVGs to normalize face size */
-        /* Factors consider both viewBox dimensions AND actual face circle size */
-        /* Formula: (max(viewBox_w, viewBox_h) / 16) * (standard_face_diameter / actual_face_diameter) */
-        .scale-1-0625 { transform: scale(1.0625); }  /* devil, loveit */
+        /* Accounts for viewBox dimensions in both single-wide (120×120) and double-wide (240×120) containers */
+        .scale-1-0625 { transform: scale(1.0625); }  /* devil, loveit, worshippy (double-wide) */
         .scale-1-125 { transform: scale(1.125); }    /* bloos, rc5, tweakers */
-        .scale-1-1875 { transform: scale(1.1875); }  /* michel */
+        .scale-1-1875 { transform: scale(1.1875); }  /* michel, thumbsup (double-wide) */
         .scale-1-25 { transform: scale(1.25); }      /* confused, paard */
-        .scale-1-375 { transform: scale(1.375); }    /* vork */
+        .scale-1-375 { transform: scale(1.375); }    /* vork, devilish */
         .scale-1-5625 { transform: scale(1.5625); }  /* xmas */
         .scale-1-6875 { transform: scale(1.6875); }  /* henk */
         .scale-1-75 { transform: scale(1.75); }      /* yummie-beer */
-        .scale-2-125 { transform: scale(2.125); }    /* worshippy */
         .scale-2-25 { transform: scale(2.25); }      /* marrysmile */
-        .scale-2-375 { transform: scale(2.375); }    /* thumbsup */
-        .scale-2-7156 { transform: scale(2.7156); }  /* devilish (small face: r=4) */
-        .scale-3-16 { transform: scale(3.16); }      /* heart (tiny face: r=2.5) */
 
         .smiley-image-wide {
             width: 240px;
@@ -258,11 +253,11 @@
             <div class="smiley-card"><img src="tweakers-smileys/svg/coool.svg" alt="coool" class="smiley-image"><div class="smiley-name">coool</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/cry.svg" alt="cry" class="smiley-image"><div class="smiley-name">cry</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/devil.svg" alt="devil" class="smiley-image scale-1-0625"><div class="smiley-name">devil</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/devilish.svg" alt="devilish" class="smiley-image scale-2-7156"><div class="smiley-name">devilish</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/devilish.svg" alt="devilish" class="smiley-image scale-1-375"><div class="smiley-name">devilish</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/eerie.svg" alt="eerie" class="smiley-image"><div class="smiley-name">eerie</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/emo.svg" alt="emo" class="smiley-image"><div class="smiley-name">emo</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/frown.svg" alt="frown" class="smiley-image"><div class="smiley-name">frown</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/heart.svg" alt="heart" class="smiley-image scale-3-16"><div class="smiley-name">heart</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/heart.svg" alt="heart" class="smiley-image"><div class="smiley-name">heart</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/huh.svg" alt="huh" class="smiley-image"><div class="smiley-name">huh</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/kwijl.svg" alt="kwijl" class="smiley-image"><div class="smiley-name">kwijl</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/loveit.svg" alt="loveit" class="smiley-image scale-1-0625"><div class="smiley-name">loveit</div><div class="smiley-type">SVG</div></div>
@@ -287,8 +282,8 @@
             <div class="smiley-card"><img src="tweakers-smileys/svg/bloos.svg" alt="bloos" class="smiley-image scale-1-125"><div class="smiley-name">bloos</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/henk.svg" alt="henk" class="smiley-image scale-1-6875"><div class="smiley-name">henk</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/marrysmile.svg" alt="marrysmile" class="smiley-image scale-2-25"><div class="smiley-name">marrysmile</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/thumbsup.svg" alt="thumbsup" class="smiley-image-wide scale-2-375"><div class="smiley-name">thumbsup</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/worshippy.svg" alt="worshippy" class="smiley-image-wide scale-2-125"><div class="smiley-name">worshippy</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/thumbsup.svg" alt="thumbsup" class="smiley-image-wide scale-1-1875"><div class="smiley-name">thumbsup</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/worshippy.svg" alt="worshippy" class="smiley-image-wide scale-1-0625"><div class="smiley-name">worshippy</div><div class="smiley-type">SVG</div></div>
             <div class="smiley-card"><img src="tweakers-smileys/svg/xmas.svg" alt="xmas" class="smiley-image scale-1-5625"><div class="smiley-name">xmas</div><div class="smiley-type">SVG</div></div>
         </div>
 
