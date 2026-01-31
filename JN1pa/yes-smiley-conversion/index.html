@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yes Smiley - 16×16 Standard Size</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+      border-bottom: 3px solid #f60;
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      color: #555;
+      margin-top: 40px;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .smiley-card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .smiley-card h3 {
+      margin: 0 0 20px 0;
+      color: #666;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .smiley-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80px;
+      margin: 20px 0;
+    }
+
+    .smiley-display img,
+    .smiley-display object {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    .specs {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: left;
+    }
+
+    .specs strong {
+      color: #f60;
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(45deg, #ccc 25%, transparent 25%),
+        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ccc 75%),
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .highlight {
+      background: #fff3cd;
+      padding: 20px;
+      border-left: 4px solid #f60;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    .frame-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .frame-item {
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .frame-item img {
+      margin: 10px 0;
+    }
+
+    .frame-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>✅ Yes Smiley - 16×16 Standard Implementation</h1>
+
+  <div class="highlight">
+    <strong>✨ Now using standard dimensions!</strong>
+    <ul>
+      <li>Canvas: <strong>16×16</strong> (matches all other Tweakers SVG smileys)</li>
+      <li>Eyes: <strong>2×2 pixels with rx=0.5</strong> (standard across the codebase)</li>
+      <li>Same gradient and face dimensions as smile.svg</li>
+      <li>Squinting effect maintained with 50% height reduction in frame 2</li>
+    </ul>
+  </div>
+
+  <h2>Side-by-Side Comparison</h2>
+  <div class="comparison">
+    <div class="smiley-card">
+      <h3>Original GIF</h3>
+      <div class="smiley-display grid-bg">
+        <img src="yes.gif?v=4e19267" alt="Original yes.gif" style="width: 60px; height: 60px;">
+      </div>
+      <div class="specs">
+        <strong>Format:</strong> Animated GIF<br>
+        <strong>Size:</strong> 15×15 pixels<br>
+        <strong>Frames:</strong> 4<br>
+        <strong>File size:</strong> 615 bytes
+      </div>
+    </div>
+
+    <div class="smiley-card">
+      <h3>New SVG Animation</h3>
+      <div class="smiley-display grid-bg">
+        <object data="yes-animated.svg" type="image/svg+xml" style="width: 64px; height: 64px;"></object>
+      </div>
+      <div class="specs">
+        <strong>Format:</strong> Animated SVG<br>
+        <strong>Size:</strong> 16×16 pixels<br>
+        <strong>Animation:</strong> CSS @keyframes<br>
+        <strong>Scalable:</strong> ✓ Perfect at any size
+      </div>
+    </div>
+  </div>
+
+  <h2>All Four Frames (16×16 Standard)</h2>
+  <div class="frame-showcase">
+    <div class="frame-item">
+      <div class="frame-label">Frame 0</div>
+      <object data="svg-frames/frame-0-final.svg" type="image/svg+xml" style="width: 64px; height: 64px;"></object>
+      <div style="font-size: 11px; color: #666; margin-top: 10px;">
+        Eyes: y=4<br>
+        Height: 2px
+      </div>
+    </div>
+
+    <div class="frame-item">
+      <div class="frame-label">Frame 1</div>
+      <object data="svg-frames/frame-1-final.svg" type="image/svg+xml" style="width: 64px; height: 64px;"></object>
+      <div style="font-size: 11px; color: #666; margin-top: 10px;">
+        Eyes: y=5 (+1px)<br>
+        Height: 2px
+      </div>
+    </div>
+
+    <div class="frame-item">
+      <div class="frame-label">Frame 2</div>
+      <object data="svg-frames/frame-2-final.svg" type="image/svg+xml" style="width: 64px; height: 64px;"></object>
+      <div style="font-size: 11px; color: #666; margin-top: 10px;">
+        Eyes: y=8.25 (+4.25px)<br>
+        <strong>Height: 1px (SQUINT!)</strong>
+      </div>
+    </div>
+
+    <div class="frame-item">
+      <div class="frame-label">Frame 3</div>
+      <object data="svg-frames/frame-3-final.svg" type="image/svg+xml" style="width: 64px; height: 64px;"></object>
+      <div style="font-size: 11px; color: #666; margin-top: 10px;">
+        Eyes: y=5 (+1px)<br>
+        Height: 2px
+      </div>
+    </div>
+  </div>
+
+  <h2>Key Features</h2>
+  <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <h3>Standard Eye Definition</h3>
+    <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;rect x="5.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/&gt;
+&lt;rect x="9.5" y="4" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/&gt;</code></pre>
+
+    <p style="color: #666; margin-top: 15px;">
+      ✓ Same dimensions as smile.svg, biggrin.svg, wink.svg, etc.<br>
+      ✓ Consistent with entire Tweakers smiley collection<br>
+      ✓ Clean, maintainable codebase
+    </p>
+
+    <h3 style="margin-top: 30px;">Animation Technique</h3>
+    <ul style="color: #666; line-height: 1.8;">
+      <li><strong>Separate animations</strong> for eyes and mouth</li>
+      <li><strong>Eyes:</strong> translateY + scaleY for position and squinting</li>
+      <li><strong>Mouth:</strong> translateY only for vertical movement</li>
+      <li><strong>Timing:</strong> 0.7s duration, infinite loop</li>
+      <li><strong>Accessibility:</strong> Respects prefers-reduced-motion</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 40px; padding: 20px; background: #e8f4f8; border-left: 4px solid #0066cc; border-radius: 4px;">
+    <strong>📊 Comparison with smile.svg:</strong>
+    <table style="width: 100%; margin-top: 10px; border-collapse: collapse;">
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="text-align: left; padding: 8px;">Property</th>
+        <th style="text-align: left; padding: 8px;">smile.svg</th>
+        <th style="text-align: left; padding: 8px;">yes.svg (new)</th>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">Canvas</td>
+        <td style="padding: 8px;">16×16</td>
+        <td style="padding: 8px;"><strong>16×16 ✓</strong></td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">Eye size</td>
+        <td style="padding: 8px;">2×2, rx=.5</td>
+        <td style="padding: 8px;"><strong>2×2, rx=.5 ✓</strong></td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">Gradient</td>
+        <td style="padding: 8px;">scale(12.7918)</td>
+        <td style="padding: 8px;"><strong>scale(12.7918) ✓</strong></td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">Face radius</td>
+        <td style="padding: 8px;">r="7.9"</td>
+        <td style="padding: 8px;"><strong>r="7.9" ✓</strong></td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Animation</td>
+        <td style="padding: 8px;">None</td>
+        <td style="padding: 8px;"><strong>Nodding + squinting</strong></td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
