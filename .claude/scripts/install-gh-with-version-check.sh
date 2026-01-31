@@ -89,6 +89,10 @@ check_for_updates() {
 
             # Compare versions (simple string comparison works for x.y.z format)
             if [ "$latest_version" != "$VERSION" ]; then
+                # Output to stdout for hook visibility
+                echo "⚠️  Update available: v${VERSION} → v${latest_version} (https://github.com/cli/cli/releases/tag/v${latest_version})"
+
+                # Detailed warning to stderr for full context
                 echo ""
                 warn "════════════════════════════════════════════════════════════"
                 warn "  A newer version of GitHub CLI is available!"
