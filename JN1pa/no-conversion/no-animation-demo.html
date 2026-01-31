@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Smiley: GIF vs SVG Comparison</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            margin-top: 0;
+            color: #555;
+            text-align: center;
+        }
+        h3 {
+            color: #666;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .format-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .smiley-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .smiley-wrapper {
+            padding: 20px;
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        .size-16 { width: 16px; height: 16px; }
+        .size-32 { width: 32px; height: 32px; }
+        .size-64 { width: 64px; height: 64px; }
+        .size-128 { width: 128px; height: 128px; }
+        .size-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+        .stats {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .stats dt {
+            font-weight: 600;
+            color: #555;
+            margin-top: 10px;
+        }
+        .stats dd {
+            margin-left: 0;
+            color: #666;
+        }
+        .advantage {
+            color: #4caf50;
+            font-weight: 600;
+        }
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Frame analysis styles */
+        .frame-analysis {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        .frames-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .frame-item {
+            text-align: center;
+            padding: 10px;
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        .frame-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .frame-img {
+            image-rendering: pixelated;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Transition analysis styles */
+        .transition-item {
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .transition-header {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .transition-images {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .transition-part {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        .transition-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .transition-img {
+            image-rendering: pixelated;
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ddd;
+            background: white;
+        }
+        .arrow {
+            font-size: 24px;
+            color: #999;
+            align-self: center;
+        }
+
+        /* Section styling */
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        .section-title {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚫 "No" Smiley: GIF vs SVG Comparison</h1>
+
+    <!-- Main Comparison -->
+    <div class="comparison">
+        <!-- GIF Section -->
+        <div class="format-section">
+            <h2>Original GIF</h2>
+            <div class="smiley-display">
+                <div>
+                    <div class="size-label">16×16 (original size)</div>
+                    <div class="smiley-wrapper">
+                        <img src="../tweakers-smileys/gif/no.gif?v=251bedc" class="size-16" alt="No GIF 16px">
+                    </div>
+                </div>
+                <div>
+                    <div class="size-label">32×32 (2× scale)</div>
+                    <div class="smiley-wrapper">
+                        <img src="../tweakers-smileys/gif/no.gif?v=251bedc" class="size-32" alt="No GIF 32px">
+                    </div>
+                </div>
+                <div>
+                    <div class="size-label">64×64 (4× scale)</div>
+                    <div class="smiley-wrapper">
+                        <img src="../tweakers-smileys/gif/no.gif?v=251bedc" class="size-64" alt="No GIF 64px">
+                    </div>
+                </div>
+                <div>
+                    <div class="size-label">128×128 (8× scale)</div>
+                    <div class="smiley-wrapper">
+                        <img src="../tweakers-smileys/gif/no.gif?v=251bedc" class="size-128" alt="No GIF 128px">
+                    </div>
+                </div>
+            </div>
+
+            <dl class="stats">
+                <dt>Format:</dt>
+                <dd>Animated GIF</dd>
+
+                <dt>Dimensions:</dt>
+                <dd>15×15 pixels (legacy format)</dd>
+
+                <dt>Frames:</dt>
+                <dd>22 frames</dd>
+
+                <dt>Animation:</dt>
+                <dd>Horizontal head shake ("no" gesture)</dd>
+
+                <dt>Scaling:</dt>
+                <dd>Pixelated when enlarged</dd>
+            </dl>
+        </div>
+
+        <!-- SVG Section -->
+        <div class="format-section">
+            <h2>Animated SVG</h2>
+            <div class="smiley-display">
+                <div>
+                    <div class="size-label">16×16 (native size)</div>
+                    <div class="smiley-wrapper">
+                        <img src="no-animated.svg?v=251bedc" class="size-16" alt="No SVG 16px">
+                    </div>
+                </div>
+                <div>
+                    <div class="size-label">32×32 (2× scale)</div>
+                    <div class="smiley-wrapper">
+                        <img src="no-animated.svg?v=251bedc" class="size-32" alt="No SVG 32px">
+                    </div>
+                </div>
+                <div>
+                    <div class="size-label">64×64 (4× scale)</div>
+                    <div class="smiley-wrapper">
+                        <img src="no-animated.svg?v=251bedc" class="size-64" alt="No SVG 64px">
+                    </div>
+                </div>
+                <div>
+                    <div class="size-label">128×128 (8× scale)</div>
+                    <div class="smiley-wrapper">
+                        <img src="no-animated.svg?v=251bedc" class="size-128" alt="No SVG 128px">
+                    </div>
+                </div>
+            </div>
+
+            <dl class="stats">
+                <dt>Format:</dt>
+                <dd class="advantage">Animated SVG</dd>
+
+                <dt>Dimensions:</dt>
+                <dd class="advantage">16×16 (modern standard)</dd>
+
+                <dt>Animation:</dt>
+                <dd>CSS keyframes (horizontal shake)</dd>
+
+                <dt>Components:</dt>
+                <dd>Standard eyes (2×2 rx=.5), standard frown, standard gradient</dd>
+
+                <dt>Scaling:</dt>
+                <dd class="advantage">Crisp at any size (vector graphics)</dd>
+
+                <dt>Accessibility:</dt>
+                <dd class="advantage">Respects prefers-reduced-motion</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Individual Frames Section -->
+    <div class="section">
+        <h2 class="section-title">📷 Individual GIF Frames (22 total)</h2>
+        <p style="color: #666; margin-bottom: 20px;">
+            All 22 frames extracted from the original no.gif animation. These show the horizontal shake pattern.
+        </p>
+        <div class="frames-grid">
+            <div class="frame-item">
+                <div class="frame-label">Frame 0</div>
+                <img src="frames/frame-0.png?v=251bedc" class="frame-img" alt="Frame 0">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 1</div>
+                <img src="frames/frame-1.png?v=251bedc" class="frame-img" alt="Frame 1">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 2</div>
+                <img src="frames/frame-2.png?v=251bedc" class="frame-img" alt="Frame 2">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 3</div>
+                <img src="frames/frame-3.png?v=251bedc" class="frame-img" alt="Frame 3">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 4</div>
+                <img src="frames/frame-4.png?v=251bedc" class="frame-img" alt="Frame 4">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 5</div>
+                <img src="frames/frame-5.png?v=251bedc" class="frame-img" alt="Frame 5">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 6</div>
+                <img src="frames/frame-6.png?v=251bedc" class="frame-img" alt="Frame 6">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 7</div>
+                <img src="frames/frame-7.png?v=251bedc" class="frame-img" alt="Frame 7">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 8</div>
+                <img src="frames/frame-8.png?v=251bedc" class="frame-img" alt="Frame 8">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 9</div>
+                <img src="frames/frame-9.png?v=251bedc" class="frame-img" alt="Frame 9">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 10</div>
+                <img src="frames/frame-10.png?v=251bedc" class="frame-img" alt="Frame 10">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 11</div>
+                <img src="frames/frame-11.png?v=251bedc" class="frame-img" alt="Frame 11">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 12</div>
+                <img src="frames/frame-12.png?v=251bedc" class="frame-img" alt="Frame 12">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 13</div>
+                <img src="frames/frame-13.png?v=251bedc" class="frame-img" alt="Frame 13">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 14</div>
+                <img src="frames/frame-14.png?v=251bedc" class="frame-img" alt="Frame 14">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 15</div>
+                <img src="frames/frame-15.png?v=251bedc" class="frame-img" alt="Frame 15">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 16</div>
+                <img src="frames/frame-16.png?v=251bedc" class="frame-img" alt="Frame 16">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 17</div>
+                <img src="frames/frame-17.png?v=251bedc" class="frame-img" alt="Frame 17">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 18</div>
+                <img src="frames/frame-18.png?v=251bedc" class="frame-img" alt="Frame 18">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 19</div>
+                <img src="frames/frame-19.png?v=251bedc" class="frame-img" alt="Frame 19">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 20</div>
+                <img src="frames/frame-20.png?v=251bedc" class="frame-img" alt="Frame 20">
+            </div>
+            <div class="frame-item">
+                <div class="frame-label">Frame 21</div>
+                <img src="frames/frame-21.png?v=251bedc" class="frame-img" alt="Frame 21">
+            </div>
+        </div>
+    </div>
+
+    <!-- Frame Transitions Section -->
+    <div class="section">
+        <h2 class="section-title">🔄 Frame-to-Frame Transitions</h2>
+        <p style="color: #666; margin-bottom: 20px;">
+            Each transition shows: <strong>Previous Frame</strong> → <strong>Next Frame</strong> → <strong>Difference (red overlay)</strong>
+            <br>
+            Red pixels indicate changes between frames. Brighter red = larger difference. Transparent = no change.
+        </p>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 0 → Frame 1</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 0</div>
+                    <img src="frames/frame-0.png?v=251bedc" class="transition-img" alt="Frame 0">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 1</div>
+                    <img src="frames/frame-1.png?v=251bedc" class="transition-img" alt="Frame 1">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-0-to-1.png?v=251bedc" class="transition-img" alt="Diff 0 to 1">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 1 → Frame 2</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 1</div>
+                    <img src="frames/frame-1.png?v=251bedc" class="transition-img" alt="Frame 1">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 2</div>
+                    <img src="frames/frame-2.png?v=251bedc" class="transition-img" alt="Frame 2">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-1-to-2.png?v=251bedc" class="transition-img" alt="Diff 1 to 2">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 2 → Frame 3</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 2</div>
+                    <img src="frames/frame-2.png?v=251bedc" class="transition-img" alt="Frame 2">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 3</div>
+                    <img src="frames/frame-3.png?v=251bedc" class="transition-img" alt="Frame 3">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-2-to-3.png?v=251bedc" class="transition-img" alt="Diff 2 to 3">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 3 → Frame 4</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 3</div>
+                    <img src="frames/frame-3.png?v=251bedc" class="transition-img" alt="Frame 3">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 4</div>
+                    <img src="frames/frame-4.png?v=251bedc" class="transition-img" alt="Frame 4">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-3-to-4.png?v=251bedc" class="transition-img" alt="Diff 3 to 4">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 4 → Frame 5</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 4</div>
+                    <img src="frames/frame-4.png?v=251bedc" class="transition-img" alt="Frame 4">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 5</div>
+                    <img src="frames/frame-5.png?v=251bedc" class="transition-img" alt="Frame 5">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-4-to-5.png?v=251bedc" class="transition-img" alt="Diff 4 to 5">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 5 → Frame 6</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 5</div>
+                    <img src="frames/frame-5.png?v=251bedc" class="transition-img" alt="Frame 5">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 6</div>
+                    <img src="frames/frame-6.png?v=251bedc" class="transition-img" alt="Frame 6">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-5-to-6.png?v=251bedc" class="transition-img" alt="Diff 5 to 6">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 6 → Frame 7</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 6</div>
+                    <img src="frames/frame-6.png?v=251bedc" class="transition-img" alt="Frame 6">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 7</div>
+                    <img src="frames/frame-7.png?v=251bedc" class="transition-img" alt="Frame 7">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-6-to-7.png?v=251bedc" class="transition-img" alt="Diff 6 to 7">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 7 → Frame 8</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 7</div>
+                    <img src="frames/frame-7.png?v=251bedc" class="transition-img" alt="Frame 7">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 8</div>
+                    <img src="frames/frame-8.png?v=251bedc" class="transition-img" alt="Frame 8">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-7-to-8.png?v=251bedc" class="transition-img" alt="Diff 7 to 8">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 8 → Frame 9</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 8</div>
+                    <img src="frames/frame-8.png?v=251bedc" class="transition-img" alt="Frame 8">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 9</div>
+                    <img src="frames/frame-9.png?v=251bedc" class="transition-img" alt="Frame 9">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-8-to-9.png?v=251bedc" class="transition-img" alt="Diff 8 to 9">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 9 → Frame 10</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 9</div>
+                    <img src="frames/frame-9.png?v=251bedc" class="transition-img" alt="Frame 9">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 10</div>
+                    <img src="frames/frame-10.png?v=251bedc" class="transition-img" alt="Frame 10">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-9-to-10.png?v=251bedc" class="transition-img" alt="Diff 9 to 10">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 10 → Frame 11</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 10</div>
+                    <img src="frames/frame-10.png?v=251bedc" class="transition-img" alt="Frame 10">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 11</div>
+                    <img src="frames/frame-11.png?v=251bedc" class="transition-img" alt="Frame 11">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-10-to-11.png?v=251bedc" class="transition-img" alt="Diff 10 to 11">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 11 → Frame 12</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 11</div>
+                    <img src="frames/frame-11.png?v=251bedc" class="transition-img" alt="Frame 11">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 12</div>
+                    <img src="frames/frame-12.png?v=251bedc" class="transition-img" alt="Frame 12">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-11-to-12.png?v=251bedc" class="transition-img" alt="Diff 11 to 12">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 12 → Frame 13</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 12</div>
+                    <img src="frames/frame-12.png?v=251bedc" class="transition-img" alt="Frame 12">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 13</div>
+                    <img src="frames/frame-13.png?v=251bedc" class="transition-img" alt="Frame 13">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-12-to-13.png?v=251bedc" class="transition-img" alt="Diff 12 to 13">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 13 → Frame 14</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 13</div>
+                    <img src="frames/frame-13.png?v=251bedc" class="transition-img" alt="Frame 13">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 14</div>
+                    <img src="frames/frame-14.png?v=251bedc" class="transition-img" alt="Frame 14">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-13-to-14.png?v=251bedc" class="transition-img" alt="Diff 13 to 14">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 14 → Frame 15</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 14</div>
+                    <img src="frames/frame-14.png?v=251bedc" class="transition-img" alt="Frame 14">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 15</div>
+                    <img src="frames/frame-15.png?v=251bedc" class="transition-img" alt="Frame 15">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-14-to-15.png?v=251bedc" class="transition-img" alt="Diff 14 to 15">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 15 → Frame 16</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 15</div>
+                    <img src="frames/frame-15.png?v=251bedc" class="transition-img" alt="Frame 15">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 16</div>
+                    <img src="frames/frame-16.png?v=251bedc" class="transition-img" alt="Frame 16">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-15-to-16.png?v=251bedc" class="transition-img" alt="Diff 15 to 16">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 16 → Frame 17</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 16</div>
+                    <img src="frames/frame-16.png?v=251bedc" class="transition-img" alt="Frame 16">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 17</div>
+                    <img src="frames/frame-17.png?v=251bedc" class="transition-img" alt="Frame 17">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-16-to-17.png?v=251bedc" class="transition-img" alt="Diff 16 to 17">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 17 → Frame 18</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 17</div>
+                    <img src="frames/frame-17.png?v=251bedc" class="transition-img" alt="Frame 17">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 18</div>
+                    <img src="frames/frame-18.png?v=251bedc" class="transition-img" alt="Frame 18">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-17-to-18.png?v=251bedc" class="transition-img" alt="Diff 17 to 18">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 18 → Frame 19</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 18</div>
+                    <img src="frames/frame-18.png?v=251bedc" class="transition-img" alt="Frame 18">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 19</div>
+                    <img src="frames/frame-19.png?v=251bedc" class="transition-img" alt="Frame 19">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-18-to-19.png?v=251bedc" class="transition-img" alt="Diff 18 to 19">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 19 → Frame 20</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 19</div>
+                    <img src="frames/frame-19.png?v=251bedc" class="transition-img" alt="Frame 19">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 20</div>
+                    <img src="frames/frame-20.png?v=251bedc" class="transition-img" alt="Frame 20">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-19-to-20.png?v=251bedc" class="transition-img" alt="Diff 19 to 20">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 20 → Frame 21</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 20</div>
+                    <img src="frames/frame-20.png?v=251bedc" class="transition-img" alt="Frame 20">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 21</div>
+                    <img src="frames/frame-21.png?v=251bedc" class="transition-img" alt="Frame 21">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-20-to-21.png?v=251bedc" class="transition-img" alt="Diff 20 to 21">
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-item">
+            <div class="transition-header">Frame 21 → Frame 0 (loop back)</div>
+            <div class="transition-images">
+                <div class="transition-part">
+                    <div class="transition-label">Frame 21</div>
+                    <img src="frames/frame-21.png?v=251bedc" class="transition-img" alt="Frame 21">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Frame 0</div>
+                    <img src="frames/frame-0.png?v=251bedc" class="transition-img" alt="Frame 0">
+                </div>
+                <div class="arrow">→</div>
+                <div class="transition-part">
+                    <div class="transition-label">Difference</div>
+                    <img src="frames/diffs/diff-21-to-0.png?v=251bedc" class="transition-img" alt="Diff 21 to 0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>Animation Details:</strong><br>
+        The "no" smiley uses a horizontal shake animation to convey disagreement or refusal.
+        The face features (eyes and mouth) move together using a unified group animation approach,
+        similar to the worshippy.svg pattern. The animation cycles through: center → right → far right →
+        right → left → far left → left → center, creating a natural head-shaking motion.
+        The face outline remains static for visual stability.
+    </div>
+
+    <div class="note" style="background: #d1ecf1; border-color: #0c5460; margin-top: 20px;">
+        <strong>Technical Implementation:</strong><br>
+        • <strong>Canvas:</strong> Upscaled from 15×15 (legacy) to 16×16 (standard)<br>
+        • <strong>Eyes:</strong> Standard 2×2 rectangles with rx=.5 border-radius<br>
+        • <strong>Mouth:</strong> Reused frown path from unhappy.svg<br>
+        • <strong>Gradient:</strong> Standard yellow face gradient with scale(12.7918)<br>
+        • <strong>Animation:</strong> Horizontal translateX from -4px to +4px over 1.1s<br>
+        • <strong>Pattern:</strong> Unified group animation (eyes + mouth move together)
+    </div>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Final SVG - All Face Variants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .variant-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .variant-item.selected {
+            border: 3px solid #0066cc;
+            background: #f0f8ff;
+        }
+
+        .variant-item h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .variant-item .eye-pos {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .variant-item .selected-badge {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .display-area {
+            background: #fff;
+            border: 2px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .display-area svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .info h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .info ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .info li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>LoL Final SVG - All Face Variants</h1>
+    <p class="subtitle">Complete animated SVG with different eye positions (600ms smooth bounce animation)</p>
+
+    <div class="info">
+        <h2>Quick Reference</h2>
+        <ul>
+            <li><strong>Variant 1:</strong> Eyes at Y=10 (moderately low)</li>
+            <li><strong>Variant 2:</strong> Eyes at Y=11 (low)</li>
+            <li><strong>Variant 3:</strong> Eyes at Y=12 (very low) - <strong>CURRENTLY SELECTED</strong></li>
+            <li><strong>Variant 4:</strong> Eyes at Y=13 (extremely low, near bottom)</li>
+        </ul>
+    </div>
+
+    <div class="comparison-grid">
+        <div class="variant-item">
+            <h2>Variant 1</h2>
+            <p class="eye-pos">Eyes at Y=10</p>
+            <div class="display-area">
+                <svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 32 16">
+                    <style>
+                        .ani1{animation:bounce1 0.6s linear infinite}
+                        @keyframes bounce1{
+                            0%,100%{transform:translate(0,0) scale(1,1) skewX(0deg)}
+                            16.67%,83.33%{transform:translate(0,3.67px) scale(1,0.85) skewX(-3.33deg)}
+                            33.33%,66.67%{transform:translate(0,7.33px) scale(1,0.7) skewX(-6.67deg)}
+                            50%{transform:translate(0,11px) scale(1,0.4) skewX(-10deg)}
+                        }
+                    </style>
+                    <defs>
+                        <radialGradient id="face1" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="lefthand1" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="righthand1" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                    </defs>
+                    <g transform="translate(8,0)">
+                        <circle cx="8" cy="8" r="7.9" fill="url(#face1)"/>
+                        <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+                        <rect x="5.5" y="10" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                        <rect x="9.5" y="10" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                    </g>
+                    <g transform="translate(0,11) scale(1,0.4) skewX(10)">
+                        <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lefthand1)" stroke="#ccba00" stroke-width=".5"/>
+                        <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                    </g>
+                    <g transform="translate(24,0)">
+                        <g class="ani1">
+                            <path d="M1.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#righthand1)" stroke="#ccba00" stroke-width=".5"/>
+                            <path d="M2.656 4.281c.162 0 .323.036.469.106V3.031a1.093 1.093 0 0 1 1.616-.96 1.094 1.094 0 0 1 2.134.335v.262a1.093 1.093 0 0 1 1.562.988v3.281a3.438 3.438 0 0 1-6.874 0V5.375a1.095 1.095 0 0 1 1.093-1.094Zm-.468 2.657a2.812 2.812 0 1 0 5.625 0V3.655a.469.469 0 0 0-.938 0v1.719a.312.312 0 1 1-.625 0V2.406a.469.469 0 0 0-.937 0v2.656a.312.312 0 1 1-.625 0v-2.03a.469.469 0 0 0-.938 0V5.87a1.878 1.878 0 0 1 1.563 1.849.312.312 0 1 1-.625 0 1.252 1.252 0 0 0-1.25-1.25.313.313 0 0 1-.313-.313v-.781a.469.469 0 0 0-.937 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="variant-item">
+            <h2>Variant 2</h2>
+            <p class="eye-pos">Eyes at Y=11</p>
+            <div class="display-area">
+                <svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 32 16">
+                    <style>
+                        .ani2{animation:bounce2 0.6s linear infinite}
+                        @keyframes bounce2{
+                            0%,100%{transform:translate(0,0) scale(1,1) skewX(0deg)}
+                            16.67%,83.33%{transform:translate(0,3.67px) scale(1,0.85) skewX(-3.33deg)}
+                            33.33%,66.67%{transform:translate(0,7.33px) scale(1,0.7) skewX(-6.67deg)}
+                            50%{transform:translate(0,11px) scale(1,0.4) skewX(-10deg)}
+                        }
+                    </style>
+                    <defs>
+                        <radialGradient id="face2" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="lefthand2" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="righthand2" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                    </defs>
+                    <g transform="translate(8,0)">
+                        <circle cx="8" cy="8" r="7.9" fill="url(#face2)"/>
+                        <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+                        <rect x="5.5" y="11" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                        <rect x="9.5" y="11" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                    </g>
+                    <g transform="translate(0,11) scale(1,0.4) skewX(10)">
+                        <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lefthand2)" stroke="#ccba00" stroke-width=".5"/>
+                        <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                    </g>
+                    <g transform="translate(24,0)">
+                        <g class="ani2">
+                            <path d="M1.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#righthand2)" stroke="#ccba00" stroke-width=".5"/>
+                            <path d="M2.656 4.281c.162 0 .323.036.469.106V3.031a1.093 1.093 0 0 1 1.616-.96 1.094 1.094 0 0 1 2.134.335v.262a1.093 1.093 0 0 1 1.562.988v3.281a3.438 3.438 0 0 1-6.874 0V5.375a1.095 1.095 0 0 1 1.093-1.094Zm-.468 2.657a2.812 2.812 0 1 0 5.625 0V3.655a.469.469 0 0 0-.938 0v1.719a.312.312 0 1 1-.625 0V2.406a.469.469 0 0 0-.937 0v2.656a.312.312 0 1 1-.625 0v-2.03a.469.469 0 0 0-.938 0V5.87a1.878 1.878 0 0 1 1.563 1.849.312.312 0 1 1-.625 0 1.252 1.252 0 0 0-1.25-1.25.313.313 0 0 1-.313-.313v-.781a.469.469 0 0 0-.937 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="variant-item selected">
+            <h2>Variant 3<span class="selected-badge">SELECTED</span></h2>
+            <p class="eye-pos">Eyes at Y=12</p>
+            <div class="display-area">
+                <svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 32 16">
+                    <style>
+                        .ani3{animation:bounce3 0.6s linear infinite}
+                        @keyframes bounce3{
+                            0%,100%{transform:translate(0,0) scale(1,1) skewX(0deg)}
+                            16.67%,83.33%{transform:translate(0,3.67px) scale(1,0.85) skewX(-3.33deg)}
+                            33.33%,66.67%{transform:translate(0,7.33px) scale(1,0.7) skewX(-6.67deg)}
+                            50%{transform:translate(0,11px) scale(1,0.4) skewX(-10deg)}
+                        }
+                    </style>
+                    <defs>
+                        <radialGradient id="face3" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="lefthand3" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="righthand3" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                    </defs>
+                    <g transform="translate(8,0)">
+                        <circle cx="8" cy="8" r="7.9" fill="url(#face3)"/>
+                        <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+                        <rect x="5.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                        <rect x="9.5" y="12" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                    </g>
+                    <g transform="translate(0,11) scale(1,0.4) skewX(10)">
+                        <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lefthand3)" stroke="#ccba00" stroke-width=".5"/>
+                        <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                    </g>
+                    <g transform="translate(24,0)">
+                        <g class="ani3">
+                            <path d="M1.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#righthand3)" stroke="#ccba00" stroke-width=".5"/>
+                            <path d="M2.656 4.281c.162 0 .323.036.469.106V3.031a1.093 1.093 0 0 1 1.616-.96 1.094 1.094 0 0 1 2.134.335v.262a1.093 1.093 0 0 1 1.562.988v3.281a3.438 3.438 0 0 1-6.874 0V5.375a1.095 1.095 0 0 1 1.093-1.094Zm-.468 2.657a2.812 2.812 0 1 0 5.625 0V3.655a.469.469 0 0 0-.938 0v1.719a.312.312 0 1 1-.625 0V2.406a.469.469 0 0 0-.937 0v2.656a.312.312 0 1 1-.625 0v-2.03a.469.469 0 0 0-.938 0V5.87a1.878 1.878 0 0 1 1.563 1.849.312.312 0 1 1-.625 0 1.252 1.252 0 0 0-1.25-1.25.313.313 0 0 1-.313-.313v-.781a.469.469 0 0 0-.937 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="variant-item">
+            <h2>Variant 4</h2>
+            <p class="eye-pos">Eyes at Y=13</p>
+            <div class="display-area">
+                <svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 32 16">
+                    <style>
+                        .ani4{animation:bounce4 0.6s linear infinite}
+                        @keyframes bounce4{
+                            0%,100%{transform:translate(0,0) scale(1,1) skewX(0deg)}
+                            16.67%,83.33%{transform:translate(0,3.67px) scale(1,0.85) skewX(-3.33deg)}
+                            33.33%,66.67%{transform:translate(0,7.33px) scale(1,0.7) skewX(-6.67deg)}
+                            50%{transform:translate(0,11px) scale(1,0.4) skewX(-10deg)}
+                        }
+                    </style>
+                    <defs>
+                        <radialGradient id="face4" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="lefthand4" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5 12 -10 4 4 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                        <radialGradient id="righthand4" cx="0" cy="0" r=".5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5 12 -10 -4 30 2.7)">
+                            <stop stop-color="#fafae3"/>
+                            <stop offset=".23" stop-color="#ffffa2"/>
+                            <stop offset=".66" stop-color="#ffef06"/>
+                            <stop offset="1" stop-color="#c7b300"/>
+                        </radialGradient>
+                    </defs>
+                    <g transform="translate(8,0)">
+                        <circle cx="8" cy="8" r="7.9" fill="url(#face4)"/>
+                        <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+                        <rect x="5.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                        <rect x="9.5" y="13" width="2" height="1" rx=".5" fill-opacity=".9"/>
+                    </g>
+                    <g transform="translate(0,11) scale(1,0.4) skewX(10)">
+                        <path d="M8.125 5.375v1.563a3.125 3.125 0 0 1-6.25 0V3.655a.781.781 0 0 1 1.563 0v-1.25a.781.781 0 0 1 1.562 0v.625a.781.781 0 0 1 1.563 0v2.344a.781.781 0 0 1 1.562 0Z" fill="url(#lefthand4)" stroke="#ccba00" stroke-width=".5"/>
+                        <path d="M7.344 4.281c-.162 0-.323.036-.469.106V3.031a1.094 1.094 0 0 0-1.616-.96 1.094 1.094 0 0 0-2.134.335v.262a1.093 1.093 0 0 0-1.563.988v3.281a3.437 3.437 0 1 0 6.875 0V5.375a1.095 1.095 0 0 0-1.093-1.094Zm.468 2.657a2.813 2.813 0 0 1-5.625 0V3.655a.469.469 0 0 1 .938 0v1.719a.312.312 0 1 0 .625 0V2.406a.469.469 0 0 1 .938 0v2.656a.312.312 0 1 0 .625 0v-2.03a.469.469 0 0 1 .937 0V5.87a1.878 1.878 0 0 0-1.563 1.849.312.312 0 1 0 .625 0 1.251 1.251 0 0 1 1.25-1.25.313.313 0 0 0 .313-.313v-.781a.469.469 0 0 1 .938 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                    </g>
+                    <g transform="translate(24,0)">
+                        <g class="ani4">
+                            <path d="M1.875 5.375v1.563a3.125 3.125 0 1 0 6.25 0V3.655a.781.781 0 1 0-1.562 0v-1.25a.781.781 0 1 0-1.563 0v.625a.781.781 0 1 0-1.562 0v2.344a.781.781 0 1 0-1.563 0Z" fill="url(#righthand4)" stroke="#ccba00" stroke-width=".5"/>
+                            <path d="M2.656 4.281c.162 0 .323.036.469.106V3.031a1.093 1.093 0 0 1 1.616-.96 1.094 1.094 0 0 1 2.134.335v.262a1.093 1.093 0 0 1 1.562.988v3.281a3.438 3.438 0 0 1-6.874 0V5.375a1.095 1.095 0 0 1 1.093-1.094Zm-.468 2.657a2.812 2.812 0 1 0 5.625 0V3.655a.469.469 0 0 0-.938 0v1.719a.312.312 0 1 1-.625 0V2.406a.469.469 0 0 0-.937 0v2.656a.312.312 0 1 1-.625 0v-2.03a.469.469 0 0 0-.938 0V5.87a1.878 1.878 0 0 1 1.563 1.849.312.312 0 1 1-.625 0 1.252 1.252 0 0 0-1.25-1.25.313.313 0 0 1-.313-.313v-.781a.469.469 0 0 0-.937 0v1.563Z" fill-opacity=".9" stroke-width=".5"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
