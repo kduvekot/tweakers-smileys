@@ -105,28 +105,28 @@ check_for_updates() {
 
             # Compare versions (simple string comparison works for x.y.z format)
             if [ "$latest_version" != "$VERSION" ]; then
-                # Output to stdout for hook visibility
-                echo "⚠️  Update available: v${VERSION} → v${latest_version} (https://github.com/cli/cli/releases/tag/v${latest_version})"
+                # Output to stdout for hook visibility - concise 2-line format
+                echo "⚠️  Update available: v${VERSION} → v${latest_version}"
+
+                # Only show env var instruction if not in AUTO mode
+                if [ "$GH_VERSION_CONFIG" != "AUTO" ]; then
+                    echo "   Set GH_SETUP_VERSION=${latest_version} in environment variables"
+                fi
 
                 # Detailed warning to stderr for full context
-                echo ""
-                warn "════════════════════════════════════════════════════════════"
-                warn "  A newer version of GitHub CLI is available!"
-                warn "  Current/Target: v${VERSION}"
-                warn "  Latest:         v${latest_version}"
-                warn ""
-                warn "  Release notes:"
-                warn "  https://github.com/cli/cli/releases/tag/v${latest_version}"
-                warn ""
-                warn "  To update, add to Claude Code environment variables:"
-                warn "    GH_SETUP_VERSION=${latest_version}"
-                warn ""
-                warn "  Or set to AUTO for automatic latest version:"
-                warn "    GH_SETUP_VERSION=AUTO"
-                warn ""
-                warn "  (Settings → Environment → Environment variables)"
-                warn "════════════════════════════════════════════════════════════"
-                echo ""
+                echo "" >&2
+                warn "A newer version of GitHub CLI is available: v${VERSION} → v${latest_version}"
+                warn "Release notes: https://github.com/cli/cli/releases/tag/v${latest_version}"
+
+                if [ "$GH_VERSION_CONFIG" != "AUTO" ]; then
+                    warn ""
+                    warn "To update, add to Claude Code environment variables:"
+                    warn "  GH_SETUP_VERSION=${latest_version}"
+                    warn ""
+                    warn "Or set to AUTO for automatic latest version:"
+                    warn "  GH_SETUP_VERSION=AUTO"
+                fi
+                echo "" >&2
             else
                 info "✓ You are using the latest version (v${VERSION})"
             fi
