@@ -82,10 +82,9 @@
             padding: 15px;
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
         }
 
-        .smiley-card:hover {
+        .smiley-card:has(a):hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
@@ -99,6 +98,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            cursor: pointer;
         }
 
         .smiley-card-wide {
@@ -211,7 +211,7 @@
         <h2>New SVG Conversions <span class="badge">NEW</span></h2>
         <div class="smiley-grid">
             <div class="smiley-card">
-                <a href="conversion-history/yes-gif/development.html">
+                <a href="conversion-history/yes-gif/index.html">
                     <img src="tweakers-smileys/new-svg/yes.svg" alt="yes" class="smiley-image">
                     <div class="smiley-name">yes</div>
                     <div class="smiley-type">SVG (Nodding)</div>
