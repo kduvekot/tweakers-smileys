@@ -135,6 +135,9 @@ if command -v gh &> /dev/null; then
         # Still check for updates
         check_for_updates
 
+        # Output to stdout for hook display
+        echo "✓ GitHub CLI v${CURRENT_VERSION} ready"
+
         exit 0
     else
         warn "Installed version (${CURRENT_VERSION}) differs from target (${VERSION})"
@@ -270,5 +273,8 @@ log "  - Installed to: ${INSTALL_DIR}/gh"
 log "  - Installation method: Secure script with version checking"
 log ""
 log "GitHub CLI is ready to use!"
+
+# Output to stdout for hook display
+echo "✓ GitHub CLI v${INSTALLED_VERSION} installed successfully (checksum verified)"
 
 exit 0
