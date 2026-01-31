@@ -105,12 +105,11 @@ check_for_updates() {
 
             # Compare versions (simple string comparison works for x.y.z format)
             if [ "$latest_version" != "$VERSION" ]; then
-                # Output to stdout for hook visibility - concise 2-line format
-                echo "⚠️  Update available: v${VERSION} → v${latest_version}"
-
-                # Only show env var instruction if not in AUTO mode
+                # Output to stdout for hook visibility - concise 1-line format
                 if [ "$GH_VERSION_CONFIG" != "AUTO" ]; then
-                    echo "   Set GH_SETUP_VERSION=${latest_version} in environment variables"
+                    echo "⚠️  Update available: v${VERSION} → v${latest_version} - Set GH_SETUP_VERSION=${latest_version}"
+                else
+                    echo "⚠️  Update available: v${VERSION} → v${latest_version}"
                 fi
 
                 # Detailed warning to stderr for full context
