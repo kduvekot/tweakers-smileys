@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worship SVG - Pixel-Based Transition Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        h1 { margin-bottom: 20px; color: #333; }
+        h2 { margin: 40px 0 20px 0; color: #555; border-bottom: 3px solid #007bff; padding-bottom: 10px; }
+        .info {
+            background: #fff3cd;
+            border: 2px solid #856404;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .component-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .transition {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .state-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+            align-items: start;
+        }
+        .state-box {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+        .state-box h4 {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #495057;
+            font-weight: 600;
+        }
+        .state-box img {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            border: 1px solid #ddd;
+        }
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            font-size: 14px;
+        }
+        .diff-note {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover { background: #0056b3; }
+        .correction {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html?v=58abd1f" class="back-link">← Back to Main Preview</a>
+    
+    <h1>Worship SVG: Pixel-Based Transition Analysis</h1>
+    
+    <div class="info">
+        <h3>Pixel-Level Analysis Method</h3>
+        <p><strong>Process:</strong> Rendered worship SVG at different animation states (0% and 15%) to PNG at 4x size, then created pixel diffs.</p>
+        <p><strong>Red pixels:</strong> Indicate changes between states</p>
+        <p><strong>Transparent/No red:</strong> Pixels that stayed exactly the same</p>
+        <p><strong>States compared:</strong> 0% (normal/up) → 15% (bowing down)</p>
+    </div>
+
+    <div class="correction">
+        <h3>⚠️ IMPORTANT CORRECTION</h3>
+        <p><strong>Previous claim:</strong> "Face circle gets squished"</p>
+        <p><strong>Pixel diff shows:</strong> Face CIRCLE stays the same! Only the eyes and mouth INSIDE the circle move!</p>
+        <p>The face circles are NOT part of the animated group - they stay static while the features inside move down and get squished.</p>
+    </div>
+
+    <!-- FULL WORSHIP TRANSITION -->
+    <div class="component-section">
+        <h2>Full Worship Transition (All Components)</h2>
+        <div class="transition">
+            <h3>State 0% → State 15%</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (Normal)</h4>
+                    <img src="rendered-frames/state-0-full-mega.png?v=58abd1f" alt="State 0" width="340">
+                </div>
+                <div class="state-box">
+                    <h4>15% (Bowing)</h4>
+                    <img src="rendered-frames/state-15-full-mega.png?v=58abd1f" alt="State 15" width="340">
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Pixel Diff</h4>
+                    <img src="diffs/full-diff-0-to-15-mega.png?v=58abd1f" alt="Full Diff" width="340">
+                    <div class="explanation" style="text-align: left;">
+                        <strong>Red pixels show:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Both hands completely changed</li>
+                            <li>Face eyes moved</li>
+                            <li>Face mouth moved</li>
+                            <li>Face circle outline: NO CHANGE!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FACE ONLY -->
+    <div class="component-section">
+        <h2>1. Center Face Only</h2>
+        <div class="transition">
+            <h3>Face Transition: 0% → 15%</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (Normal)</h4>
+                    <img src="face-frames/face-0-mega.png?v=58abd1f" alt="Face 0" width="170">
+                </div>
+                <div class="state-box">
+                    <h4>15% (Bowing)</h4>
+                    <img src="face-frames/face-15-mega.png?v=58abd1f" alt="Face 15" width="170">
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Pixel Diff</h4>
+                    <img src="diffs/face-diff-0-to-15-mega.png?v=58abd1f" alt="Face Diff" width="170">
+                    <div class="explanation" style="text-align: left;">
+                        <strong>What ACTUALLY changes:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>✅ Eyes (red = moved down)</li>
+                            <li>✅ Mouth (red = moved down & changed)</li>
+                            <li>❌ Face circle: NO RED at top/bottom!</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Conclusion:</strong> The face CIRCLE doesn't change. Only the features INSIDE get moved down 8px and vertically squished to 50%.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT HAND -->
+    <div class="component-section">
+        <h2>2. Left Hand Only</h2>
+        <div class="transition">
+            <h3>Left Hand Transition: 0% → 15%</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (Up)</h4>
+                    <img src="lefthand-frames/lefthand-0-mega.png?v=58abd1f" alt="Left Hand 0" width="100">
+                </div>
+                <div class="state-box">
+                    <h4>15% (Down)</h4>
+                    <img src="lefthand-frames/lefthand-15-mega.png?v=58abd1f" alt="Left Hand 15" width="100">
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Pixel Diff</h4>
+                    <img src="diffs/lefthand-diff-0-to-15-mega.png?v=58abd1f" alt="Left Hand Diff" width="100">
+                    <div class="explanation" style="text-align: left;">
+                        <strong>Changes:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Entire hand is RED</li>
+                            <li>Y: 0 → +11px</li>
+                            <li>V-scale: 1 → 0.4</li>
+                            <li>Skew: 0 → 10deg</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT HAND -->
+    <div class="component-section">
+        <h2>3. Right Hand Only</h2>
+        <div class="transition">
+            <h3>Right Hand Transition: 0% → 15%</h3>
+            <div class="state-row">
+                <div class="state-box">
+                    <h4>0% (Up)</h4>
+                    <img src="righthand-frames/righthand-0-mega.png?v=58abd1f" alt="Right Hand 0" width="100">
+                </div>
+                <div class="state-box">
+                    <h4>15% (Down)</h4>
+                    <img src="righthand-frames/righthand-15-mega.png?v=58abd1f" alt="Right Hand 15" width="100">
+                </div>
+                <div class="state-box">
+                    <h4 class="diff-note">Pixel Diff</h4>
+                    <img src="diffs/righthand-diff-0-to-15-mega.png?v=58abd1f" alt="Right Hand Diff" width="100">
+                    <div class="explanation" style="text-align: left;">
+                        <strong>Changes:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Entire hand is RED</li>
+                            <li>Y: 0 → +11px</li>
+                            <li>V-scale: 1 → 0.4</li>
+                            <li>Skew: 0 → -10deg</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info" style="margin-top: 40px;">
+        <h3>Summary: What ACTUALLY Animates (Pixel-Level Truth)</h3>
+        
+        <h4 style="margin-top: 15px;">Center Face:</h4>
+        <ul style="margin-left: 20px; margin-top: 5px;">
+            <li><strong>Circle outline:</strong> STATIC (no red pixels)</li>
+            <li><strong>Eyes & mouth:</strong> Move down 8px and squish vertically to 50%</li>
+        </ul>
+        
+        <h4 style="margin-top: 15px;">Both Hands:</h4>
+        <ul style="margin-left: 20px; margin-top: 5px;">
+            <li><strong>Entire hands:</strong> All red pixels = complete transformation</li>
+            <li><strong>Movement:</strong> Down 11px + vertical squish to 40%</li>
+            <li><strong>Left hand:</strong> Skews +10deg (tilts right)</li>
+            <li><strong>Right hand:</strong> Skews -10deg (tilts left)</li>
+        </ul>
+        
+        <p style="margin-top: 15px;"><strong>Key Discovery:</strong> The face CIRCLE is NOT part of the animated group! Looking at the actual worship SVG, the circles are outside the <code>&lt;g&gt;</code> tag that has the transform. Only the rectangular eyes and the mouth path are inside the animated group.</p>
+    </div>
+
+    <a href="../lol-frame-transition-analysis.html?v=58abd1f" class="back-link" style="margin-top: 20px;">View LoL GIF Pixel Analysis →</a>
+</body>
+</html>
