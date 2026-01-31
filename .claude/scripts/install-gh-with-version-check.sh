@@ -17,7 +17,23 @@ set -u  # Exit on undefined variable
 set -o pipefail  # Exit on pipe failures
 
 # Configuration
-VERSION="${GH_SETUP_VERSION:-2.83.2}"
+GH_VERSION_CONFIG="${GH_SETUP_VERSION:-2.83.2}"
+
+# Support AUTO for automatic latest version
+if [ "$GH_VERSION_CONFIG" = "AUTO" ]; then
+    echo "[gh-install] AUTO mode: Fetching latest gh CLI version..." >&2
+    LATEST=$(curl -fsSL --max-time 5 https://api.github.com/repos/cli/cli/releases/latest 2>/dev/null | grep -o '"tag_name": *"[^"]*"' | cut -d'"' -f4 | tr -d 'v')
+    if [ -n "$LATEST" ]; then
+        VERSION="$LATEST"
+        echo "[gh-install] AUTO mode: Using latest version v${VERSION}" >&2
+    else
+        echo "[gh-install WARN] AUTO mode: Failed to fetch latest version, falling back to default" >&2
+        VERSION="2.83.2"
+    fi
+else
+    VERSION="$GH_VERSION_CONFIG"
+fi
+
 ARCH="amd64"
 INSTALL_DIR="${HOME}/.local/bin"
 BASE_URL="https://github.com/cli/cli/releases/download/v${VERSION}"
@@ -102,8 +118,13 @@ check_for_updates() {
                 warn "  Release notes:"
                 warn "  https://github.com/cli/cli/releases/tag/v${latest_version}"
                 warn ""
-                warn "  To update, change VERSION in .claude/install-gh-with-version-check.sh"
-                warn "  Or set: export GH_SETUP_VERSION=${latest_version}"
+                warn "  To update, add to Claude Code environment variables:"
+                warn "    GH_SETUP_VERSION=${latest_version}"
+                warn ""
+                warn "  Or set to AUTO for automatic latest version:"
+                warn "    GH_SETUP_VERSION=AUTO"
+                warn ""
+                warn "  (Settings → Environment → Environment variables)"
                 warn "════════════════════════════════════════════════════════════"
                 echo ""
             else
