@@ -114,21 +114,16 @@
         }
 
         /* Scale up SVGs to normalize face size */
-        /* Factors consider both viewBox dimensions AND actual face circle size */
-        /* Formula: (max(viewBox_w, viewBox_h) / 16) * (standard_face_diameter / actual_face_diameter) */
-        .scale-1-0625 { transform: scale(1.0625); }  /* devil, loveit */
+        /* Accounts for viewBox dimensions in both single-wide (120×120) and double-wide (240×120) containers */
+        .scale-1-0625 { transform: scale(1.0625); }  /* devil, loveit, worshippy (double-wide) */
         .scale-1-125 { transform: scale(1.125); }    /* bloos, rc5, tweakers */
-        .scale-1-1875 { transform: scale(1.1875); }  /* michel */
+        .scale-1-1875 { transform: scale(1.1875); }  /* michel, thumbsup (double-wide) */
         .scale-1-25 { transform: scale(1.25); }      /* confused, paard */
-        .scale-1-375 { transform: scale(1.375); }    /* vork */
+        .scale-1-375 { transform: scale(1.375); }    /* vork, devilish */
         .scale-1-5625 { transform: scale(1.5625); }  /* xmas */
         .scale-1-6875 { transform: scale(1.6875); }  /* henk */
         .scale-1-75 { transform: scale(1.75); }      /* yummie-beer */
-        .scale-2-125 { transform: scale(2.125); }    /* worshippy */
         .scale-2-25 { transform: scale(2.25); }      /* marrysmile */
-        .scale-2-375 { transform: scale(2.375); }    /* thumbsup */
-        .scale-2-7156 { transform: scale(2.7156); }  /* devilish (small face: r=4) */
-        .scale-3-16 { transform: scale(3.16); }      /* heart (tiny face: r=2.5) */
 
         .smiley-image-wide {
             width: 240px;
@@ -228,22 +223,22 @@
         <h2>New SVG Conversions <span class="badge">NEW</span></h2>
         <div class="smiley-grid">
             <div class="smiley-card">
-                <a href="conversion-history/yes-gif/index.html?v=1551a71">
-                    <img src="tweakers-smileys/new-svg/yes.svg?v=1551a71" alt="yes" class="smiley-image">
+                <a href="conversion-history/yes-gif/index.html?v=3492597">
+                    <img src="tweakers-smileys/new-svg/yes.svg?v=3492597" alt="yes" class="smiley-image">
                     <div class="smiley-name">yes</div>
                     <div class="smiley-type">SVG (Nodding)</div>
                 </a>
             </div>
             <div class="smiley-card">
-                <a href="no-conversion/index.html?v=1551a71">
-                    <img src="tweakers-smileys/new-svg/no.svg?v=1551a71" alt="no" class="smiley-image">
+                <a href="no-conversion/index.html?v=3492597">
+                    <img src="tweakers-smileys/new-svg/no.svg?v=3492597" alt="no" class="smiley-image">
                     <div class="smiley-name">no</div>
                     <div class="smiley-type">SVG (Head Shake)</div>
                 </a>
             </div>
             <div class="smiley-card smiley-card-wide">
-                <a href="lol-conversion/index.html?v=1551a71">
-                    <img src="tweakers-smileys/new-svg/lol.svg?v=1551a71" alt="lol" class="smiley-image-wide">
+                <a href="lol-conversion/index.html?v=3492597">
+                    <img src="tweakers-smileys/new-svg/lol.svg?v=3492597" alt="lol" class="smiley-image-wide">
                     <div class="smiley-name">lol</div>
                     <div class="smiley-type">SVG (Laughing)</div>
                 </a>
@@ -252,88 +247,88 @@
 
         <h2>SVG Smileys (Current Collection)</h2>
         <div class="smiley-grid">
-            <div class="smiley-card"><img src="tweakers-smileys/svg/biggrin.svg?v=1551a71" alt="biggrin" class="smiley-image"><div class="smiley-name">biggrin</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/clown.svg?v=1551a71" alt="clown" class="smiley-image"><div class="smiley-name">clown</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/confused.svg?v=1551a71" alt="confused" class="smiley-image scale-1-25"><div class="smiley-name">confused</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/coool.svg?v=1551a71" alt="coool" class="smiley-image"><div class="smiley-name">coool</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/cry.svg?v=1551a71" alt="cry" class="smiley-image"><div class="smiley-name">cry</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/devil.svg?v=1551a71" alt="devil" class="smiley-image scale-1-0625"><div class="smiley-name">devil</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/devilish.svg?v=1551a71" alt="devilish" class="smiley-image scale-2-7156"><div class="smiley-name">devilish</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/eerie.svg?v=1551a71" alt="eerie" class="smiley-image"><div class="smiley-name">eerie</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/emo.svg?v=1551a71" alt="emo" class="smiley-image"><div class="smiley-name">emo</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/frown.svg?v=1551a71" alt="frown" class="smiley-image"><div class="smiley-name">frown</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/heart.svg?v=1551a71" alt="heart" class="smiley-image scale-3-16"><div class="smiley-name">heart</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/huh.svg?v=1551a71" alt="huh" class="smiley-image"><div class="smiley-name">huh</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/kwijl.svg?v=1551a71" alt="kwijl" class="smiley-image"><div class="smiley-name">kwijl</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/loveit.svg?v=1551a71" alt="loveit" class="smiley-image scale-1-0625"><div class="smiley-name">loveit</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/michel.svg?v=1551a71" alt="michel" class="smiley-image scale-1-1875"><div class="smiley-name">michel</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/nerd.svg?v=1551a71" alt="nerd" class="smiley-image"><div class="smiley-name">nerd</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/nosmile2.svg?v=1551a71" alt="nosmile2" class="smiley-image"><div class="smiley-name">nosmile2</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/ok.svg?v=1551a71" alt="ok" class="smiley-image"><div class="smiley-name">ok</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/paard.svg?v=1551a71" alt="paard" class="smiley-image scale-1-25"><div class="smiley-name">paard</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/puh.svg?v=1551a71" alt="puh" class="smiley-image"><div class="smiley-name">puh</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/puh2.svg?v=1551a71" alt="puh2" class="smiley-image"><div class="smiley-name">puh2</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/rc5.svg?v=1551a71" alt="rc5" class="smiley-image scale-1-125"><div class="smiley-name">rc5</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/redface.svg?v=1551a71" alt="redface" class="smiley-image"><div class="smiley-name">redface</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/sadley.svg?v=1551a71" alt="sadley" class="smiley-image"><div class="smiley-name">sadley</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/shiny.svg?v=1551a71" alt="shiny" class="smiley-image"><div class="smiley-name">shiny</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/smile.svg?v=1551a71" alt="smile" class="smiley-image"><div class="smiley-name">smile</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/tweakers.svg?v=1551a71" alt="tweakers" class="smiley-image scale-1-125"><div class="smiley-name">tweakers</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/unhappy.svg?v=1551a71" alt="unhappy" class="smiley-image"><div class="smiley-name">unhappy</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/vork.svg?v=1551a71" alt="vork" class="smiley-image scale-1-375"><div class="smiley-name">vork</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/wink.svg?v=1551a71" alt="wink" class="smiley-image"><div class="smiley-name">wink</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/yummie-beer.svg?v=1551a71" alt="yummie-beer" class="smiley-image scale-1-75"><div class="smiley-name">yummie-beer</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/yummie.svg?v=1551a71" alt="yummie" class="smiley-image"><div class="smiley-name">yummie</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/bloos.svg?v=1551a71" alt="bloos" class="smiley-image scale-1-125"><div class="smiley-name">bloos</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/henk.svg?v=1551a71" alt="henk" class="smiley-image scale-1-6875"><div class="smiley-name">henk</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/marrysmile.svg?v=1551a71" alt="marrysmile" class="smiley-image scale-2-25"><div class="smiley-name">marrysmile</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/thumbsup.svg?v=1551a71" alt="thumbsup" class="smiley-image-wide scale-2-375"><div class="smiley-name">thumbsup</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/worshippy.svg?v=1551a71" alt="worshippy" class="smiley-image-wide scale-2-125"><div class="smiley-name">worshippy</div><div class="smiley-type">SVG</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/svg/xmas.svg?v=1551a71" alt="xmas" class="smiley-image scale-1-5625"><div class="smiley-name">xmas</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/biggrin.svg?v=3492597" alt="biggrin" class="smiley-image"><div class="smiley-name">biggrin</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/clown.svg?v=3492597" alt="clown" class="smiley-image"><div class="smiley-name">clown</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/confused.svg?v=3492597" alt="confused" class="smiley-image scale-1-25"><div class="smiley-name">confused</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/coool.svg?v=3492597" alt="coool" class="smiley-image"><div class="smiley-name">coool</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/cry.svg?v=3492597" alt="cry" class="smiley-image"><div class="smiley-name">cry</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/devil.svg?v=3492597" alt="devil" class="smiley-image scale-1-0625"><div class="smiley-name">devil</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/devilish.svg?v=3492597" alt="devilish" class="smiley-image scale-1-375"><div class="smiley-name">devilish</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/eerie.svg?v=3492597" alt="eerie" class="smiley-image"><div class="smiley-name">eerie</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/emo.svg?v=3492597" alt="emo" class="smiley-image"><div class="smiley-name">emo</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/frown.svg?v=3492597" alt="frown" class="smiley-image"><div class="smiley-name">frown</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/heart.svg?v=3492597" alt="heart" class="smiley-image"><div class="smiley-name">heart</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/huh.svg?v=3492597" alt="huh" class="smiley-image"><div class="smiley-name">huh</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/kwijl.svg?v=3492597" alt="kwijl" class="smiley-image"><div class="smiley-name">kwijl</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/loveit.svg?v=3492597" alt="loveit" class="smiley-image scale-1-0625"><div class="smiley-name">loveit</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/michel.svg?v=3492597" alt="michel" class="smiley-image scale-1-1875"><div class="smiley-name">michel</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/nerd.svg?v=3492597" alt="nerd" class="smiley-image"><div class="smiley-name">nerd</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/nosmile2.svg?v=3492597" alt="nosmile2" class="smiley-image"><div class="smiley-name">nosmile2</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/ok.svg?v=3492597" alt="ok" class="smiley-image"><div class="smiley-name">ok</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/paard.svg?v=3492597" alt="paard" class="smiley-image scale-1-25"><div class="smiley-name">paard</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/puh.svg?v=3492597" alt="puh" class="smiley-image"><div class="smiley-name">puh</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/puh2.svg?v=3492597" alt="puh2" class="smiley-image"><div class="smiley-name">puh2</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/rc5.svg?v=3492597" alt="rc5" class="smiley-image scale-1-125"><div class="smiley-name">rc5</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/redface.svg?v=3492597" alt="redface" class="smiley-image"><div class="smiley-name">redface</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/sadley.svg?v=3492597" alt="sadley" class="smiley-image"><div class="smiley-name">sadley</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/shiny.svg?v=3492597" alt="shiny" class="smiley-image"><div class="smiley-name">shiny</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/smile.svg?v=3492597" alt="smile" class="smiley-image"><div class="smiley-name">smile</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/tweakers.svg?v=3492597" alt="tweakers" class="smiley-image scale-1-125"><div class="smiley-name">tweakers</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/unhappy.svg?v=3492597" alt="unhappy" class="smiley-image"><div class="smiley-name">unhappy</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/vork.svg?v=3492597" alt="vork" class="smiley-image scale-1-375"><div class="smiley-name">vork</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/wink.svg?v=3492597" alt="wink" class="smiley-image"><div class="smiley-name">wink</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/yummie-beer.svg?v=3492597" alt="yummie-beer" class="smiley-image scale-1-75"><div class="smiley-name">yummie-beer</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/yummie.svg?v=3492597" alt="yummie" class="smiley-image"><div class="smiley-name">yummie</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/bloos.svg?v=3492597" alt="bloos" class="smiley-image scale-1-125"><div class="smiley-name">bloos</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/henk.svg?v=3492597" alt="henk" class="smiley-image scale-1-6875"><div class="smiley-name">henk</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/marrysmile.svg?v=3492597" alt="marrysmile" class="smiley-image scale-2-25"><div class="smiley-name">marrysmile</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/thumbsup.svg?v=3492597" alt="thumbsup" class="smiley-image-wide scale-1-1875"><div class="smiley-name">thumbsup</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/svg/worshippy.svg?v=3492597" alt="worshippy" class="smiley-image-wide scale-1-0625"><div class="smiley-name">worshippy</div><div class="smiley-type">SVG</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/svg/xmas.svg?v=3492597" alt="xmas" class="smiley-image scale-1-5625"><div class="smiley-name">xmas</div><div class="smiley-type">SVG</div></div>
         </div>
 
         <h2>Animated GIF Smileys (To Be Converted)</h2>
         <div class="smiley-grid">
-            <div class="smiley-card"><img src="tweakers-smileys/gif/belgie.gif?v=1551a71" alt="belgie" class="smiley-image"><div class="smiley-name">belgie</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/bonk.gif?v=1551a71" alt="bonk" class="smiley-image"><div class="smiley-name">bonk</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/bonk3.gif?v=1551a71" alt="bonk3" class="smiley-image"><div class="smiley-name">bonk3</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/bye.gif?v=1551a71" alt="bye" class="smiley-image"><div class="smiley-name">bye</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/facepalm.gif?v=1551a71" alt="facepalm" class="smiley-image"><div class="smiley-name">facepalm</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/farewell.gif?v=1551a71" alt="farewell" class="smiley-image"><div class="smiley-name">farewell</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/frusty.gif?v=1551a71" alt="frusty" class="smiley-image"><div class="smiley-name">frusty</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/hup.gif?v=1551a71" alt="hup" class="smiley-image"><div class="smiley-name">hup</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/hypocrite.gif?v=1551a71" alt="hypocrite" class="smiley-image"><div class="smiley-name">hypocrite</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/knuf.gif?v=1551a71" alt="knuf" class="smiley-image"><div class="smiley-name">knuf</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/loveys.gif?v=1551a71" alt="loveys" class="smiley-image"><div class="smiley-name">loveys</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/nopompom.gif?v=1551a71" alt="nopompom" class="smiley-image"><div class="smiley-name">nopompom</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/nosmile.gif?v=1551a71" alt="nosmile" class="smiley-image"><div class="smiley-name">nosmile</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/oranje.gif?v=1551a71" alt="oranje" class="smiley-image"><div class="smiley-name">oranje</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/pompom.gif?v=1551a71" alt="pompom" class="smiley-image"><div class="smiley-name">pompom</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/pukey.gif?v=1551a71" alt="pukey" class="smiley-image"><div class="smiley-name">pukey</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/rozewolk.gif?v=1551a71" alt="rozewolk" class="smiley-image"><div class="smiley-name">rozewolk</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/shadey.gif?v=1551a71" alt="shadey" class="smiley-image"><div class="smiley-name">shadey</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/shutup.gif?v=1551a71" alt="shutup" class="smiley-image"><div class="smiley-name">shutup</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/sintsmiley.gif?v=1551a71" alt="sintsmiley" class="smiley-image"><div class="smiley-name">sintsmiley</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/sleepey.gif?v=1551a71" alt="sleepey" class="smiley-image"><div class="smiley-name">sleepey</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/sleephappy.gif?v=1551a71" alt="sleephappy" class="smiley-image"><div class="smiley-name">sleephappy</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/gif/yawnee.gif?v=1551a71" alt="yawnee" class="smiley-image"><div class="smiley-name">yawnee</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/belgie.gif?v=3492597" alt="belgie" class="smiley-image"><div class="smiley-name">belgie</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/bonk.gif?v=3492597" alt="bonk" class="smiley-image"><div class="smiley-name">bonk</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/bonk3.gif?v=3492597" alt="bonk3" class="smiley-image"><div class="smiley-name">bonk3</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/bye.gif?v=3492597" alt="bye" class="smiley-image"><div class="smiley-name">bye</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/facepalm.gif?v=3492597" alt="facepalm" class="smiley-image"><div class="smiley-name">facepalm</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/farewell.gif?v=3492597" alt="farewell" class="smiley-image"><div class="smiley-name">farewell</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/frusty.gif?v=3492597" alt="frusty" class="smiley-image"><div class="smiley-name">frusty</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/hup.gif?v=3492597" alt="hup" class="smiley-image"><div class="smiley-name">hup</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/hypocrite.gif?v=3492597" alt="hypocrite" class="smiley-image"><div class="smiley-name">hypocrite</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/knuf.gif?v=3492597" alt="knuf" class="smiley-image"><div class="smiley-name">knuf</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/loveys.gif?v=3492597" alt="loveys" class="smiley-image"><div class="smiley-name">loveys</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/nopompom.gif?v=3492597" alt="nopompom" class="smiley-image"><div class="smiley-name">nopompom</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/nosmile.gif?v=3492597" alt="nosmile" class="smiley-image"><div class="smiley-name">nosmile</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/oranje.gif?v=3492597" alt="oranje" class="smiley-image"><div class="smiley-name">oranje</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/pompom.gif?v=3492597" alt="pompom" class="smiley-image"><div class="smiley-name">pompom</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/pukey.gif?v=3492597" alt="pukey" class="smiley-image"><div class="smiley-name">pukey</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/rozewolk.gif?v=3492597" alt="rozewolk" class="smiley-image"><div class="smiley-name">rozewolk</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/shadey.gif?v=3492597" alt="shadey" class="smiley-image"><div class="smiley-name">shadey</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/shutup.gif?v=3492597" alt="shutup" class="smiley-image"><div class="smiley-name">shutup</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/sintsmiley.gif?v=3492597" alt="sintsmiley" class="smiley-image"><div class="smiley-name">sintsmiley</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/sleepey.gif?v=3492597" alt="sleepey" class="smiley-image"><div class="smiley-name">sleepey</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/sleephappy.gif?v=3492597" alt="sleephappy" class="smiley-image"><div class="smiley-name">sleephappy</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/gif/yawnee.gif?v=3492597" alt="yawnee" class="smiley-image"><div class="smiley-name">yawnee</div><div class="smiley-type">GIF</div></div>
             <div class="smiley-card smiley-card-converted">
-                <a href="conversion-history/yes-gif/development.html?v=1551a71">
-                    <img src="tweakers-smileys/gif/yes.gif?v=1551a71" alt="yes" class="smiley-image">
+                <a href="conversion-history/yes-gif/development.html?v=3492597">
+                    <img src="tweakers-smileys/gif/yes.gif?v=3492597" alt="yes" class="smiley-image">
                     <div class="smiley-name">yes ✓</div>
                     <div class="smiley-type">GIF → SVG</div>
                 </a>
             </div>
             <div class="smiley-card smiley-card-converted">
-                <a href="no-conversion/index.html?v=1551a71">
-                    <img src="tweakers-smileys/gif/no.gif?v=1551a71" alt="no" class="smiley-image">
+                <a href="no-conversion/index.html?v=3492597">
+                    <img src="tweakers-smileys/gif/no.gif?v=3492597" alt="no" class="smiley-image">
                     <div class="smiley-name">no ✓</div>
                     <div class="smiley-type">GIF → SVG</div>
                 </a>
             </div>
             <div class="smiley-card smiley-card-wide smiley-card-converted">
-                <a href="lol-conversion/index.html?v=1551a71">
-                    <img src="tweakers-smileys/gif/lol.gif?v=1551a71" alt="lol" class="smiley-image-wide">
+                <a href="lol-conversion/index.html?v=3492597">
+                    <img src="tweakers-smileys/gif/lol.gif?v=3492597" alt="lol" class="smiley-image-wide">
                     <div class="smiley-name">lol ✓</div>
                     <div class="smiley-type">GIF → SVG</div>
                 </a>
@@ -342,41 +337,41 @@
 
         <h2>Legacy GIF Smileys <span class="badge badge-legacy">LEGACY</span></h2>
         <div class="smiley-grid">
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/biggrin.gif?v=1551a71" alt="biggrin" class="smiley-image"><div class="smiley-name">biggrin</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/clown.gif?v=1551a71" alt="clown" class="smiley-image"><div class="smiley-name">clown</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/confused.gif?v=1551a71" alt="confused" class="smiley-image"><div class="smiley-name">confused</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/coool.gif?v=1551a71" alt="coool" class="smiley-image"><div class="smiley-name">coool</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/cry.gif?v=1551a71" alt="cry" class="smiley-image"><div class="smiley-name">cry</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/devil.gif?v=1551a71" alt="devil" class="smiley-image"><div class="smiley-name">devil</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/devilish.gif?v=1551a71" alt="devilish" class="smiley-image"><div class="smiley-name">devilish</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/eerie.gif?v=1551a71" alt="eerie" class="smiley-image"><div class="smiley-name">eerie</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/emo.gif?v=1551a71" alt="emo" class="smiley-image"><div class="smiley-name">emo</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/frown.gif?v=1551a71" alt="frown" class="smiley-image"><div class="smiley-name">frown</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/heart.gif?v=1551a71" alt="heart" class="smiley-image"><div class="smiley-name">heart</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/huh.gif?v=1551a71" alt="huh" class="smiley-image"><div class="smiley-name">huh</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/kwijl.gif?v=1551a71" alt="kwijl" class="smiley-image"><div class="smiley-name">kwijl</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/loveit.gif?v=1551a71" alt="loveit" class="smiley-image"><div class="smiley-name">loveit</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/michel.gif?v=1551a71" alt="michel" class="smiley-image"><div class="smiley-name">michel</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/nerd.gif?v=1551a71" alt="nerd" class="smiley-image"><div class="smiley-name">nerd</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/nosmile2.gif?v=1551a71" alt="nosmile2" class="smiley-image"><div class="smiley-name">nosmile2</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/paard.gif?v=1551a71" alt="paard" class="smiley-image"><div class="smiley-name">paard</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/puh.gif?v=1551a71" alt="puh" class="smiley-image"><div class="smiley-name">puh</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/puh2.gif?v=1551a71" alt="puh2" class="smiley-image"><div class="smiley-name">puh2</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/rc5.gif?v=1551a71" alt="rc5" class="smiley-image"><div class="smiley-name">rc5</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/redface.gif?v=1551a71" alt="redface" class="smiley-image"><div class="smiley-name">redface</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/sadley.gif?v=1551a71" alt="sadley" class="smiley-image"><div class="smiley-name">sadley</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/shiny.gif?v=1551a71" alt="shiny" class="smiley-image"><div class="smiley-name">shiny</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/smile.gif?v=1551a71" alt="smile" class="smiley-image"><div class="smiley-name">smile</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/unhappy.gif?v=1551a71" alt="unhappy" class="smiley-image"><div class="smiley-name">unhappy</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/vork.gif?v=1551a71" alt="vork" class="smiley-image"><div class="smiley-name">vork</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/wink.gif?v=1551a71" alt="wink" class="smiley-image"><div class="smiley-name">wink</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/yummie-beer.gif?v=1551a71" alt="yummie-beer" class="smiley-image"><div class="smiley-name">yummie-beer</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card"><img src="tweakers-smileys/old-gif/yummie.gif?v=1551a71" alt="yummie" class="smiley-image"><div class="smiley-name">yummie</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/bloos.gif?v=1551a71" alt="bloos" class="smiley-image-wide"><div class="smiley-name">bloos</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/marrysmile.gif?v=1551a71" alt="marrysmile" class="smiley-image-wide"><div class="smiley-name">marrysmile</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/thumbsup.gif?v=1551a71" alt="thumbsup" class="smiley-image-wide"><div class="smiley-name">thumbsup</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/worshippy.gif?v=1551a71" alt="worshippy" class="smiley-image-wide"><div class="smiley-name">worshippy</div><div class="smiley-type">GIF</div></div>
-            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/xmas.gif?v=1551a71" alt="xmas" class="smiley-image-wide"><div class="smiley-name">xmas</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/biggrin.gif?v=3492597" alt="biggrin" class="smiley-image"><div class="smiley-name">biggrin</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/clown.gif?v=3492597" alt="clown" class="smiley-image"><div class="smiley-name">clown</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/confused.gif?v=3492597" alt="confused" class="smiley-image"><div class="smiley-name">confused</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/coool.gif?v=3492597" alt="coool" class="smiley-image"><div class="smiley-name">coool</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/cry.gif?v=3492597" alt="cry" class="smiley-image"><div class="smiley-name">cry</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/devil.gif?v=3492597" alt="devil" class="smiley-image"><div class="smiley-name">devil</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/devilish.gif?v=3492597" alt="devilish" class="smiley-image"><div class="smiley-name">devilish</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/eerie.gif?v=3492597" alt="eerie" class="smiley-image"><div class="smiley-name">eerie</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/emo.gif?v=3492597" alt="emo" class="smiley-image"><div class="smiley-name">emo</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/frown.gif?v=3492597" alt="frown" class="smiley-image"><div class="smiley-name">frown</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/heart.gif?v=3492597" alt="heart" class="smiley-image"><div class="smiley-name">heart</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/huh.gif?v=3492597" alt="huh" class="smiley-image"><div class="smiley-name">huh</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/kwijl.gif?v=3492597" alt="kwijl" class="smiley-image"><div class="smiley-name">kwijl</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/loveit.gif?v=3492597" alt="loveit" class="smiley-image"><div class="smiley-name">loveit</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/michel.gif?v=3492597" alt="michel" class="smiley-image"><div class="smiley-name">michel</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/nerd.gif?v=3492597" alt="nerd" class="smiley-image"><div class="smiley-name">nerd</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/nosmile2.gif?v=3492597" alt="nosmile2" class="smiley-image"><div class="smiley-name">nosmile2</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/paard.gif?v=3492597" alt="paard" class="smiley-image"><div class="smiley-name">paard</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/puh.gif?v=3492597" alt="puh" class="smiley-image"><div class="smiley-name">puh</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/puh2.gif?v=3492597" alt="puh2" class="smiley-image"><div class="smiley-name">puh2</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/rc5.gif?v=3492597" alt="rc5" class="smiley-image"><div class="smiley-name">rc5</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/redface.gif?v=3492597" alt="redface" class="smiley-image"><div class="smiley-name">redface</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/sadley.gif?v=3492597" alt="sadley" class="smiley-image"><div class="smiley-name">sadley</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/shiny.gif?v=3492597" alt="shiny" class="smiley-image"><div class="smiley-name">shiny</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/smile.gif?v=3492597" alt="smile" class="smiley-image"><div class="smiley-name">smile</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/unhappy.gif?v=3492597" alt="unhappy" class="smiley-image"><div class="smiley-name">unhappy</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/vork.gif?v=3492597" alt="vork" class="smiley-image"><div class="smiley-name">vork</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/wink.gif?v=3492597" alt="wink" class="smiley-image"><div class="smiley-name">wink</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/yummie-beer.gif?v=3492597" alt="yummie-beer" class="smiley-image"><div class="smiley-name">yummie-beer</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card"><img src="tweakers-smileys/old-gif/yummie.gif?v=3492597" alt="yummie" class="smiley-image"><div class="smiley-name">yummie</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/bloos.gif?v=3492597" alt="bloos" class="smiley-image-wide"><div class="smiley-name">bloos</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/marrysmile.gif?v=3492597" alt="marrysmile" class="smiley-image-wide"><div class="smiley-name">marrysmile</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/thumbsup.gif?v=3492597" alt="thumbsup" class="smiley-image-wide"><div class="smiley-name">thumbsup</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/worshippy.gif?v=3492597" alt="worshippy" class="smiley-image-wide"><div class="smiley-name">worshippy</div><div class="smiley-type">GIF</div></div>
+            <div class="smiley-card smiley-card-wide"><img src="tweakers-smileys/old-gif/xmas.gif?v=3492597" alt="xmas" class="smiley-image-wide"><div class="smiley-name">xmas</div><div class="smiley-type">GIF</div></div>
         </div>
     </div>
 </body>
