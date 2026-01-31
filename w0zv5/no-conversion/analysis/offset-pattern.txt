@@ -1,0 +1,51 @@
+=== HORIZONTAL OFFSET PATTERN ===
+
+Frame-by-Frame X-Offset Visualization:
+(* = unique frame, D = duplicate)
+
+Offset:  0   1   2   3   4   (pixels right from center)
+         |   |   |   |   |
+Frame 0  *                   CENTER
+Frame 1              *       Right +3
+Frame 2          *           Right +2
+Frame 3      *               Right +1  
+Frame 4      D               Right +1 (dup of 3)
+Frame 5          *           Right +2
+Frame 6              *       Right +3
+Frame 7                  *   Right +4 MAX
+Frame 8                  D   Right +4 (dup of 7)
+Frame 9              D       Right +3 (dup of 6)
+Frame10          *           Right +2
+Frame11      *               Right +1
+Frame12      D               Right +1 (dup of 11)
+Frame13          D           Right +2 (dup of 10)
+Frame14              D       Right +3 (dup of 6)
+Frame15                  *   Right +4 MAX
+Frame16                  D   Right +4 (dup of 15)
+Frame17              *       Right +3
+Frame18          D           Right +2 (dup of 2)
+Frame19      D               Right +1 (dup of 3)
+Frame20      D               Right +1 (dup of 3/4)
+Frame21          D           Right +2 (dup of 2)
+
+Motion Pattern:
+              MAX RIGHT
+                  ↑
+    CENTER → → → → → 
+       ↑             ↓
+       ← ← ← ← ← ← ← 
+              ↓
+           MAX RIGHT (again)
+              ↓
+       → → → → →
+       ↑        ↓
+       ← ← ← ← ←
+
+Simplified: 0 → 3 → 2 → 1 → 2 → 3 → 4 → 3 → 2 → 1 → 2 → 3 → 4 → 3 → 2 → 1 → 2
+
+The pattern shows:
+- Starts at center (0)
+- Jumps right to +3
+- Oscillates: reducing to +1, back up to +4 (max)
+- Then repeats the oscillation
+- Creates a "shaking" rhythm with holds at extreme (+4) positions

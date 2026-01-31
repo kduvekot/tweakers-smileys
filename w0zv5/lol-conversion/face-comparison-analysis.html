@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Variation Comparison - Actual Size</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .comparison {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .comparison h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .faces-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .face-item {
+            text-align: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .face-item.winner {
+            background: #e8f4f8;
+            border: 2px solid #0066cc;
+        }
+
+        .face-item h3 {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .face-item p {
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .face-item img {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            border: 2px solid #ddd;
+            background: white;
+        }
+
+        .side-by-side {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .side-by-side h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .side-by-side img {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .analysis {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .analysis h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .analysis ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .analysis li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .winner-badge {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Face Variation Comparison - Actual Size</h1>
+    <p class="subtitle">Comparing SVG face variations with original GIF at 16×16px</p>
+
+    <div class="side-by-side">
+        <h2>All Faces Side-by-Side (10x magnified)</h2>
+        <img src="face-comparison-actual-size.png?v=37506a2" width="750" height="150">
+        <p style="margin-top: 15px; color: #666;">Left to right: Original GIF, Variation 1 (Y=10), Variation 2 (Y=11), Variation 3 (Y=12), Variation 4 (Y=13)</p>
+    </div>
+
+    <div class="comparison">
+        <h2>Individual Face Comparisons (10x magnified)</h2>
+        <div class="faces-grid">
+            <div class="face-item">
+                <h3>Original GIF</h3>
+                <p>From lol.gif</p>
+                <img src="frames/lol-gif-face-only.png?v=37506a2" width="150" height="150">
+            </div>
+
+            <div class="face-item">
+                <h3>Variation 1</h3>
+                <p>Eyes Y=10</p>
+                <img src="lol-face-variation-1-actual-size.png?v=37506a2" width="150" height="150">
+                <p style="margin-top: 5px; color: #999;">Too high</p>
+            </div>
+
+            <div class="face-item">
+                <h3>Variation 2</h3>
+                <p>Eyes Y=11</p>
+                <img src="lol-face-variation-2-actual-size.png?v=37506a2" width="150" height="150">
+                <p style="margin-top: 5px; color: #999;">Still high</p>
+            </div>
+
+            <div class="face-item">
+                <h3>Variation 3</h3>
+                <p>Eyes Y=12</p>
+                <img src="lol-face-variation-3-actual-size.png?v=37506a2" width="150" height="150">
+                <p style="margin-top: 5px; color: #999;">Close</p>
+            </div>
+
+            <div class="face-item winner">
+                <h3>Variation 4 <span class="winner-badge">BEST MATCH</span></h3>
+                <p>Eyes Y=13</p>
+                <img src="lol-face-variation-4-actual-size.png?v=37506a2" width="150" height="150">
+                <p style="margin-top: 5px; color: #0066cc; font-weight: bold;">Closest to original!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis">
+        <h2>Analysis</h2>
+        <ul>
+            <li><strong>Winner:</strong> Variation 4 (Y=13) most closely matches the original GIF eye position</li>
+            <li>The original GIF has eyes positioned very low, almost at the bottom of the face circle</li>
+            <li>Variation 1 (Y=10) and Variation 2 (Y=11) have eyes too high up</li>
+            <li>Variation 3 (Y=12) is close but still slightly higher than the original</li>
+            <li>Variation 4 (Y=13) matches the extreme low position seen in the GIF</li>
+            <li>All variations use half-height eyes (1px) for proper squinting effect</li>
+        </ul>
+    </div>
+</body>
+</html>
