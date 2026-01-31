@@ -1,0 +1,38 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun x gh-setup-hooks@2.0.0",
+            "timeout": 120,
+            "description": "Install GitHub CLI v2.83.2 - SECURITY: Version pinned to prevent auto-updates"
+          }
+        ]
+      }
+    ]
+  },
+  "_security_notes": {
+    "package_version": "2.0.0",
+    "last_audit": "2026-01-31",
+    "risks": [
+      "Package has non-blocking checksum verification",
+      "No GPG signature verification",
+      "Single maintainer (oikon48)"
+    ],
+    "mitigations": [
+      "Version pinned to prevent automatic updates",
+      "Network should be restricted to Custom mode",
+      "Whitelist: github.com, api.github.com, release-assets.githubusercontent.com",
+      "Review package updates before upgrading"
+    ],
+    "alternatives": [
+      "Fork package and self-host",
+      "Use manual installation script in .claude/install-gh.sh",
+      "Request pre-installed gh in Claude Code environments"
+    ],
+    "source": "https://github.com/oikon48/gh-setup-hooks",
+    "documentation": "See GH_SETUP_HOOKS_SECURITY_REPORT.md"
+  }
+}
