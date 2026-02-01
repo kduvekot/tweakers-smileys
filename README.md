@@ -1,4 +1,4 @@
-# Tweakers Smileys Collection
+# Tweakers Smileys Collection 
 
 Complete collection of all Tweakers forum smileys, including current and legacy versions.
 
