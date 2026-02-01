@@ -1,0 +1,25 @@
+<svg width="15" height="15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(7.5 7.5) rotate(60) scale(10)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background circle with gradient -->
+  <circle cx="7.5" cy="7.5" r="7" fill="url(#a)"/>
+
+  <!-- Outline -->
+  <circle cx="7.5" cy="7.5" r="6.8" stroke="#000" stroke-opacity=".9" stroke-width=".7" fill="none"/>
+
+  <!-- Left eye -->
+  <rect x="4.5" y="3.5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Right eye -->
+  <rect x="8.5" y="3.5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Smile -->
+  <path d="M11 7c-.1.6-.7 1.8-1.9 2.2-.6.2-1.1.2-2 .2M4 7c.1.6.7 1.8 1.9 2.2.6.2 1.1.2 2 .2" stroke="#000" stroke-opacity=".9" stroke-width="1"/>
+</svg>
