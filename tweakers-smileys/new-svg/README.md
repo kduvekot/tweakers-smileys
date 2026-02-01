@@ -29,5 +29,5 @@ All new SVGs follow the established Tweakers pattern:
 
 ## See Also
 
-- **ANIMATION_COMPARISON.md** - Detailed analysis of animation patterns
-- **test-yes-animation.html** - Test page for comparing GIF vs SVG
+- **../../conversion-history/yes-gif/ANIMATION_COMPARISON.md** - Detailed analysis of animation patterns
+- **../../conversion-history/yes-gif/test-yes-animation.html** - Test page for comparing GIF vs SVG

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extract Worship Face Positions</title>
+    <style>
+        body { padding: 40px; background: #f0f0f0; font-family: monospace; }
+        .container { display: flex; gap: 40px; flex-wrap: wrap; }
+        .position { background: white; padding: 20px; border: 2px solid #333; }
+        h3 { margin: 0 0 10px 0; }
+        .info { font-size: 12px; color: #666; margin-top: 10px; }
+        .comparison { margin-top: 40px; padding: 20px; background: #fff3cd; border: 2px solid #856404; }
+    </style>
+</head>
+<body>
+    <h1>Worship Face - All Animation Positions</h1>
+    
+    <div class="container">
+        <!-- Position 1: Normal/Up (0%, 65%, 100%) -->
+        <div class="position">
+            <h3>Position 1: NORMAL (0%, 65%, 100%)</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 17 16">
+                <defs>
+                    <radialGradient id="g1" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                        <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                    </radialGradient>
+                </defs>
+                <g transform="translate(0,0) scale(1,1)">
+                    <circle cx="8" cy="8" r="7.9" fill="url(#g1)" transform="translate(0.5)"/>
+                    <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75" transform="translate(0.5)"/>
+                    <rect x="6" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                    <rect x="10" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                    <path d="M13.25 7.75c-.1.75-.8 2.043-2.17 2.5-.75.25-1.33.25-2.33.25M4.25 7.75c.1.75.8 2.043 2.17 2.5.75.25 1.33.25 2.33.25" fill="none" stroke="#000" stroke-width="1.1" stroke-opacity=".9"/>
+                </g>
+            </svg>
+            <div class="info">transform: translate(0,0) scale(1,1)<br>Face looking straight</div>
+        </div>
+        
+        <!-- Position 2: Down (15%, 50%) -->
+        <div class="position">
+            <h3>Position 2: DOWN (15%, 50%)</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 17 16">
+                <defs>
+                    <radialGradient id="g2" cx="0" cy="0" r="13" gradientTransform="rotate(60 .72 5.4)" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#fafae3"/><stop offset=".23" stop-color="#ffffa2"/>
+                        <stop offset=".66" stop-color="#ffef06"/><stop offset="1" stop-color="#c7b300"/>
+                    </radialGradient>
+                </defs>
+                <g transform="translate(0,8) scale(1,0.5)">
+                    <circle cx="8" cy="8" r="7.9" fill="url(#g2)" transform="translate(0.5)"/>
+                    <circle cx="8" cy="8" r="7.63" fill="none" stroke="#000" stroke-opacity=".9" stroke-width=".75" transform="translate(0.5)"/>
+                    <rect x="6" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                    <rect x="10" y="4" width="2" height="2" rx=".5" fill-opacity=".9"/>
+                    <path d="M13.25 7.75c-.1.75-.8 2.043-2.17 2.5-.75.25-1.33.25-2.33.25M4.25 7.75c.1.75.8 2.043 2.17 2.5.75.25 1.33.25 2.33.25" fill="none" stroke="#000" stroke-width="1.1" stroke-opacity=".9"/>
+                </g>
+            </svg>
+            <div class="info">transform: translate(0,8px) scale(1,0.5)<br>Face bowing/looking down</div>
+        </div>
+    </div>
+    
+    <div class="comparison">
+        <h2>Compare with LoL GIF Center Face:</h2>
+        <p><strong>Question: Which worship face position matches the LoL face best?</strong></p>
+        <img src="frames/parts/center-face-frame-0-mega.png?v=95bdb53" style="width: 300px; image-rendering: pixelated; border: 2px solid #000;">
+        <p style="margin-top: 10px;">LoL face characteristics:
+            <ul>
+                <li>Eyes positioned lower on face (around Y=10-11 in 15px face)</li>
+                <li>Face appears compressed/shorter vertically</li>
+                <li>Overall "looking down" appearance</li>
+            </ul>
+        </p>
+        <p><strong>My analysis: LoL should use worship Position 2 (DOWN) with scale(1, 0.5)</strong></p>
+    </div>
+</body>
+</html>
