@@ -9,14 +9,19 @@
   </defs>
 
   <style>
-    /* Yawn animation based on detailed eye pixel tracking:
-       KEY DISCOVERY: Eyes MOVE UP during yawn (not down)!
-       - Normal Y≈5-6, Yawn start Y≈3 (UP), Yawn peak Y≈2 (UP!)
-       - Frames 0-5: Normal / blinking at Y≈5-6
-       - Frame 7: Eyes move UP to Y≈3 as yawn starts
-       - Frames 8-21: Eyes STAY UP at Y≈2 during yawn peak + trembling
-       - Frame 22: Eyes at Y≈4 (still up)
-       - Frames 23-28: Eyes return to Y≈5
+    /* Yawn animation based on detailed pixel tracking:
+       KEY DISCOVERY: ENTIRE FACE MOVES UP during yawn!
+
+       Eyes: Normal Y≈5-6 → Yawn peak Y≈2 (UP 3-4 pixels!)
+       Mouth: Normal Y≈11 → Yawn peak Y≈9.1 (UP 2 pixels!)
+
+       Both eyes AND mouth rise during the yawn, creating the
+       wide-eyed, open-mouthed yawn expression.
+
+       - Frames 0-5: Normal (eyes Y=5-6, mouth Y=11)
+       - Frame 7: Yawn starts (eyes Y=3, mouth Y=9.6) - UP!
+       - Frames 8-21: Yawn peak (eyes Y=2, mouth Y=9.1) - MAX UP!
+       - Frames 22-28: Return to normal
     */
 
     @keyframes yawn-eyes {
@@ -73,87 +78,97 @@
 
     @keyframes yawn-mouth-smile {
       0%, 17% {
-        /* Smile visible during normal state */
+        /* Smile visible at Y=11 (normal position) */
         opacity: 1;
+        transform: translateY(0px);
       }
       20.7% {
-        /* Fade out as yawn starts */
+        /* Fade out as yawn starts, moving up */
         opacity: 0;
+        transform: translateY(-1px);
       }
       27.6% {
-        /* Fade back briefly */
-        opacity: 1;
+        /* Hidden during yawn */
+        opacity: 0;
+        transform: translateY(-2px);
       }
       31% {
-        /* Hide during yawn peak */
+        /* Stay hidden during yawn peak */
         opacity: 0;
+        transform: translateY(-2px);
       }
       75.9% {
-        /* Fade back in */
+        /* Fade back in, mouth rising */
         opacity: 1;
+        transform: translateY(-2px);
       }
       79.3%, 86.2%, 93.1% {
-        /* Alternating during end sequence */
+        /* Alternating during end sequence at Y≈9-10 */
         opacity: 0.3;
+        transform: translateY(-1px);
       }
       82.8%, 89.7%, 96.6% {
         opacity: 1;
+        transform: translateY(-1px);
       }
       100% {
+        /* Return to Y=11 */
         opacity: 1;
+        transform: translateY(0px);
       }
     }
 
     @keyframes yawn-mouth-open {
       0%, 17% {
-        /* Hidden during normal */
+        /* Hidden during normal (mouth at Y=11) */
         opacity: 0;
-        transform: scale(0.1);
+        transform: translateY(0px) scale(0.1);
       }
       20.7% {
-        /* Frame 6: Small opening */
+        /* Frame 6: Y=10, small opening, moving up */
         opacity: 1;
-        transform: scale(0.5);
+        transform: translateY(-1px) scale(0.5);
       }
       24.1% {
-        /* Frame 7: Medium opening */
+        /* Frame 7: Y=9.6, medium opening, moving up */
         opacity: 1;
-        transform: scale(0.65);
+        transform: translateY(-1.4px) scale(0.65);
       }
       27.6% {
-        /* Frame 8: Opening wider */
+        /* Frame 8: Y=9.1, opening wider, UP */
         opacity: 1;
-        transform: scale(0.85);
+        transform: translateY(-1.9px) scale(0.85);
       }
-      /* Frames 9-21: WIDE open with subtle pulsing (syncs with eye trembling) */
+      /* Frames 9-21: WIDE open at Y≈9.1-9.2 (UP 2px) with pulsing */
       31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
-        /* Odd frames: Slightly larger (mouth extra wide when eyes more closed) */
+        /* Odd frames: Y=9.2, slightly larger */
         opacity: 1;
-        transform: scale(1.05);
+        transform: translateY(-1.8px) scale(1.05);
       }
       34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
-        /* Even frames: Normal wide */
+        /* Even frames: Y=9.1, normal wide */
         opacity: 1;
-        transform: scale(1.0);
+        transform: translateY(-1.9px) scale(1.0);
       }
       75.9% {
-        /* Start closing */
+        /* Frame 22: Y=9, start closing */
         opacity: 0;
-        transform: scale(0.1);
+        transform: translateY(-2px) scale(0.1);
       }
       79.3%, 86.2%, 93.1% {
-        /* Frames 23,25,27: Alternating small opening */
+        /* Frames 23,25,27: Y=10-11, small opening */
         opacity: 1;
-        transform: scale(0.45);
+        transform: translateY(-1px) scale(0.45);
       }
       82.8%, 89.7%, 96.6% {
-        /* Frames 24,26,28: Closed */
+        /* Frames 24,26,28: Y=9, closed */
         opacity: 0;
-        transform: scale(0.1);
+        transform: translateY(-2px) scale(0.1);
       }
       100% {
+        /* Return to Y=11 */
         opacity: 0;
-        transform: scale(0.1);
+        transform: translateY(0px) scale(0.1);
       }
     }
 
