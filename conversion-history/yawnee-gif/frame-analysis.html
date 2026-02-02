@@ -55,6 +55,11 @@
             color: #ffff00;
             font-weight: bold;
         }
+        .frame-time {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+        }
         .diff-box {
             text-align: center;
             flex-grow: 1;
@@ -139,9 +144,10 @@
         <strong>GIF Properties:</strong><br>
         • Size: 15×15 pixels<br>
         • Frame count: 29 frames<br>
-        • Frame duration: 1500ms per frame<br>
-        • Total animation: 43.5 seconds<br>
-        • Animation type: Yawning with eyes closing and mouth opening
+        • Frame duration: 1500ms (1.5 seconds) per frame<br>
+        • Total animation: 43,500ms (43.5 seconds)<br>
+        • Animation type: Yawning with eyes closing and mouth opening<br>
+        • Timing: Frame 0 at 0ms → Frame 1 at 1500ms → ... → Frame 28 at 42000ms → loops to Frame 0
     </div>
 
     <div class="info">
@@ -168,6 +174,14 @@
     <script>
         // Generate complete frame sequence with diffs
         const frameSequence = document.getElementById('frameSequence');
+
+        // Frame timing (1500ms per frame)
+        const FRAME_DURATION_MS = 1500;
+        function getFrameTime(frameNum) {
+            const ms = frameNum * FRAME_DURATION_MS;
+            const seconds = (ms / 1000).toFixed(2);
+            return { ms, seconds };
+        }
 
         // Diff statistics (from analysis)
         const diffStats = [
@@ -207,6 +221,9 @@
             const nextFrame = (i + 1) % 29;
             const stats = diffStats[i];
 
+            const timeStart = getFrameTime(i);
+            const timeEnd = getFrameTime(nextFrame === 0 ? 29 : nextFrame);
+
             // Create frame pair container
             const pair = document.createElement('div');
             pair.className = 'frame-pair';
@@ -216,6 +233,7 @@
                 <div class="frame-box">
                     <img src="frames/frame-${i}.png" alt="Frame ${i}">
                     <div class="frame-label">Frame ${i}</div>
+                    <div class="frame-time">${timeStart.ms}ms (${timeStart.seconds}s)</div>
                 </div>
 
                 <div class="arrow">→</div>
@@ -224,6 +242,7 @@
                     <img src="frames/diffs/diff-${i}-to-${nextFrame}.png" alt="Diff ${i}→${nextFrame}">
                     <div class="diff-label">Diff ${i}→${nextFrame}</div>
                     <div class="diff-stats">${stats.pct.toFixed(1)}% changed, intensity: ${stats.avg.toFixed(1)}</div>
+                    <div class="diff-stats">Transition: ${FRAME_DURATION_MS}ms</div>
                 </div>
 
                 <div class="arrow">→</div>
@@ -231,6 +250,7 @@
                 <div class="frame-box">
                     <img src="frames/frame-${nextFrame}.png" alt="Frame ${nextFrame}">
                     <div class="frame-label">Frame ${nextFrame}</div>
+                    <div class="frame-time">${timeEnd.ms}ms (${timeEnd.seconds}s)</div>
                 </div>
             `;
 
