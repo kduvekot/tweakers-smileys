@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yawnee.gif → SVG Conversion</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #ffff00;
+            margin-top: 30px;
+        }
+        .info {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #00ff00;
+        }
+        .preview {
+            background: #2a2a2a;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #00ff00;
+            text-align: center;
+        }
+        .preview img,
+        .preview object {
+            width: 120px;
+            height: 120px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            background: white;
+            margin: 10px;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .link-card {
+            background: #2a2a2a;
+            border: 2px solid #333;
+            padding: 20px;
+            text-decoration: none;
+            color: #00ff00;
+            display: block;
+            transition: all 0.2s;
+        }
+        .link-card:hover {
+            border-color: #00ff00;
+            background: #333;
+        }
+        .link-card h3 {
+            margin: 0 0 10px 0;
+            color: #ffff00;
+        }
+        .link-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #888;
+        }
+        .status {
+            display: inline-block;
+            background: #ffff00;
+            color: #000;
+            padding: 5px 10px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥱 Yawnee.gif → SVG Conversion</h1>
+
+        <div class="status">🚧 IN PROGRESS</div>
+
+        <div class="info">
+            <strong>Project Goal:</strong> Convert the animated yawnee.gif smiley to a modern, scalable SVG with CSS animations.<br><br>
+            <strong>Original GIF:</strong> 15×15 pixels, 29 frames, 43.5 second animation<br>
+            <strong>Target SVG:</strong> 16×16 viewBox, CSS keyframe animations, 5 second loop<br>
+            <strong>Animation Type:</strong> Yawning with blinking, eye squinting, and mouth opening wide
+        </div>
+
+        <h2>Preview</h2>
+        <div class="preview">
+            <div>
+                <strong>Original GIF</strong><br>
+                <img src="yawnee.gif" alt="Original yawnee.gif">
+            </div>
+            <div>
+                <strong>New SVG</strong><br>
+                <object type="image/svg+xml" data="yawnee-animated.svg" width="120" height="120"></object>
+            </div>
+        </div>
+
+        <h2>Development Resources</h2>
+        <div class="links">
+            <a href="frame-analysis.html" class="link-card">
+                <h3>📊 Frame Analysis</h3>
+                <p>View all 29 extracted frames and key frame comparisons</p>
+            </a>
+            <a href="test-animation.html" class="link-card">
+                <h3>🎬 Animation Test</h3>
+                <p>Side-by-side comparison of GIF vs SVG at multiple sizes</p>
+            </a>
+            <a href="yawnee-animated.svg" class="link-card" target="_blank">
+                <h3>📝 SVG Source</h3>
+                <p>View the SVG source code and animation keyframes</p>
+            </a>
+            <a href="../../index.html" class="link-card">
+                <h3>🏠 Back to Main</h3>
+                <p>Return to the main smileys collection</p>
+            </a>
+        </div>
+
+        <h2>Animation States</h2>
+        <div class="info">
+            <strong>Phase 1 (0-15%):</strong> Normal state with occasional blinking<br>
+            <strong>Phase 2 (15-25%):</strong> Yawn begins - eyes start to squint, mouth transitions from smile to open<br>
+            <strong>Phase 3 (25-70%):</strong> Yawn peak - eyes squinted/closed, mouth wide open (circle)<br>
+            <strong>Phase 4 (70-100%):</strong> Yawn ends - mouth closes back to smile, eyes open, return to normal
+        </div>
+
+        <h2>Technical Details</h2>
+        <div class="info">
+            <strong>Components:</strong><br>
+            • Face outline: Circle with radial gradient (reused from existing smileys)<br>
+            • Eyes: Rounded rectangles with scaleY animation for squinting/blinking<br>
+            • Smile: Curved path with opacity animation<br>
+            • Open mouth: Circle with opacity/scale animation<br><br>
+
+            <strong>Animations:</strong><br>
+            • Eyes: scaleY transforms (1.0 → 0.3 for squinting)<br>
+            • Smile: opacity fade out during yawn<br>
+            • Open mouth: opacity + scale for opening/closing effect<br><br>
+
+            <strong>Accessibility:</strong><br>
+            • Respects prefers-reduced-motion for users who need static content
+        </div>
+    </div>
+</body>
+</html>
