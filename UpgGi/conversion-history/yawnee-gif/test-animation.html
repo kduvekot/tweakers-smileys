@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yawnee Animation Test</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 40px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #00ff00;
+            margin-bottom: 30px;
+        }
+        .comparison {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            margin: 40px 0;
+        }
+        .smiley-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .smiley-box h2 {
+            color: #ffff00;
+            margin: 0 0 20px 0;
+            font-size: 18px;
+        }
+        .smiley-box img,
+        .smiley-box object {
+            width: 120px;
+            height: 120px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            background: white;
+            border: 2px solid #666;
+        }
+        .info {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #ffff00;
+            max-width: 800px;
+        }
+        .controls {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #00ff00;
+            max-width: 800px;
+        }
+        .controls button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .controls button:hover {
+            background: #00cc00;
+        }
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+            max-width: 800px;
+        }
+        .size-item {
+            background: #2a2a2a;
+            padding: 15px;
+            border: 2px solid #333;
+            text-align: center;
+        }
+        .size-item h3 {
+            color: #ffff00;
+            font-size: 14px;
+            margin: 0 0 10px 0;
+        }
+        .size-item img,
+        .size-item object {
+            background: white;
+            border: 1px solid #666;
+        }
+        .actual-size img,
+        .actual-size object {
+            width: 16px;
+            height: 16px;
+        }
+        .double-size img,
+        .double-size object {
+            width: 32px;
+            height: 32px;
+        }
+        .quad-size img,
+        .quad-size object {
+            width: 64px;
+            height: 64px;
+        }
+        .large-size img,
+        .large-size object {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🥱 Yawnee Animation Test</h1>
+
+    <div class="info">
+        <strong>Animation Comparison:</strong><br>
+        • Original GIF: 15×15px, 29 frames, 43.5 seconds total<br>
+        • New SVG: 16×16px, CSS animation, 5 seconds loop<br>
+        • Animation phases: Blink → Yawn start → Yawn peak (wide open) → Return with blinks
+    </div>
+
+    <div class="comparison">
+        <div class="smiley-box">
+            <h2>Original GIF</h2>
+            <img src="yawnee.gif?v=d6df9de" alt="Original yawnee.gif">
+        </div>
+        <div class="smiley-box">
+            <h2>New SVG</h2>
+            <object type="image/svg+xml" data="yawnee-animated.svg" width="120" height="120"></object>
+        </div>
+    </div>
+
+    <div class="controls">
+        <strong>View Options:</strong><br>
+        <button onclick="location.href='frame-analysis.html?v=d6df9de'">📊 Frame Analysis</button>
+        <button onclick="window.open('yawnee-animated.svg', '_blank')">🔍 View SVG Source</button>
+    </div>
+
+    <h2>Size Comparison</h2>
+    <div class="size-grid">
+        <div class="size-item actual-size">
+            <h3>Actual (16px)</h3>
+            <img src="yawnee.gif?v=d6df9de" alt="GIF">
+            <br>
+            <object type="image/svg+xml" data="yawnee-animated.svg" width="16" height="16" style="margin-top: 5px;"></object>
+        </div>
+        <div class="size-item double-size">
+            <h3>2× (32px)</h3>
+            <img src="yawnee.gif?v=d6df9de" alt="GIF">
+            <br>
+            <object type="image/svg+xml" data="yawnee-animated.svg" width="32" height="32" style="margin-top: 5px;"></object>
+        </div>
+        <div class="size-item quad-size">
+            <h3>4× (64px)</h3>
+            <img src="yawnee.gif?v=d6df9de" alt="GIF">
+            <br>
+            <object type="image/svg+xml" data="yawnee-animated.svg" width="64" height="64" style="margin-top: 5px;"></object>
+        </div>
+        <div class="size-item large-size">
+            <h3>8× (120px)</h3>
+            <img src="yawnee.gif?v=d6df9de" alt="GIF">
+            <br>
+            <object type="image/svg+xml" data="yawnee-animated.svg" width="120" height="120" style="margin-top: 5px;"></object>
+        </div>
+    </div>
+</body>
+</html>

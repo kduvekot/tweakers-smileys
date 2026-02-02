@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yawnee.gif Frame Analysis</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        .info {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #00ff00;
+        }
+        .frame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .frame-item {
+            background: #2a2a2a;
+            padding: 10px;
+            border: 2px solid #333;
+            text-align: center;
+        }
+        .frame-item:hover {
+            border-color: #00ff00;
+            background: #333;
+        }
+        .frame-item img {
+            width: 60px;
+            height: 60px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            border: 1px solid #666;
+        }
+        .frame-label {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        .comparison {
+            margin: 30px 0;
+        }
+        .comparison h2 {
+            color: #ffff00;
+        }
+        .key-frames {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .key-frame {
+            background: #2a2a2a;
+            padding: 15px;
+            border: 2px solid #ffff00;
+        }
+        .key-frame img {
+            width: 90px;
+            height: 90px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        .key-frame h3 {
+            margin: 10px 0 5px 0;
+            color: #ffff00;
+        }
+        .animation-preview {
+            margin: 30px 0;
+            padding: 20px;
+            background: #2a2a2a;
+            border: 2px solid #00ff00;
+        }
+        .animation-preview img {
+            width: 150px;
+            height: 150px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body>
+    <h1>🥱 Yawnee.gif Frame Analysis</h1>
+
+    <div class="info">
+        <strong>GIF Properties:</strong><br>
+        • Size: 15×15 pixels<br>
+        • Frame count: 29 frames<br>
+        • Frame duration: 1500ms per frame<br>
+        • Total animation: 43.5 seconds<br>
+        • Animation type: Yawning with eyes closing and mouth opening
+    </div>
+
+    <div class="animation-preview">
+        <h2>Original Animation</h2>
+        <img src="yawnee.gif?v=d6df9de" alt="Original yawnee.gif animation">
+    </div>
+
+    <div class="comparison">
+        <h2>Key Frames</h2>
+        <div class="key-frames">
+            <div class="key-frame">
+                <img src="frames/frame-0.png?v=d6df9de" alt="Frame 0">
+                <h3>Frame 0</h3>
+                <p>Blink/Closed eyes</p>
+            </div>
+            <div class="key-frame">
+                <img src="frames/frame-1.png?v=d6df9de" alt="Frame 1">
+                <h3>Frame 1</h3>
+                <p>Normal - Eyes open</p>
+            </div>
+            <div class="key-frame">
+                <img src="frames/frame-7.png?v=d6df9de" alt="Frame 7">
+                <h3>Frame 7</h3>
+                <p>Yawn starting</p>
+            </div>
+            <div class="key-frame">
+                <img src="frames/frame-10.png?v=d6df9de" alt="Frame 10">
+                <h3>Frame 10</h3>
+                <p>Yawn peak (eyes squint)</p>
+            </div>
+            <div class="key-frame">
+                <img src="frames/frame-15.png?v=d6df9de" alt="Frame 15">
+                <h3>Frame 15</h3>
+                <p>Yawn peak (eyes wide)</p>
+            </div>
+            <div class="key-frame">
+                <img src="frames/frame-22.png?v=d6df9de" alt="Frame 22">
+                <h3>Frame 22</h3>
+                <p>Yawn ending</p>
+            </div>
+            <div class="key-frame">
+                <img src="frames/frame-28.png?v=d6df9de" alt="Frame 28">
+                <h3>Frame 28</h3>
+                <p>Return to normal</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="comparison">
+        <h2>All Frames (0-28)</h2>
+        <div class="frame-grid" id="frameGrid"></div>
+    </div>
+
+    <script>
+        // Generate all frame thumbnails
+        const frameGrid = document.getElementById('frameGrid');
+        for (let i = 0; i < 29; i++) {
+            const frameItem = document.createElement('div');
+            frameItem.className = 'frame-item';
+            frameItem.innerHTML = `
+                <img src="frames/frame-${i}.png?v=d6df9de" alt="Frame ${i}">
+                <div class="frame-label">Frame ${i}</div>
+            `;
+            frameGrid.appendChild(frameItem);
+        }
+    </script>
+</body>
+</html>
