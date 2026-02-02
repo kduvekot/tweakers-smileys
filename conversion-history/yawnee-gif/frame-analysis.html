@@ -23,38 +23,63 @@
             margin: 20px 0;
             border-left: 4px solid #00ff00;
         }
-        .frame-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
+        .frame-sequence {
             margin: 20px 0;
         }
-        .frame-item {
+        .frame-pair {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
             background: #2a2a2a;
-            padding: 10px;
             border: 2px solid #333;
+        }
+        .frame-pair:hover {
+            border-color: #00ff00;
+        }
+        .frame-box {
             text-align: center;
         }
-        .frame-item:hover {
-            border-color: #00ff00;
-            background: #333;
-        }
-        .frame-item img {
-            width: 60px;
-            height: 60px;
+        .frame-box img {
+            width: 90px;
+            height: 90px;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-            border: 1px solid #666;
+            border: 2px solid #666;
+            background: white;
         }
         .frame-label {
-            margin-top: 5px;
-            font-size: 12px;
-        }
-        .comparison {
-            margin: 30px 0;
-        }
-        .comparison h2 {
+            margin-top: 8px;
+            font-size: 14px;
             color: #ffff00;
+            font-weight: bold;
+        }
+        .diff-box {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .diff-box img {
+            width: 120px;
+            height: 120px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            border: 2px solid #ff0000;
+            background: #000;
+        }
+        .diff-label {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #ff6666;
+        }
+        .diff-stats {
+            font-size: 11px;
+            color: #888;
+            margin-top: 4px;
+        }
+        .arrow {
+            font-size: 30px;
+            color: #00ff00;
         }
         .key-frames {
             display: flex;
@@ -89,10 +114,26 @@
             image-rendering: pixelated;
             image-rendering: crisp-edges;
         }
+        .section-header {
+            color: #ffff00;
+            font-size: 20px;
+            margin: 40px 0 20px 0;
+            padding: 10px;
+            background: #333;
+            border-left: 4px solid #ffff00;
+        }
+        .loop-indicator {
+            background: #ff6600;
+            color: #fff;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #ff0000;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>🥱 Yawnee.gif Frame Analysis</h1>
+    <h1>🥱 Yawnee.gif Frame-by-Frame Analysis</h1>
 
     <div class="info">
         <strong>GIF Properties:</strong><br>
@@ -103,68 +144,97 @@
         • Animation type: Yawning with eyes closing and mouth opening
     </div>
 
+    <div class="info">
+        <strong>Diff Image Legend:</strong><br>
+        • <span style="color: #ff0000;">Bright Red (Opaque)</span> = Maximum pixel change<br>
+        • <span style="color: #ff6666;">Light Red (Semi-transparent)</span> = Moderate pixel change<br>
+        • Transparent/No Red = No change<br>
+        • Diff images show changes from Frame N → Frame N+1
+    </div>
+
     <div class="animation-preview">
         <h2>Original Animation</h2>
         <img src="yawnee.gif" alt="Original yawnee.gif animation">
     </div>
 
-    <div class="comparison">
-        <h2>Key Frames</h2>
-        <div class="key-frames">
-            <div class="key-frame">
-                <img src="frames/frame-0.png" alt="Frame 0">
-                <h3>Frame 0</h3>
-                <p>Blink/Closed eyes</p>
-            </div>
-            <div class="key-frame">
-                <img src="frames/frame-1.png" alt="Frame 1">
-                <h3>Frame 1</h3>
-                <p>Normal - Eyes open</p>
-            </div>
-            <div class="key-frame">
-                <img src="frames/frame-7.png" alt="Frame 7">
-                <h3>Frame 7</h3>
-                <p>Yawn starting</p>
-            </div>
-            <div class="key-frame">
-                <img src="frames/frame-10.png" alt="Frame 10">
-                <h3>Frame 10</h3>
-                <p>Yawn peak (eyes squint)</p>
-            </div>
-            <div class="key-frame">
-                <img src="frames/frame-15.png" alt="Frame 15">
-                <h3>Frame 15</h3>
-                <p>Yawn peak (eyes wide)</p>
-            </div>
-            <div class="key-frame">
-                <img src="frames/frame-22.png" alt="Frame 22">
-                <h3>Frame 22</h3>
-                <p>Yawn ending</p>
-            </div>
-            <div class="key-frame">
-                <img src="frames/frame-28.png" alt="Frame 28">
-                <h3>Frame 28</h3>
-                <p>Return to normal</p>
-            </div>
-        </div>
-    </div>
+    <div class="section-header">📊 Complete Frame-by-Frame Sequence with Pixel Diff Analysis</div>
 
-    <div class="comparison">
-        <h2>All Frames (0-28)</h2>
-        <div class="frame-grid" id="frameGrid"></div>
+    <div class="frame-sequence" id="frameSequence"></div>
+
+    <div class="loop-indicator">
+        ⟲ Animation loops back to Frame 0
     </div>
 
     <script>
-        // Generate all frame thumbnails
-        const frameGrid = document.getElementById('frameGrid');
+        // Generate complete frame sequence with diffs
+        const frameSequence = document.getElementById('frameSequence');
+
+        // Diff statistics (from analysis)
+        const diffStats = [
+            { from: 0, to: 1, pct: 3.6, avg: 126.9 },
+            { from: 1, to: 2, pct: 4.4, avg: 140.2 },
+            { from: 2, to: 3, pct: 1.8, avg: 107.5 },
+            { from: 3, to: 4, pct: 1.8, avg: 106.5 },
+            { from: 4, to: 5, pct: 7.1, avg: 132.7 },
+            { from: 5, to: 6, pct: 11.1, avg: 115.4 },
+            { from: 6, to: 7, pct: 27.6, avg: 92.7 },
+            { from: 7, to: 8, pct: 24.0, avg: 60.1 },
+            { from: 8, to: 9, pct: 23.6, avg: 38.3 },
+            { from: 9, to: 10, pct: 23.6, avg: 38.3 },
+            { from: 10, to: 11, pct: 23.6, avg: 38.3 },
+            { from: 11, to: 12, pct: 23.6, avg: 38.3 },
+            { from: 12, to: 13, pct: 23.6, avg: 38.3 },
+            { from: 13, to: 14, pct: 23.6, avg: 38.3 },
+            { from: 14, to: 15, pct: 23.6, avg: 38.3 },
+            { from: 15, to: 16, pct: 23.6, avg: 38.3 },
+            { from: 16, to: 17, pct: 23.6, avg: 38.3 },
+            { from: 17, to: 18, pct: 23.6, avg: 38.3 },
+            { from: 18, to: 19, pct: 23.6, avg: 38.3 },
+            { from: 19, to: 20, pct: 23.6, avg: 38.3 },
+            { from: 20, to: 21, pct: 23.6, avg: 38.3 },
+            { from: 21, to: 22, pct: 29.8, avg: 124.8 },
+            { from: 22, to: 23, pct: 12.9, avg: 93.4 },
+            { from: 23, to: 24, pct: 7.6, avg: 65.5 },
+            { from: 24, to: 25, pct: 7.6, avg: 65.5 },
+            { from: 25, to: 26, pct: 7.6, avg: 65.5 },
+            { from: 26, to: 27, pct: 7.6, avg: 65.5 },
+            { from: 27, to: 28, pct: 7.6, avg: 65.5 },
+            { from: 28, to: 0, pct: 8.0, avg: 76.8 }
+        ];
+
+        // Create frame pairs with diffs
         for (let i = 0; i < 29; i++) {
-            const frameItem = document.createElement('div');
-            frameItem.className = 'frame-item';
-            frameItem.innerHTML = `
-                <img src="frames/frame-${i}.png" alt="Frame ${i}">
-                <div class="frame-label">Frame ${i}</div>
+            const nextFrame = (i + 1) % 29;
+            const stats = diffStats[i];
+
+            // Create frame pair container
+            const pair = document.createElement('div');
+            pair.className = 'frame-pair';
+
+            // First frame
+            pair.innerHTML = `
+                <div class="frame-box">
+                    <img src="frames/frame-${i}.png" alt="Frame ${i}">
+                    <div class="frame-label">Frame ${i}</div>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="diff-box">
+                    <img src="frames/diffs/diff-${i}-to-${nextFrame}.png" alt="Diff ${i}→${nextFrame}">
+                    <div class="diff-label">Diff ${i}→${nextFrame}</div>
+                    <div class="diff-stats">${stats.pct.toFixed(1)}% changed, intensity: ${stats.avg.toFixed(1)}</div>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="frame-box">
+                    <img src="frames/frame-${nextFrame}.png" alt="Frame ${nextFrame}">
+                    <div class="frame-label">Frame ${nextFrame}</div>
+                </div>
             `;
-            frameGrid.appendChild(frameItem);
+
+            frameSequence.appendChild(pair);
         }
     </script>
 </body>
