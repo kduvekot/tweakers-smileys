@@ -144,10 +144,10 @@
         <strong>GIF Properties:</strong><br>
         • Size: 15×15 pixels<br>
         • Frame count: 29 frames<br>
-        • Frame duration: 1500ms (1.5 seconds) per frame<br>
-        • Total animation: 43,500ms (43.5 seconds)<br>
+        • Frame duration: <strong>VARIABLE</strong> (10ms to 1500ms per frame)<br>
+        • Total animation: <strong>7,390ms (7.39 seconds)</strong><br>
         • Animation type: Yawning with eyes closing and mouth opening<br>
-        • Timing: Frame 0 at 0ms → Frame 1 at 1500ms → ... → Frame 28 at 42000ms → loops to Frame 0
+        • Timing: Variable durations per frame (see individual frame timings below)
     </div>
 
     <div class="info">
@@ -160,7 +160,7 @@
 
     <div class="animation-preview">
         <h2>Original Animation</h2>
-        <img src="yawnee.gif?v=ae8e54f" alt="Original yawnee.gif animation">
+        <img src="yawnee.gif?v=e3f1c88" alt="Original yawnee.gif animation">
     </div>
 
     <div class="section-header">📊 Complete Frame-by-Frame Sequence with Pixel Diff Analysis</div>
@@ -175,12 +175,23 @@
         // Generate complete frame sequence with diffs
         const frameSequence = document.getElementById('frameSequence');
 
-        // Frame timing (1500ms per frame)
-        const FRAME_DURATION_MS = 1500;
+        // Frame durations (VARIABLE per frame, from GIF metadata)
+        const frameDurations = [1500, 10, 500, 150, 200, 200, 200, 200, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 300, 100, 10, 250, 10, 250, 10, 250];
+
+        // Calculate cumulative timing
+        const cumulativeTimes = [0];
+        for (let i = 0; i < frameDurations.length; i++) {
+            cumulativeTimes.push(cumulativeTimes[i] + frameDurations[i]);
+        }
+
         function getFrameTime(frameNum) {
-            const ms = frameNum * FRAME_DURATION_MS;
+            const ms = cumulativeTimes[frameNum];
             const seconds = (ms / 1000).toFixed(2);
             return { ms, seconds };
+        }
+
+        function getFrameDuration(frameNum) {
+            return frameDurations[frameNum];
         }
 
         // Diff statistics (from analysis)
@@ -223,6 +234,7 @@
 
             const timeStart = getFrameTime(i);
             const timeEnd = getFrameTime(nextFrame === 0 ? 29 : nextFrame);
+            const duration = getFrameDuration(i);
 
             // Create frame pair container
             const pair = document.createElement('div');
@@ -231,7 +243,7 @@
             // First frame
             pair.innerHTML = `
                 <div class="frame-box">
-                    <img src="frames/frame-${i}.png?v=ae8e54f" alt="Frame ${i}">
+                    <img src="frames/frame-${i}.png?v=e3f1c88" alt="Frame ${i}">
                     <div class="frame-label">Frame ${i}</div>
                     <div class="frame-time">${timeStart.ms}ms (${timeStart.seconds}s)</div>
                 </div>
@@ -239,16 +251,16 @@
                 <div class="arrow">→</div>
 
                 <div class="diff-box">
-                    <img src="frames/diffs/diff-${i}-to-${nextFrame}.png?v=ae8e54f" alt="Diff ${i}→${nextFrame}">
+                    <img src="frames/diffs/diff-${i}-to-${nextFrame}.png?v=e3f1c88" alt="Diff ${i}→${nextFrame}">
                     <div class="diff-label">Diff ${i}→${nextFrame}</div>
                     <div class="diff-stats">${stats.pct.toFixed(1)}% changed, intensity: ${stats.avg.toFixed(1)}</div>
-                    <div class="diff-stats">Transition: ${FRAME_DURATION_MS}ms</div>
+                    <div class="diff-stats">Duration: ${duration}ms</div>
                 </div>
 
                 <div class="arrow">→</div>
 
                 <div class="frame-box">
-                    <img src="frames/frame-${nextFrame}.png?v=ae8e54f" alt="Frame ${nextFrame}">
+                    <img src="frames/frame-${nextFrame}.png?v=e3f1c88" alt="Frame ${nextFrame}">
                     <div class="frame-label">Frame ${nextFrame}</div>
                     <div class="frame-time">${timeEnd.ms}ms (${timeEnd.seconds}s)</div>
                 </div>
