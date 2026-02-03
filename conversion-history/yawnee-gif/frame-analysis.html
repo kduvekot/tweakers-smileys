@@ -82,6 +82,15 @@
             color: #888;
             margin-top: 4px;
         }
+        .diff-description {
+            font-size: 12px;
+            color: #00ffff;
+            margin-top: 8px;
+            padding: 8px;
+            background: #1a1a1a;
+            border-left: 2px solid #00ffff;
+            line-height: 1.4;
+        }
         .arrow {
             font-size: 30px;
             color: #00ff00;
@@ -194,6 +203,39 @@
             return frameDurations[frameNum];
         }
 
+        // Frame transition descriptions
+        const frameDescriptions = [
+            "Eyes blink closed (Y=6). Quick 10ms blink. Mouth stays in smile at Y=11.",
+            "Eyes reopen after blink (Y=5). Return to normal position. 500ms hold.",
+            "Eyes remain open at Y=5. Subtle pixel adjustment. Stable position.",
+            "Eyes stable at Y=5. Very small changes. Preparing for next blink.",
+            "Eyes blink and shift down to Y=6. Mouth unchanged at Y=11.",
+            "Eyes close/squint (Y=5). Mouth begins opening (Y=10). Yawn preparation starts!",
+            "YAWN STARTS! Eyes jump UP to Y=3 (2px rise). Mouth opens WIDE (Y=7-13). Major facial change!",
+            "Eyes move UP further to Y=2. Mouth fully open (Y=7-12). Peak yawn expression forming.",
+            "Eyes stay at Y=2 but OPEN MORE (trembling). Mouth extra wide with black opening. Intense yawn!",
+            "Eyes SQUINT at Y=2 (trembling). Mouth stays wide but gray/lighter. Alternation pattern.",
+            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide with black. Pattern repeats.",
+            "Eyes SQUINT at Y=2 (trembling). Mouth wide but lighter. Sustained yawn trembling.",
+            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Yawn peak continues.",
+            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Trembling oscillation.",
+            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Peak yawn sustained.",
+            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Alternation continues.",
+            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Yawn still at peak.",
+            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Trembling pattern.",
+            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Nearly done with peak.",
+            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Final trembling oscillations.",
+            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Last peak frame.",
+            "YAWN ENDING! Eyes drop to Y=4. Mouth CLOSES to Y=9 line. Major transition!",
+            "Eyes settle at Y=5. Mouth small opening (Y=10-11). Recovery begins.",
+            "Eyes stable Y=5. Mouth alternates closed (Y=9). Quick 10ms blink.",
+            "Eyes Y=5. Mouth opens (Y=10-11). Alternating pattern.",
+            "Eyes Y=5. Mouth closes (Y=9). Quick alternation.",
+            "Eyes Y=5. Mouth opens (Y=10-11). Pattern continues.",
+            "Eyes Y=5. Mouth closes (Y=9). Final alternation.",
+            "Eyes Y=5. Mouth settles at Y=11 smile. LOOP back to start - ready for next yawn!"
+        ];
+
         // Diff statistics (from analysis)
         const diffStats = [
             { from: 0, to: 1, pct: 3.6, avg: 126.9 },
@@ -235,6 +277,7 @@
             const timeStart = getFrameTime(i);
             const timeEnd = getFrameTime(nextFrame === 0 ? 29 : nextFrame);
             const duration = getFrameDuration(i);
+            const description = frameDescriptions[i];
 
             // Create frame pair container
             const pair = document.createElement('div');
@@ -255,6 +298,7 @@
                     <div class="diff-label">Diff ${i}→${nextFrame}</div>
                     <div class="diff-stats">${stats.pct.toFixed(1)}% changed, intensity: ${stats.avg.toFixed(1)}</div>
                     <div class="diff-stats">Duration: ${duration}ms</div>
+                    <div class="diff-description">${description}</div>
                 </div>
 
                 <div class="arrow">→</div>
