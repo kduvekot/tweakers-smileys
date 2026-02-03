@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG vs GIF Frame-by-Frame Comparison</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        .critical-findings {
+            background: #ff3300;
+            color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 3px solid #ff0000;
+            font-weight: bold;
+        }
+        .findings {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #ffff00;
+        }
+        .frame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .frame-item {
+            background: #2a2a2a;
+            padding: 15px;
+            border: 2px solid #333;
+        }
+        .frame-item h3 {
+            color: #ffff00;
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+        .frame-item img {
+            width: 100%;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            background: white;
+        }
+        .stats {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+        }
+        .good { color: #00ff00; }
+        .warning { color: #ffaa00; }
+        .error { color: #ff3300; }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔬 SVG vs GIF Frame-by-Frame Analysis</h1>
+
+    <div class="critical-findings">
+        ⚠️ CRITICAL ISSUES FOUND IN V2.1 SVG:
+        <ul>
+            <li class="error">❌ MOUTH NOT OPENING: During yawn peak (frames 7-21), GIF mouth opens to Y=8-14 (7px tall), but SVG mouth stays at Y=13-14 (only 2px tall)!</li>
+            <li class="error">❌ EYE POSITION WRONG: Eyes not animating to correct Y positions</li>
+            <li class="warning">⚠️ MOUTH ALWAYS VISIBLE: SVG mouth appears in all frames (even when it should be closed)</li>
+            <li class="warning">⚠️ Avg pixel difference: 43-77% of pixels differ between GIF and SVG</li>
+        </ul>
+    </div>
+
+    <div class="findings">
+        <strong>Key Findings by Phase:</strong><br><br>
+
+        <strong>Frames 0-6 (Normal/Preparation):</strong><br>
+        • GIF: Eyes at Y=5-6, mouth small line at Y=11<br>
+        • SVG: Eyes scattered at Y=0-2 (wrong!), mouth at Y=13-14<br>
+        • Difference: ~43-50% pixels changed<br><br>
+
+        <strong>Frames 7-21 (Yawn Peak) - MAJOR PROBLEM:</strong><br>
+        • GIF: Eyes at Y=2-4, mouth WIDE OPEN Y=8-14 (32-39 pixels)<br>
+        • <span class="error">SVG: Eyes at Y=0-2, mouth STAYS CLOSED Y=13-14 (only 9 pixels)!</span><br>
+        • Difference: ~60-77% pixels changed (highest differences!)<br>
+        • <strong>The mouth is NOT morphing/opening during the yawn!</strong><br><br>
+
+        <strong>Frames 22-28 (Closing):</strong><br>
+        • GIF: Mouth closing from Y=9-14 back to Y=11<br>
+        • SVG: Mouth stuck at Y=13-14<br>
+        • Difference: ~44-49% pixels changed<br>
+    </div>
+
+    <div class="findings">
+        <strong>Root Cause Analysis:</strong><br>
+        The CSS animations are <strong>NOT working as intended</strong>:
+        <ul>
+            <li>❌ <code>scaleY(6.0)</code> is NOT making the mouth 6× taller</li>
+            <li>❌ <code>translateY(-0.53px)</code> is NOT moving the mouth up</li>
+            <li>❌ The mouth ellipse (<code>cy="12" ry="1.0"</code>) is staying in place</li>
+            <li>❌ Eyes are not reaching the correct Y positions during animation</li>
+        </ul>
+
+        <strong>Possible causes:</strong>
+        <ul>
+            <li>Transform origin might be wrong for the mouth</li>
+            <li>Animation timing might not match the actual GIF timing</li>
+            <li>scaleY might need to be much larger (6.0 is not enough)</li>
+            <li>The base ellipse size/position might be wrong</li>
+        </ul>
+    </div>
+
+    <h2>Frame-by-Frame Comparisons</h2>
+    <p>GIF (left) vs SVG V2.1 (right) - Both at 120×120px</p>
+
+    <div class="frame-grid" id="frameGrid"></div>
+
+    <script>
+        // Frame data
+        const frameData = [
+            { num: 0, diff: 43.6, note: "Normal - mouth position wrong" },
+            { num: 1, diff: 41.8, note: "Blink" },
+            { num: 2, diff: 45.3, note: "Post-blink" },
+            { num: 3, diff: 45.3, note: "Mouth expands - not visible in SVG" },
+            { num: 4, diff: 43.6, note: "Mouth contracts" },
+            { num: 5, diff: 42.7, note: "Mouth starts opening" },
+            { num: 6, diff: 46.2, note: "Mouth opening upward" },
+            { num: 7, diff: 60.0, note: "⚠️ YAWN PEAK START - mouth should be wide open!" },
+            { num: 8, diff: 56.9, note: "⚠️ Yawn peak - SVG mouth NOT opening" },
+            { num: 9, diff: 59.1, note: "⚠️ Trembling - SVG mouth still closed" },
+            { num: 10, diff: 61.8, note: "⚠️ Trembling" },
+            { num: 11, diff: 60.9, note: "⚠️ Trembling" },
+            { num: 12, diff: 60.4, note: "⚠️ Trembling" },
+            { num: 13, diff: 59.1, note: "⚠️ Trembling" },
+            { num: 14, diff: 60.0, note: "⚠️ Trembling" },
+            { num: 15, diff: 61.3, note: "⚠️ Trembling" },
+            { num: 16, diff: 60.9, note: "⚠️ Trembling" },
+            { num: 17, diff: 60.0, note: "⚠️ Trembling" },
+            { num: 18, diff: 60.4, note: "⚠️ Trembling" },
+            { num: 19, diff: 60.9, note: "⚠️ Trembling" },
+            { num: 20, diff: 60.4, note: "⚠️ Trembling" },
+            { num: 21, diff: 59.6, note: "⚠️ YAWN PEAK END - mouth still not opening" },
+            { num: 22, diff: 45.3, note: "Closing" },
+            { num: 23, diff: 48.4, note: "Oscillation" },
+            { num: 24, diff: 44.0, note: "Oscillation" },
+            { num: 25, diff: 48.4, note: "Oscillation" },
+            { num: 26, diff: 44.4, note: "Oscillation" },
+            { num: 27, diff: 48.9, note: "Oscillation" },
+            { num: 28, diff: 44.0, note: "Return to normal" }
+        ];
+
+        const grid = document.getElementById('frameGrid');
+        frameData.forEach(frame => {
+            const diffClass = frame.diff > 55 ? 'error' : frame.diff > 47 ? 'warning' : 'good';
+            const item = document.createElement('div');
+            item.className = 'frame-item';
+            item.innerHTML = `
+                <h3>Frame ${frame.num}</h3>
+                <img src="frame-comparison/compare-${String(frame.num).padStart(2, '0')}.png" alt="Frame ${frame.num} comparison">
+                <div class="stats ${diffClass}">
+                    Difference: ${frame.diff.toFixed(1)}% pixels changed<br>
+                    ${frame.note}
+                </div>
+            `;
+            grid.appendChild(item);
+        });
+    </script>
+
+    <div class="findings">
+        <strong>Conclusion:</strong><br>
+        The V2.1 SVG animation is NOT accurately reproducing the GIF animation.
+        The mouth ellipse is not scaling or translating as expected.
+        We need to fix the CSS animation to actually make the mouth open during the yawn.
+    </div>
+</body>
+</html>
