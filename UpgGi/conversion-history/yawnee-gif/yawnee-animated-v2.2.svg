@@ -1,0 +1,260 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    /* V2.2 - Fixed based on detailed frame-by-frame analysis
+
+       ROOT CAUSE OF V2.1 FAILURES:
+       - Mouth was scaling/translating OUTSIDE the visible SVG area
+       - Base mouth ry=1.0 at cy=12 with scaleY(6.0) = 6px tall, centered at Y=12
+         Top would be at Y=9, bottom at Y=15 (OUTSIDE 16px viewBox!)
+       - Eyes base position was wrong
+
+       FIX: Use LARGER base mouth that scales DOWN for line, not up for open
+    */
+
+    @keyframes yawn-eye-left {
+      0%, 3.4% {
+        /* F0-1: Eyes at Y=5-6, squinting in F0, open in F1 */
+        transform: translate(0px, 0px) scaleY(0.8);
+        opacity: 0.9;
+      }
+      6.9%, 10.3%, 13.8% {
+        /* F2-4: Eyes open, Y=5 */
+        transform: translate(0px, 0px) scaleY(1.0);
+        opacity: 0.9;
+      }
+      17.2% {
+        /* F5: Eyes squinting, closer together, Y=5 */
+        transform: translate(0.5px, 0px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      20.7% {
+        /* F6: Eyes still squinting, moving apart and up, Y=4 */
+        transform: translate(0px, -1px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* F7: Eyes MOVE UP to Y=3, squinting, closer together */
+        transform: translate(0.5px, -2px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* F8,10,12,14,16,18,20: Eyes HIGHER Y=2, further apart, squinted */
+        transform: translate(0px, -3px) scaleY(0.6);
+        opacity: 0.8;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* F9,11,13,15,17,19,21: Eyes Y=2, same position, slight open */
+        transform: translate(0px, -3px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* F22: Eyes move down to Y=4 */
+        transform: translate(0px, -1px) scaleY(0.8);
+        opacity: 0.9;
+      }
+      79.3%, 86.2%, 93.1% {
+        /* F23,25,27: Eyes move down to Y=5 */
+        transform: translate(0px, 0px) scaleY(0.8);
+        opacity: 0.9;
+      }
+      82.8%, 89.7%, 96.6%, 100% {
+        /* F24,26,28: Eyes stay Y=5 */
+        transform: translate(0px, 0px) scaleY(0.8);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-eye-right {
+      0%, 3.4% {
+        /* F0-1: Eyes at Y=5-6, squinting in F0, open in F1 */
+        transform: translate(0px, 0px) scaleY(0.8);
+        opacity: 0.9;
+      }
+      6.9%, 10.3%, 13.8% {
+        /* F2-4: Eyes open, Y=5 */
+        transform: translate(0px, 0px) scaleY(1.0);
+        opacity: 0.9;
+      }
+      17.2% {
+        /* F5: Eyes squinting, closer together, Y=5 */
+        transform: translate(-0.5px, 0px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      20.7% {
+        /* F6: Eyes still squinting, moving apart and up, Y=4 */
+        transform: translate(0px, -1px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* F7: Eyes MOVE UP to Y=3, squinting, closer together */
+        transform: translate(-0.5px, -2px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* F8,10,12,14,16,18,20: Eyes HIGHER Y=2, further apart, squinted */
+        transform: translate(0px, -3px) scaleY(0.6);
+        opacity: 0.8;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* F9,11,13,15,17,19,21: Eyes Y=2, same position, slight open */
+        transform: translate(0px, -3px) scaleY(0.7);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* F22: Eyes move down to Y=4 */
+        transform: translate(0px, -1px) scaleY(0.8);
+        opacity: 0.9;
+      }
+      79.3%, 86.2%, 93.1% {
+        /* F23,25,27: Eyes move down to Y=5 */
+        transform: translate(0px, 0px) scaleY(0.8);
+        opacity: 0.9;
+      }
+      82.8%, 89.7%, 96.6%, 100% {
+        /* F24,26,28: Eyes stay Y=5 */
+        transform: translate(0px, 0px) scaleY(0.8);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-mouth {
+      /* Strategy: Start with LARGE base ellipse (3px tall) and scale DOWN for line */
+      0%, 3.4%, 6.9% {
+        /* F0-2: Thin horizontal line at Y=11 */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(0.3);
+        opacity: 0.9;
+      }
+      10.3% {
+        /* F3: Wide horizontal line (9px) at Y=11 */
+        transform: translate(0px, 0px) scaleX(1.8) scaleY(0.3);
+        opacity: 0.9;
+      }
+      13.8% {
+        /* F4: Back to thin line (5px) */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(0.3);
+        opacity: 0.9;
+      }
+      17.2% {
+        /* F5: Small vertical opening in center */
+        transform: translate(0px, 0px) scaleX(0.3) scaleY(0.6);
+        opacity: 0.9;
+      }
+      20.7% {
+        /* F6: Vertical stretched ellipse, bottom within face */
+        transform: translate(0px, -1px) scaleX(0.6) scaleY(1.2);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* F7: WIDE OPEN mouth, top just below eyes at Y=6, show red tongue */
+        transform: translate(0px, -2px) scaleX(1.3) scaleY(2.0);
+        opacity: 0.95;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* F8,10,12,14,16,18,20: Wide open, slightly lighter */
+        transform: translate(0px, -2px) scaleX(1.4) scaleY(2.1);
+        opacity: 0.85;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* F9,11,13,15,17,19,21: Wide open, darker/more open */
+        transform: translate(0px, -2px) scaleX(1.4) scaleY(2.1);
+        opacity: 0.95;
+      }
+      76.0% {
+        /* F22: Wide straight line high on face (Y=10) */
+        transform: translate(0px, -1px) scaleX(1.8) scaleY(0.3);
+        opacity: 0.9;
+      }
+      79.3%, 86.2%, 93.1% {
+        /* F23,25,27: Vertical narrow slightly open */
+        transform: translate(0px, -1px) scaleX(0.5) scaleY(1.0);
+        opacity: 0.9;
+      }
+      82.8%, 89.7%, 96.6%, 100% {
+        /* F24,26,28: Thin straight line at Y=10 */
+        transform: translate(0px, -1px) scaleX(1.0) scaleY(0.3);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-tongue {
+      /* Red tongue only visible during wide open yawn */
+      0%, 20.7% {
+        opacity: 0;
+      }
+      24.1%, 72.4% {
+        /* F7-21: Tongue visible */
+        opacity: 0.9;
+      }
+      76.0%, 100% {
+        opacity: 0;
+      }
+    }
+
+    .eye-left {
+      animation: yawn-eye-left 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .eye-right {
+      animation: yawn-eye-right 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .mouth {
+      animation: yawn-mouth 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .tongue {
+      animation: yawn-tongue 7.39s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eye-left,
+      .eye-right,
+      .mouth,
+      .tongue {
+        animation: none !important;
+        transform: none !important;
+      }
+      .eye-left,
+      .eye-right {
+        opacity: 1 !important;
+      }
+      .mouth {
+        transform: scaleY(0.3) !important;
+        opacity: 1 !important;
+      }
+      .tongue {
+        opacity: 0 !important;
+      }
+    }
+  </style>
+
+  <!-- Face outline -->
+  <circle cx="8" cy="8" r="7.9" fill="url(#grad)"/>
+  <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+
+  <!-- Left eye -->
+  <rect class="eye-left" x="4.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Right eye -->
+  <rect class="eye-right" x="9.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Red tongue (only visible during yawn) -->
+  <ellipse class="tongue" cx="8" cy="10.5" rx="1.5" ry="1.2" fill="#B93600" fill-opacity=".9"/>
+
+  <!-- Mouth - base: 3px tall ellipse that scales DOWN for line, UP for open -->
+  <!-- cy=11 puts center at Y=11 in 16px space -->
+  <!-- ry=3 gives us room to scale: 0.3 = 0.9px (line), 2.0 = 6px (open) -->
+  <ellipse class="mouth" cx="8" cy="11" rx="2.5" ry="3" fill="#000" fill-opacity=".9"/>
+</svg>

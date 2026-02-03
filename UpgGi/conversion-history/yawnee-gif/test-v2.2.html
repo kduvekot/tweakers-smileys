@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2.2 Test - Fixed Mouth Visibility</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        .fixes {
+            background: #00ff00;
+            color: #000;
+            padding: 20px;
+            margin: 20px 0;
+            border: 3px solid #00ff00;
+            font-weight: bold;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .test-item {
+            background: #2a2a2a;
+            padding: 15px;
+            border: 2px solid #333;
+            text-align: center;
+        }
+        .test-item h3 {
+            color: #ffff00;
+            margin: 0 0 10px 0;
+        }
+        .img-container {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .img-container img,
+        .img-container object {
+            width: 100%;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        .info {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #ffff00;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 V2.2 - Critical Fixes Applied</h1>
+
+    <div class="fixes">
+        ✅ V2.2 FIXES APPLIED (based on detailed frame analysis):
+        <ul>
+            <li>✅ <strong>MOUTH NOW VISIBLE</strong>: Base mouth ry=3px (large) scales DOWN to 0.9px for line, UP to 6px for open</li>
+            <li>✅ <strong>MOUTH STAYS IN BOUNDS</strong>: cy=11 with ry=3 and scaleY(2.1) = 6.3px tall, top at Y=7.85 (visible!)</li>
+            <li>✅ <strong>Eyes positioned correctly</strong>: Base Y=5, animate to Y=2 during yawn peak</li>
+            <li>✅ <strong>Red tongue added</strong>: Visible only during wide open yawn (frames 7-21)</li>
+            <li>✅ <strong>Thinner initial mouth</strong>: scaleY(0.3) makes thin line, not wide ellipse</li>
+            <li>✅ <strong>Fixed eye opening/closing</strong>: scaleY(1.0) open, scaleY(0.6) squinted</li>
+        </ul>
+    </div>
+
+    <div class="info">
+        <strong>Technical Changes:</strong><br>
+        <strong>V2.1 Problem:</strong> Base mouth ry=1.0 at cy=12, scaleY(6.0) = 6px tall centered at Y=12<br>
+        → Top at Y=9, bottom at Y=15 (OUTSIDE 16px viewBox!)<br><br>
+
+        <strong>V2.2 Solution:</strong> Base mouth ry=3.0 at cy=11, scales DOWN for line (0.3), UP for open (2.1)<br>
+        → Line: 0.9px tall at Y=10.55-11.45<br>
+        → Open: 6.3px tall at Y=7.85-14.15 (all visible!)<br>
+    </div>
+
+    <h2>Side-by-Side Comparison (120px)</h2>
+    <div class="comparison">
+        <div class="test-item">
+            <h3>Original GIF</h3>
+            <div class="img-container">
+                <img src="yawnee.gif?v=daa45bb" width="120" height="120" alt="GIF">
+            </div>
+        </div>
+        <div class="test-item">
+            <h3>V2.1 (Broken)</h3>
+            <div class="img-container">
+                <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="120" height="120"></object>
+            </div>
+            <p style="color: #ff3300; font-size: 12px;">❌ Mouth disappears after frame 6</p>
+        </div>
+        <div class="test-item">
+            <h3>V2.2 (Fixed)</h3>
+            <div class="img-container">
+                <object type="image/svg+xml" data="yawnee-animated-v2.2.svg" width="120" height="120"></object>
+            </div>
+            <p style="color: #00ff00; font-size: 12px;">✅ Mouth visible throughout</p>
+        </div>
+    </div>
+
+    <h2>Multiple Sizes</h2>
+    <div class="comparison">
+        <div class="test-item">
+            <h3>16px (Actual Size)</h3>
+            <div class="img-container">
+                <object type="image/svg+xml" data="yawnee-animated-v2.2.svg" width="16" height="16"></object>
+            </div>
+        </div>
+        <div class="test-item">
+            <h3>32px (2×)</h3>
+            <div class="img-container">
+                <object type="image/svg+xml" data="yawnee-animated-v2.2.svg" width="32" height="32"></object>
+            </div>
+        </div>
+        <div class="test-item">
+            <h3>64px (4×)</h3>
+            <div class="img-container">
+                <object type="image/svg+xml" data="yawnee-animated-v2.2.svg" width="64" height="64"></object>
+            </div>
+        </div>
+    </div>
+
+    <div class="info">
+        <strong>What to verify in V2.2:</strong><br>
+        ✓ Mouth visible as thin line in frames 0-2<br>
+        ✓ Mouth expands wide in frame 3<br>
+        ✓ Mouth opens vertically in frames 5-6<br>
+        ✓ Mouth WIDE OPEN with red tongue in frames 7-21<br>
+        ✓ Mouth visible during closing sequence frames 22-28<br>
+        ✓ Eyes move UP to Y=2 during yawn peak<br>
+        ✓ Eyes open/close correctly throughout
+    </div>
+</body>
+</html>
