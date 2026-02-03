@@ -79,15 +79,16 @@
     <h1>🥱 Yawnee Animation Test - V2</h1>
 
     <div class="improvements">
-        <strong>V2 Improvements (Pixel-Accurate Animation):</strong>
+        <strong>V2.1 Improvements (Pixel-Perfect Animation):</strong>
         <ul>
             <li>✅ <strong>Separate left/right eye animations</strong> - Eyes move closer (4px) and apart (5px) during yawn</li>
             <li>✅ <strong>Horizontal eye movement</strong> - Left eye moves right, right eye moves left when coming together</li>
             <li>✅ <strong>Gray/black trembling</strong> - Eyes alternate opacity (0.5 gray ↔ 0.9 black) during yawn peak</li>
-            <li>✅ <strong>Straight mouth line</strong> - Mouth starts as horizontal rect (not curved path)</li>
-            <li>✅ <strong>Mouth expansion/contraction</strong> - scaleX(1.8) expansion, then scaleX(0.2) contraction</li>
-            <li>✅ <strong>Vertical mouth opening</strong> - scaleY from 1.0 → 6.0 for wide yawn</li>
-            <li>✅ <strong>Upward mouth movement</strong> - translateY(-3px) during yawn opening</li>
+            <li>✅ <strong>ONE mouth element</strong> - Single ellipse morphs from line to open mouth (not two separate elements!)</li>
+            <li>✅ <strong>Mouth expansion/contraction</strong> - scaleX(1.8) → scaleX(1.0) → scaleX(0.2) → scaleX(1.4)</li>
+            <li>✅ <strong>Vertical mouth opening</strong> - scaleY from 1.0 → 2.0 → 5.0 → 6.0 for wide yawn</li>
+            <li>✅ <strong>Upward mouth movement</strong> - translateY(-1.07px) at F6, translateY(-0.53px) at F7-21</li>
+            <li>✅ <strong>Closing oscillation</strong> - Mouth alternates 5×5px ↔ 6×5px during closing sequence</li>
             <li>✅ <strong>Accurate timing</strong> - Using 7.39s duration matching original GIF</li>
         </ul>
     </div>
@@ -114,7 +115,7 @@
         <div class="test-item">
             <h3>Original GIF</h3>
             <div class="img-container">
-                <img src="yawnee.gif?v=16a2c14" width="16" height="16" alt="Original GIF">
+                <img src="yawnee.gif?v=5f37566" width="16" height="16" alt="Original GIF">
             </div>
             <div class="size-label">15×15 pixels (original)</div>
         </div>
@@ -123,14 +124,14 @@
             <div class="img-container">
                 <object type="image/svg+xml" data="yawnee-animated.svg" width="16" height="16"></object>
             </div>
-            <div class="size-label">Simple transforms only</div>
+            <div class="size-label">Simple transforms, two mouth elements</div>
         </div>
         <div class="test-item">
-            <h3>SVG V2 (New)</h3>
+            <h3>SVG V2.1 (Latest)</h3>
             <div class="img-container">
-                <object type="image/svg+xml" data="yawnee-animated-v2.svg" width="16" height="16"></object>
+                <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="16" height="16"></object>
             </div>
-            <div class="size-label">Pixel-accurate eye movement</div>
+            <div class="size-label">ONE mouth element that morphs</div>
         </div>
     </div>
 
@@ -139,7 +140,7 @@
         <div class="test-item">
             <h3>Original GIF</h3>
             <div class="img-container">
-                <img src="yawnee.gif?v=16a2c14" width="64" height="64" alt="Original GIF">
+                <img src="yawnee.gif?v=5f37566" width="64" height="64" alt="Original GIF">
             </div>
         </div>
         <div class="test-item">
@@ -149,9 +150,9 @@
             </div>
         </div>
         <div class="test-item">
-            <h3>SVG V2 (New)</h3>
+            <h3>SVG V2.1 (Latest)</h3>
             <div class="img-container">
-                <object type="image/svg+xml" data="yawnee-animated-v2.svg" width="64" height="64"></object>
+                <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="64" height="64"></object>
             </div>
         </div>
     </div>
@@ -161,7 +162,7 @@
         <div class="test-item">
             <h3>Original GIF</h3>
             <div class="img-container">
-                <img src="yawnee.gif?v=16a2c14" width="120" height="120" alt="Original GIF">
+                <img src="yawnee.gif?v=5f37566" width="120" height="120" alt="Original GIF">
             </div>
         </div>
         <div class="test-item">
@@ -171,20 +172,23 @@
             </div>
         </div>
         <div class="test-item">
-            <h3>SVG V2 (New)</h3>
+            <h3>SVG V2.1 (Latest)</h3>
             <div class="img-container">
-                <object type="image/svg+xml" data="yawnee-animated-v2.svg" width="120" height="120"></object>
+                <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="120" height="120"></object>
             </div>
         </div>
     </div>
 
     <div class="info">
-        <strong>What to look for in V2:</strong><br>
-        • Eyes should move closer together and further apart (not just up/down)<br>
-        • Eyes should alternate between gray and black during trembling<br>
-        • Mouth should start as a straight line (not curved)<br>
-        • Mouth should expand horizontally first (frame 3), then contract before opening<br>
-        • Mouth should open upward with proper scaleY transformation
+        <strong>What to look for in V2.1:</strong><br>
+        • Eyes should move closer together (4px) and further apart (5px) - horizontal movement<br>
+        • Eyes should alternate between gray (opacity 0.5) and black (opacity 0.9) during trembling<br>
+        • Mouth should be ONE element that morphs (not two separate elements)<br>
+        • Mouth starts as straight horizontal line (5px wide)<br>
+        • Mouth expands to 9px (frame 3), contracts to 1px (frame 5)<br>
+        • Mouth opens upward and vertically to 7×6px during yawn (frames 7-21)<br>
+        • Mouth moves up during yawn opening (translateY negative values)<br>
+        • Mouth oscillates during closing sequence (frames 23-28)
     </div>
 </body>
 </html>
