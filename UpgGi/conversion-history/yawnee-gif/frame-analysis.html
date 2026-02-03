@@ -169,7 +169,7 @@
 
     <div class="animation-preview">
         <h2>Original Animation</h2>
-        <img src="yawnee.gif?v=c4dfeea" alt="Original yawnee.gif animation">
+        <img src="yawnee.gif?v=29845b8" alt="Original yawnee.gif animation">
     </div>
 
     <div class="section-header">📊 Complete Frame-by-Frame Sequence with Pixel Diff Analysis</div>
@@ -203,37 +203,37 @@
             return frameDurations[frameNum];
         }
 
-        // Frame transition descriptions
+        // Frame transition descriptions (detailed pixel-level analysis)
         const frameDescriptions = [
-            "Eyes blink closed (Y=6). Quick 10ms blink. Mouth stays in smile at Y=11.",
-            "Eyes reopen after blink (Y=5). Return to normal position. 500ms hold.",
-            "Eyes remain open at Y=5. Subtle pixel adjustment. Stable position.",
-            "Eyes stable at Y=5. Very small changes. Preparing for next blink.",
-            "Eyes blink and shift down to Y=6. Mouth unchanged at Y=11.",
-            "Eyes close/squint (Y=5). Mouth begins opening (Y=10). Yawn preparation starts!",
-            "YAWN STARTS! Eyes jump UP to Y=3 (2px rise). Mouth opens WIDE (Y=7-13). Major facial change!",
-            "Eyes move UP further to Y=2. Mouth fully open (Y=7-12). Peak yawn expression forming.",
-            "Eyes stay at Y=2 but OPEN MORE (trembling). Mouth extra wide with black opening. Intense yawn!",
-            "Eyes SQUINT at Y=2 (trembling). Mouth stays wide but gray/lighter. Alternation pattern.",
-            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide with black. Pattern repeats.",
-            "Eyes SQUINT at Y=2 (trembling). Mouth wide but lighter. Sustained yawn trembling.",
-            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Yawn peak continues.",
-            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Trembling oscillation.",
-            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Peak yawn sustained.",
-            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Alternation continues.",
-            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Yawn still at peak.",
-            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Trembling pattern.",
-            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Nearly done with peak.",
-            "Eyes SQUINT at Y=2 (trembling). Mouth lighter. Final trembling oscillations.",
-            "Eyes OPEN MORE at Y=2 (trembling). Mouth extra wide. Last peak frame.",
-            "YAWN ENDING! Eyes drop to Y=4. Mouth CLOSES to Y=9 line. Major transition!",
-            "Eyes settle at Y=5. Mouth small opening (Y=10-11). Recovery begins.",
-            "Eyes stable Y=5. Mouth alternates closed (Y=9). Quick 10ms blink.",
-            "Eyes Y=5. Mouth opens (Y=10-11). Alternating pattern.",
-            "Eyes Y=5. Mouth closes (Y=9). Quick alternation.",
-            "Eyes Y=5. Mouth opens (Y=10-11). Pattern continues.",
-            "Eyes Y=5. Mouth closes (Y=9). Final alternation.",
-            "Eyes Y=5. Mouth settles at Y=11 smile. LOOP back to start - ready for next yawn!"
+            "Eyes squint/blink closed at Y=5, becoming lighter gray. Mouth unchanged at Y=11-13. Quick blink start.",
+            "Eyes reopen after initial squinting and are more defined (gray→black), still at Y=4.9. Eyes wider open. Mouth stays at Y=11-13. Post-blink recovery.",
+            "Eyes stay the same position (Y=4.9) but mouth is getting darker/more defined by additional pixels on each side. Straight horizontal widening at Y=11, not curved. Eyes unchanged.",
+            "Wide mouth is contracting again back to same position as frame 2. Mouth darkness reduces. Eyes still unchanged at Y=4.9.",
+            "Eyes appear to squint slightly and move down to Y=5.0 with distance increasing (6.2→6.5). Mouth is contracting inward even more (dark pixels 5→2) and begins opening slightly from center - small dark area appears at Y=11-12 center. Preparation for yawn.",
+            "Eyes stay squinted but MOVE UP sharply (Y=5.0→4.2) and maintain wider spacing. Mouth opens UPWARD dramatically (Y=12→Y=8-12), expanding from top while bottom stays stable at Y=12-13. Head tilting backward appearance! Yawn beginning!",
+            "Eyes continue moving UP (Y=4.2→3.6) and become more defined/darker (squint→open). Distance decreases slightly (6.5→6.2), eyes coming closer. Mouth FULLY OPENS - massive expansion upward (now Y=8-13), dark pixels jump from 11→32. Wide-open yawn expression achieved!",
+            "Eyes move slightly down (Y=3.6→4.2) and SQUINT to gray, distance narrows (6.2→6.0), coming closer together. Mouth stays wide open (Y=8-13) but becomes lighter/grayer, dark pixels reduce (32→25). Yawn peak trembling starts.",
+            "Eyes OPEN MORE and move down slightly (Y=4.2→4.6), distance narrows further (6.0→5.9), eyes closer still. Mouth DARKENS again, black pixels increase (25→30). Trembling oscillation - eyes opening wider, mouth darker. Intense yawn strain!",
+            "Eyes SQUINT back to gray, move up (Y=4.6→4.2), distance widens slightly (5.9→6.0). Mouth lightens to gray, dark pixels reduce (30→25). Trembling oscillation - alternating pattern. Eyes-mouth coordination.",
+            "Eyes OPEN MORE to black, move down (Y=4.2→4.6), distance narrows (6.0→5.9). Mouth darkens, pixels increase (25→30). Pattern repeats. Sustained yawn peak vibration.",
+            "Eyes SQUINT to gray, move up (Y=4.6→4.2), distance widens (5.9→6.0). Mouth lightens (30→25). Alternating trembling continues. Exact repeat of 9→10 pattern.",
+            "Eyes OPEN MORE to black, move down (Y=4.2→4.6), distance narrows (6.0→5.9). Mouth darkens (25→30). Trembling pattern maintaining. Yawn peak sustained.",
+            "Eyes SQUINT to gray, move up (Y=4.6→4.2), distance widens (5.9→6.0). Mouth lightens (30→25). Oscillation continues precisely.",
+            "Eyes OPEN MORE to black, move down (Y=4.2→4.6), distance narrows (6.0→5.9). Mouth darkens (25→30). Pattern persisting through yawn peak.",
+            "Eyes SQUINT to gray, move up (Y=4.6→4.2), distance widens (5.9→6.0). Mouth lightens (30→25). Trembling alternation.",
+            "Eyes OPEN MORE to black, move down (Y=4.2→4.6), distance narrows (6.0→5.9). Mouth darkens (25→30). Continued vibration.",
+            "Eyes SQUINT to gray, move up (Y=4.6→4.2), distance widens (5.9→6.0). Mouth lightens (30→25). Pattern ongoing.",
+            "Eyes OPEN MORE to black, move down (Y=4.2→4.6), distance narrows (6.0→5.9). Mouth darkens (25→30). Trembling sustains.",
+            "Eyes SQUINT to gray, move up (Y=4.6→4.2), distance widens (5.9→6.0). Mouth lightens (30→25). Penultimate trembling cycle.",
+            "Eyes OPEN MORE to black, move down (Y=4.2→4.6), distance narrows (6.0→5.9). Mouth darkens (25→30). FINAL yawn peak trembling cycle. Longest single frame duration at peak (300ms).",
+            "YAWN ENDING! Eyes JUMP UP dramatically (Y=4.6→3.5) and squint to gray. Distance widens back (5.9→6.5), eyes move apart. Mouth CONTRACTS massively - top drops from Y=8 to Y=9, dark pixels collapse (30→8). Major transition! Quick 100ms.",
+            "Eyes move down slightly (Y=3.5→4.2), stay squinted gray. Mouth top rises back to Y=8 but much lighter (8→2 dark pixels). Recovery phase starting. Ultra-quick 10ms transition.",
+            "Eyes position stable (Y=4.2), stay squinted. Mouth alternates: top drops to Y=9, slightly darker (2→5 dark pixels). Quick blink/alternation pattern begins.",
+            "Eyes stable Y=4.2. Mouth top rises to Y=8, lighter again (5→2 pixels). Alternating mouth pattern. Quick 10ms.",
+            "Eyes stable Y=4.2. Mouth drops to Y=9, darker (2→5 pixels). Alternation continues. Longer hold.",
+            "Eyes stable Y=4.2. Mouth rises to Y=8, lighter (5→2 pixels). Pattern persisting. Quick transition.",
+            "Eyes stable Y=4.2. Mouth drops to Y=9, darker (2→5 pixels). Final alternation cycle.",
+            "Eyes stable at Y=4.2 squinted. Mouth gradually settles down toward Y=11-12 (center 10.9→12.0), returning to smile position. LOOP COMPLETE - ready for next yawn! Long 1500ms pause before restart."
         ];
 
         // Diff statistics (from analysis)
@@ -286,7 +286,7 @@
             // First frame
             pair.innerHTML = `
                 <div class="frame-box">
-                    <img src="frames/frame-${i}.png?v=c4dfeea" alt="Frame ${i}">
+                    <img src="frames/frame-${i}.png?v=29845b8" alt="Frame ${i}">
                     <div class="frame-label">Frame ${i}</div>
                     <div class="frame-time">${timeStart.ms}ms (${timeStart.seconds}s)</div>
                 </div>
@@ -294,7 +294,7 @@
                 <div class="arrow">→</div>
 
                 <div class="diff-box">
-                    <img src="frames/diffs/diff-${i}-to-${nextFrame}.png?v=c4dfeea" alt="Diff ${i}→${nextFrame}">
+                    <img src="frames/diffs/diff-${i}-to-${nextFrame}.png?v=29845b8" alt="Diff ${i}→${nextFrame}">
                     <div class="diff-label">Diff ${i}→${nextFrame}</div>
                     <div class="diff-stats">${stats.pct.toFixed(1)}% changed, intensity: ${stats.avg.toFixed(1)}</div>
                     <div class="diff-stats">Duration: ${duration}ms</div>
@@ -304,7 +304,7 @@
                 <div class="arrow">→</div>
 
                 <div class="frame-box">
-                    <img src="frames/frame-${nextFrame}.png?v=c4dfeea" alt="Frame ${nextFrame}">
+                    <img src="frames/frame-${nextFrame}.png?v=29845b8" alt="Frame ${nextFrame}">
                     <div class="frame-label">Frame ${nextFrame}</div>
                     <div class="frame-time">${timeEnd.ms}ms (${timeEnd.seconds}s)</div>
                 </div>
