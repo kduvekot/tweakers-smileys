@@ -1,0 +1,173 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    /* V2.4 - Multiple mouth shapes with opacity switching
+       No transforms - just show/hide different mouth shapes
+    */
+
+    @keyframes yawn-eye-left {
+      0% { transform: translate(0px, 0px) scaleY(0.8); opacity: 0.9; }
+      3.4% { transform: translate(0px, 0px) scaleY(0.7); opacity: 0.9; }
+      6.9%, 10.3%, 13.8% { transform: translate(0px, 0px) scaleY(1.0); opacity: 0.9; }
+      17.2% { transform: translate(0.5px, 1px) scaleY(0.6); opacity: 0.9; }
+      20.7% { transform: translate(0px, 0px) scaleY(0.6); opacity: 0.9; }
+      24.1% { transform: translate(0.5px, -2px) scaleY(0.6); opacity: 0.9; }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        transform: translate(0px, -3px) scaleY(0.5); opacity: 0.7;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        transform: translate(0.5px, -3px) scaleY(0.6); opacity: 0.9;
+      }
+      76.0% { transform: translate(0px, -1px) scaleY(0.7); opacity: 0.9; }
+      79.3%, 86.2%, 93.1% { transform: translate(0px, 0px) scaleY(0.7); opacity: 0.9; }
+      82.8%, 89.7%, 96.6%, 100% { transform: translate(0px, 0px) scaleY(0.7); opacity: 0.9; }
+    }
+
+    @keyframes yawn-eye-right {
+      0% { transform: translate(0px, 0px) scaleY(0.8); opacity: 0.9; }
+      3.4% { transform: translate(0px, 0px) scaleY(0.7); opacity: 0.9; }
+      6.9%, 10.3%, 13.8% { transform: translate(0px, 0px) scaleY(1.0); opacity: 0.9; }
+      17.2% { transform: translate(-0.5px, 1px) scaleY(0.6); opacity: 0.9; }
+      20.7% { transform: translate(0px, 0px) scaleY(0.6); opacity: 0.9; }
+      24.1% { transform: translate(-0.5px, -2px) scaleY(0.6); opacity: 0.9; }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        transform: translate(0px, -3px) scaleY(0.5); opacity: 0.7;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        transform: translate(-0.5px, -3px) scaleY(0.6); opacity: 0.9;
+      }
+      76.0% { transform: translate(0px, -1px) scaleY(0.7); opacity: 0.9; }
+      79.3%, 86.2%, 93.1% { transform: translate(0px, 0px) scaleY(0.7); opacity: 0.9; }
+      82.8%, 89.7%, 96.6%, 100% { transform: translate(0px, 0px) scaleY(0.7); opacity: 0.9; }
+    }
+
+    /* Mouth line (normal state F0-2, F4) */
+    @keyframes mouth-line {
+      0%, 3.4%, 6.9% { opacity: 1; }
+      10.3%, 13.8% { opacity: 0; }
+      14%, 100% { opacity: 0; }
+    }
+
+    /* Mouth wide line (F3) */
+    @keyframes mouth-wide-line {
+      0%, 10.2% { opacity: 0; }
+      10.3% { opacity: 1; }
+      13.9%, 100% { opacity: 0; }
+    }
+
+    /* Mouth contracted (F5) */
+    @keyframes mouth-contracted {
+      0%, 17.1% { opacity: 0; }
+      17.2% { opacity: 1; }
+      20.8%, 100% { opacity: 0; }
+    }
+
+    /* Mouth opening (F6) */
+    @keyframes mouth-opening {
+      0%, 20.6% { opacity: 0; }
+      20.7% { opacity: 1; }
+      24.2%, 100% { opacity: 0; }
+    }
+
+    /* Mouth wide open (F7-21) */
+    @keyframes mouth-open {
+      0%, 24.0% { opacity: 0; }
+      24.1%, 72.4% { opacity: 1; }
+      76.1%, 100% { opacity: 0; }
+    }
+
+    /* Mouth wide line closing (F22) */
+    @keyframes mouth-closing-wide {
+      0%, 75.9% { opacity: 0; }
+      76.0% { opacity: 1; }
+      79.4%, 100% { opacity: 0; }
+    }
+
+    /* Mouth vertical narrow (F23,25,27) */
+    @keyframes mouth-vertical {
+      0%, 79.2% { opacity: 0; }
+      79.3%, 86.2% { opacity: 1; }
+      86.3% { opacity: 0; }
+      93.1% { opacity: 1; }
+      93.2%, 100% { opacity: 0; }
+    }
+
+    /* Mouth small line (F24,26,28) */
+    @keyframes mouth-small-line {
+      0%, 82.7% { opacity: 0; }
+      82.8%, 89.7% { opacity: 1; }
+      89.8% { opacity: 0; }
+      96.6%, 100% { opacity: 1; }
+    }
+
+    .eye-left { animation: yawn-eye-left 7.39s linear infinite; transform-origin: center; }
+    .eye-right { animation: yawn-eye-right 7.39s linear infinite; transform-origin: center; }
+    .mouth-line { animation: mouth-line 7.39s linear infinite; }
+    .mouth-wide-line { animation: mouth-wide-line 7.39s linear infinite; }
+    .mouth-contracted { animation: mouth-contracted 7.39s linear infinite; }
+    .mouth-opening { animation: mouth-opening 7.39s linear infinite; }
+    .mouth-open { animation: mouth-open 7.39s linear infinite; }
+    .mouth-closing-wide { animation: mouth-closing-wide 7.39s linear infinite; }
+    .mouth-vertical { animation: mouth-vertical 7.39s linear infinite; }
+    .mouth-small-line { animation: mouth-small-line 7.39s linear infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eye-left, .eye-right {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+      .mouth-line { opacity: 1 !important; }
+      .mouth-wide-line, .mouth-contracted, .mouth-opening, .mouth-open,
+      .mouth-closing-wide, .mouth-vertical, .mouth-small-line {
+        animation: none !important;
+        opacity: 0 !important;
+      }
+    }
+  </style>
+
+  <!-- Face outline -->
+  <circle cx="8" cy="8" r="7.9" fill="url(#grad)"/>
+  <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+
+  <!-- Eyes -->
+  <rect class="eye-left" x="4.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+  <rect class="eye-right" x="9.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Mouth shapes - switched via opacity -->
+
+  <!-- F0-2,F4: Normal thin line 5px wide at Y=11 -->
+  <rect class="mouth-line" x="5.5" y="11" width="5" height="1" rx=".3" fill="#000" fill-opacity=".9"/>
+
+  <!-- F3: Wide line 9px wide at Y=11 -->
+  <rect class="mouth-wide-line" x="3.5" y="11" width="9" height="1" rx=".3" fill="#000" fill-opacity=".9"/>
+
+  <!-- F5: Contracted 3px wide, 2px tall at Y=11 -->
+  <ellipse class="mouth-contracted" cx="8" cy="11.5" rx="1.5" ry="1" fill="#000" fill-opacity=".9"/>
+
+  <!-- F6: Opening 3px×5px at Y=8-13 -->
+  <ellipse class="mouth-opening" cx="8" cy="10.5" rx="1.5" ry="2.5" fill="#000" fill-opacity=".9"/>
+
+  <!-- F7-21: Wide open 7px×6px at Y=8-14 with red tongue -->
+  <g class="mouth-open">
+    <ellipse cx="8" cy="11" rx="3.5" ry="3" fill="#000" fill-opacity=".95"/>
+    <ellipse cx="8" cy="11.5" rx="2.5" ry="2" fill="#B93600" fill-opacity=".9"/>
+  </g>
+
+  <!-- F22: Wide line 9px at Y=10 -->
+  <rect class="mouth-closing-wide" x="3.5" y="10" width="9" height="1" rx=".3" fill="#000" fill-opacity=".9"/>
+
+  <!-- F23,25,27: Vertical narrow 5px×5px at Y=9-14 -->
+  <ellipse class="mouth-vertical" cx="8" cy="11.5" rx="2.5" ry="2.5" fill="#000" fill-opacity=".9"/>
+
+  <!-- F24,26,28: Small line 6px at Y=10 -->
+  <rect class="mouth-small-line" x="5" y="10" width="6" height="1" rx=".3" fill="#000" fill-opacity=".9"/>
+</svg>
