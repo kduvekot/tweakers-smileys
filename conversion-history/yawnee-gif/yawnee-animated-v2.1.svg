@@ -220,7 +220,7 @@
   <rect class="eye-right" x="9.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
 
   <!-- Mouth - ONE ellipse that morphs from line to open mouth -->
-  <!-- Initial: 5px wide (rx=2.5), 1px tall (ry=0.5), positioned at Y=11 -->
-  <!-- Note: Using ellipse instead of rect because it scales better from line to circle -->
-  <ellipse class="mouth" cx="8" cy="11.73" rx="2.67" ry="0.53" fill="#000" fill-opacity=".9"/>
+  <!-- Initial: 5px wide (rx=2.5), 1px tall (ry=0.67 minimum for visibility) -->
+  <!-- Positioned at Y=11.73 to match original frame 0 position -->
+  <ellipse class="mouth" cx="8" cy="11.73" rx="2.67" ry="0.67" fill="#000" fill-opacity=".9"/>
 </svg>
