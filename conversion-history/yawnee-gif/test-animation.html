@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yawnee Animation Test</title>
+    <title>Yawnee Animation Test - V2.1</title>
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -119,12 +119,13 @@
     </style>
 </head>
 <body>
-    <h1>🥱 Yawnee Animation Test</h1>
+    <h1>🥱 Yawnee Animation Test - V2.1 (Pixel-Perfect)</h1>
 
     <div class="info">
         <strong>Animation Comparison:</strong><br>
         • Original GIF: 15×15px, 29 frames, 7.39 seconds total (variable frame durations)<br>
-        • New SVG: 16×16px, CSS animation, 5 seconds loop<br>
+        • New SVG V2.1: 16×16px, CSS animation, 7.39 seconds (matching original)<br>
+        • Pixel-accurate animations: Separate eye movements, horizontal eye spacing, mouth morphing<br>
         • Animation phases: Blink → Yawn start → Yawn peak (wide open) → Return with blinks
     </div>
 
@@ -134,15 +135,16 @@
             <img src="yawnee.gif" alt="Original yawnee.gif">
         </div>
         <div class="smiley-box">
-            <h2>New SVG</h2>
-            <object type="image/svg+xml" data="yawnee-animated.svg" width="120" height="120"></object>
+            <h2>New SVG V2.1</h2>
+            <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="120" height="120"></object>
         </div>
     </div>
 
     <div class="controls">
         <strong>View Options:</strong><br>
         <button onclick="location.href='frame-analysis.html'">📊 Frame Analysis</button>
-        <button onclick="window.open('yawnee-animated.svg', '_blank')">🔍 View SVG Source</button>
+        <button onclick="location.href='test-animation-v2.html'">🔬 3-Way Comparison (V1/V2.1)</button>
+        <button onclick="window.open('yawnee-animated-v2.1.svg', '_blank')">🔍 View SVG Source</button>
     </div>
 
     <h2>Size Comparison</h2>
@@ -151,25 +153,25 @@
             <h3>Actual (16px)</h3>
             <img src="yawnee.gif" alt="GIF">
             <br>
-            <object type="image/svg+xml" data="yawnee-animated.svg" width="16" height="16" style="margin-top: 5px;"></object>
+            <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="16" height="16" style="margin-top: 5px;"></object>
         </div>
         <div class="size-item double-size">
             <h3>2× (32px)</h3>
             <img src="yawnee.gif" alt="GIF">
             <br>
-            <object type="image/svg+xml" data="yawnee-animated.svg" width="32" height="32" style="margin-top: 5px;"></object>
+            <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="32" height="32" style="margin-top: 5px;"></object>
         </div>
         <div class="size-item quad-size">
             <h3>4× (64px)</h3>
             <img src="yawnee.gif" alt="GIF">
             <br>
-            <object type="image/svg+xml" data="yawnee-animated.svg" width="64" height="64" style="margin-top: 5px;"></object>
+            <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="64" height="64" style="margin-top: 5px;"></object>
         </div>
         <div class="size-item large-size">
             <h3>8× (120px)</h3>
             <img src="yawnee.gif" alt="GIF">
             <br>
-            <object type="image/svg+xml" data="yawnee-animated.svg" width="120" height="120" style="margin-top: 5px;"></object>
+            <object type="image/svg+xml" data="yawnee-animated-v2.1.svg" width="120" height="120" style="margin-top: 5px;"></object>
         </div>
     </div>
 </body>
