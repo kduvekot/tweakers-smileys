@@ -1,0 +1,319 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    /* Yawn animation based on detailed pixel tracking:
+
+       MOUTH BEHAVIOR:
+       - Frame 0-2: Straight line at Y=11, 5px wide
+       - Frame 3: Expands to 9px wide (scaleX 1.8)
+       - Frame 4: Contracts back to 5px (scaleX 1.0)
+       - Frame 5: Contracts to 1px, opens vertically (scaleX 0.2, scaleY 2.0)
+       - Frame 6: Opens upward Y=8-12, 3px wide, 5px tall
+       - Frame 7-8: Wide open Y=8-13, 7px wide, 6px tall
+
+       EYE BEHAVIOR:
+       - Normal: Y=5, distance 5px apart
+       - Frame 7: Y=3, distance 4px (closer together)
+       - Frame 8: Y=2, distance 5px (further apart)
+       - Frames 8-21: Alternate Y=2.0/5px (squint/gray) ↔ Y=2.7/4px (open/black)
+    */
+
+    @keyframes yawn-eye-left {
+      0% {
+        /* Frame 0: Y=5, normal position, blinking */
+        transform: translate(0px, 0.5px) scaleY(0.1);
+        opacity: 0.9;
+      }
+      3.4% {
+        /* Frame 1: Y=6, open */
+        transform: translate(0px, 1px) scaleY(1);
+        opacity: 0.9;
+      }
+      6.9%, 10.3%, 13.8% {
+        /* Frames 2,3,4: Y=5.4, blink */
+        transform: translate(0px, 0.4px) scaleY(0.1);
+        opacity: 0.9;
+      }
+      17.2% {
+        /* Frame 5: Y=6, open */
+        transform: translate(0px, 1px) scaleY(1);
+        opacity: 0.9;
+      }
+      20.7% {
+        /* Frame 6: Y=5, squint */
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* Frame 7: Y=3, MOVE CLOSER (left eye moves right +0.5px), distance=4px */
+        transform: translate(0.5px, -2px) scaleY(0.75);
+        opacity: 0.9;
+      }
+      27.6% {
+        /* Frame 8: Y=2, MOVE APART (back to 0), distance=5px, SQUINT/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      31.0% {
+        /* Frame 9: Y=2.7, MOVE CLOSER (+0.5px), distance=4px, OPEN/black */
+        transform: translate(0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      34.5% {
+        /* Frame 10: Y=2.0, APART (0), distance=5px, squint/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      37.9% {
+        /* Frame 11: Y=2.7, CLOSER (+0.5px), distance=4px, open/black */
+        transform: translate(0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* Even frames: Y=2.0, APART, squint/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* Odd frames: Y=2.7, CLOSER, open/black */
+        transform: translate(0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* Frame 22: Y=4, eyes returning */
+        transform: translate(0px, -1px) scaleY(0.6);
+        opacity: 0.9;
+      }
+      79.3%, 86.2%, 93.1% {
+        /* Return to normal */
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+      82.8%, 89.7%, 96.6% {
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-eye-right {
+      0% {
+        /* Frame 0: Y=5, normal position, blinking */
+        transform: translate(0px, 0.5px) scaleY(0.1);
+        opacity: 0.9;
+      }
+      3.4% {
+        /* Frame 1: Y=6, open */
+        transform: translate(0px, 1px) scaleY(1);
+        opacity: 0.9;
+      }
+      6.9%, 10.3%, 13.8% {
+        /* Frames 2,3,4: Y=5.4, blink */
+        transform: translate(0px, 0.4px) scaleY(0.1);
+        opacity: 0.9;
+      }
+      17.2% {
+        /* Frame 5: Y=6, open */
+        transform: translate(0px, 1px) scaleY(1);
+        opacity: 0.9;
+      }
+      20.7% {
+        /* Frame 6: Y=5, squint */
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* Frame 7: Y=3, MOVE CLOSER (right eye moves left -0.5px), distance=4px */
+        transform: translate(-0.5px, -2px) scaleY(0.75);
+        opacity: 0.9;
+      }
+      27.6% {
+        /* Frame 8: Y=2, MOVE APART (back to 0), distance=5px, SQUINT/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      31.0% {
+        /* Frame 9: Y=2.7, MOVE CLOSER (-0.5px), distance=4px, OPEN/black */
+        transform: translate(-0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      34.5% {
+        /* Frame 10: Y=2.0, APART (0), distance=5px, squint/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      37.9% {
+        /* Frame 11: Y=2.7, CLOSER (-0.5px), distance=4px, open/black */
+        transform: translate(-0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* Even frames: Y=2.0, APART, squint/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* Odd frames: Y=2.7, CLOSER, open/black */
+        transform: translate(-0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* Frame 22: Y=4, eyes returning */
+        transform: translate(0px, -1px) scaleY(0.6);
+        opacity: 0.9;
+      }
+      79.3%, 86.2%, 93.1% {
+        /* Return to normal */
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+      82.8%, 89.7%, 96.6% {
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate(0px, 0px) scaleY(0.4);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-mouth {
+      0%, 3.4% {
+        /* Frames 0-1: Straight line at Y=11, 5px wide */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 1;
+      }
+      6.9% {
+        /* Frame 2: Same */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 1;
+      }
+      10.3% {
+        /* Frame 3: EXPAND horizontally to 9px (scaleX 1.8) */
+        transform: translate(0px, 0px) scaleX(1.8) scaleY(1.0);
+        opacity: 1;
+      }
+      13.8% {
+        /* Frame 4: CONTRACT back to 5px */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 1;
+      }
+      17.2% {
+        /* Frame 5: CONTRACT to 1px, start opening vertically */
+        transform: translate(0px, 0px) scaleX(0.2) scaleY(2.0);
+        opacity: 1;
+      }
+      20.7% {
+        /* Frame 6: Open upward (Y=8-12), 3px wide, 5px tall, UP 3px */
+        transform: translate(0px, -3px) scaleX(0.6) scaleY(5.0);
+        opacity: 1;
+      }
+      24.1% {
+        /* Frame 7: Wide open (Y=8-13), 7px wide, 6px tall, UP 3px */
+        transform: translate(0px, -3px) scaleX(1.4) scaleY(6.0);
+        opacity: 1;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* Frames 8-20 (even): Wide open, lighter/gray */
+        transform: translate(0px, -3px) scaleX(1.4) scaleY(6.0);
+        opacity: 0.7;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* Frames 9-21 (odd): Wide open, darker/black */
+        transform: translate(0px, -3px) scaleX(1.4) scaleY(6.0);
+        opacity: 1;
+      }
+      76.0% {
+        /* Frame 22: Snap shut */
+        transform: translate(0px, -1px) scaleX(0.3) scaleY(2.0);
+        opacity: 1;
+      }
+      79.3% {
+        /* Frame 23: Small opening */
+        transform: translate(0px, -1px) scaleX(0.5) scaleY(3.0);
+        opacity: 1;
+      }
+      82.8% {
+        /* Frame 24: Contract */
+        transform: translate(0px, 0px) scaleX(0.3) scaleY(1.5);
+        opacity: 1;
+      }
+      86.2% {
+        /* Frame 25: Open */
+        transform: translate(0px, -1px) scaleX(0.5) scaleY(3.0);
+        opacity: 1;
+      }
+      89.7% {
+        /* Frame 26: Contract */
+        transform: translate(0px, 0px) scaleX(0.3) scaleY(1.5);
+        opacity: 1;
+      }
+      93.1% {
+        /* Frame 27: Open */
+        transform: translate(0px, -1px) scaleX(0.5) scaleY(3.0);
+        opacity: 1;
+      }
+      96.6%, 100% {
+        /* Frame 28: Return to normal straight line */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 1;
+      }
+    }
+
+    .eye-left {
+      animation: yawn-eye-left 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .eye-right {
+      animation: yawn-eye-right 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .mouth-line {
+      animation: yawn-mouth 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eye-left,
+      .eye-right,
+      .mouth-line {
+        animation: none !important;
+      }
+      .eye-left,
+      .eye-right {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+      .mouth-line {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
+
+  <!-- Face outline -->
+  <circle cx="8" cy="8" r="7.9" fill="url(#grad)"/>
+  <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+
+  <!-- Left eye (animated separately) -->
+  <rect class="eye-left" x="4.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Right eye (animated separately) -->
+  <rect class="eye-right" x="9.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Mouth - straight line that transforms -->
+  <rect class="mouth-line" x="5.5" y="11" width="5" height="1" rx=".3" fill="#000" fill-opacity=".9"/>
+</svg>
