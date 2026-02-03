@@ -1,0 +1,226 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(59.99 .72 5.4) scale(12.7918)">
+      <stop stop-color="#FAFAE3"/>
+      <stop offset=".23" stop-color="#FFFFA2"/>
+      <stop offset=".66" stop-color="#FFEF06"/>
+      <stop offset="1" stop-color="#C7B300"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    /* Yawn animation based on pixel-perfect frame analysis
+
+       MOUTH TRANSFORMATIONS (ONE element that morphs):
+       F0-2:  Center(7.0,11.0), 5×1px  - horizontal line
+       F3:    Center(7.0,11.0), 9×1px  - EXPAND horizontally (scaleX 1.8)
+       F4:    Center(7.0,11.0), 5×1px  - contract back (scaleX 1.0)
+       F5:    Center(7.0,11.5), 1×2px  - CONTRACT + vertical open (scaleX 0.2, scaleY 2.0)
+       F6:    Center(7.0,10.0), 3×5px  - UP 1px, wider & taller (scaleX 0.6, scaleY 5.0, translateY -1.07px)
+       F7-21: Center(7.0,10.5), 7×6px  - UP 0.5px more, WIDE OPEN (scaleX 1.4, scaleY 6.0, translateY -0.53px)
+       F22-28: Center(7-8,11.0), 5-9×5px - closing sequence with oscillation
+
+       EYE TRANSFORMATIONS (separate left/right with horizontal movement):
+       Normal: Y=5, distance=5px apart
+       F7:     Y=3, distance=4px (move CLOSER: left +0.5px, right -0.5px)
+       F8-21:  Alternate:
+               - Y=2.0, 5px apart, squint/gray (opacity 0.5)
+               - Y=2.7, 4px apart, open/black (opacity 0.9)
+    */
+
+    @keyframes yawn-eye-left {
+      0% {
+        /* F0: Blink */
+        transform: translate(0px, 0.5px) scaleY(0.1);
+        opacity: 0.9;
+      }
+      20.3% {
+        /* F1-5: normal blinking */
+        transform: translate(0px, 0px) scaleY(0.6);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* F7: Y=3, move CLOSER together (left eye RIGHT +0.5px), distance=4px */
+        transform: translate(0.5px, -2px) scaleY(0.75);
+        opacity: 0.9;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* F8,10,12,14,16,18,20: Y=2.0, move APART (0px), distance=5px, SQUINT/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* F9,11,13,15,17,19,21: Y=2.7, move CLOSER (+0.5px), distance=4px, OPEN/black */
+        transform: translate(0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* F22: returning */
+        transform: translate(0px, -1px) scaleY(0.6);
+        opacity: 0.9;
+      }
+      79.3%, 100% {
+        /* F23-28: normal */
+        transform: translate(0px, 0px) scaleY(0.6);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-eye-right {
+      0% {
+        /* F0: Blink */
+        transform: translate(0px, 0.5px) scaleY(0.1);
+        opacity: 0.9;
+      }
+      20.3% {
+        /* F1-5: normal blinking */
+        transform: translate(0px, 0px) scaleY(0.6);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* F7: Y=3, move CLOSER together (right eye LEFT -0.5px), distance=4px */
+        transform: translate(-0.5px, -2px) scaleY(0.75);
+        opacity: 0.9;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* F8,10,12,14,16,18,20: Y=2.0, move APART (0px), distance=5px, SQUINT/gray */
+        transform: translate(0px, -3px) scaleY(0.4);
+        opacity: 0.5;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* F9,11,13,15,17,19,21: Y=2.7, move CLOSER (-0.5px), distance=4px, OPEN/black */
+        transform: translate(-0.5px, -2.3px) scaleY(0.5);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* F22: returning */
+        transform: translate(0px, -1px) scaleY(0.6);
+        opacity: 0.9;
+      }
+      79.3%, 100% {
+        /* F23-28: normal */
+        transform: translate(0px, 0px) scaleY(0.6);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes yawn-mouth {
+      /* Mouth is ONE ellipse that transforms from line → open circle → line */
+      0%, 3.4%, 6.9% {
+        /* F0-2: Straight line 5×1px at Y=11 */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 0.9;
+      }
+      10.3% {
+        /* F3: EXPAND horizontally to 9×1px (scaleX 1.8) */
+        transform: translate(0px, 0px) scaleX(1.8) scaleY(1.0);
+        opacity: 0.9;
+      }
+      13.8% {
+        /* F4: CONTRACT back to 5×1px */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 0.9;
+      }
+      17.2% {
+        /* F5: CONTRACT to 1×2px (scaleX 0.2, scaleY 2.0), center Y=11.5 (down 0.5px) */
+        transform: translate(0px, 0.5px) scaleX(0.2) scaleY(2.0);
+        opacity: 0.9;
+      }
+      20.7% {
+        /* F6: Open upward 3×5px, center Y=10.0 (UP 1px from initial Y=11) */
+        transform: translate(0px, -1.07px) scaleX(0.6) scaleY(5.0);
+        opacity: 0.9;
+      }
+      24.1% {
+        /* F7: WIDE OPEN 7×6px, center Y=10.5 (UP 0.5px from initial Y=11) */
+        transform: translate(0px, -0.53px) scaleX(1.4) scaleY(6.0);
+        opacity: 0.9;
+      }
+      27.6%, 34.5%, 41.4%, 48.3%, 55.2%, 62.1%, 69.0% {
+        /* F8,10,12,14,16,18,20: Wide open, LIGHTER/gray during trembling */
+        transform: translate(0px, -0.53px) scaleX(1.4) scaleY(6.0);
+        opacity: 0.6;
+      }
+      31.0%, 37.9%, 44.8%, 51.7%, 58.6%, 65.5%, 72.4% {
+        /* F9,11,13,15,17,19,21: Wide open, DARKER/black during trembling */
+        transform: translate(0px, -0.53px) scaleX(1.4) scaleY(6.0);
+        opacity: 0.9;
+      }
+      76.0% {
+        /* F22: Closing, 9×5px at Y=11 */
+        transform: translate(0px, 0px) scaleX(1.8) scaleY(5.0);
+        opacity: 0.9;
+      }
+      79.3% {
+        /* F23: Small 5×5px */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(5.0);
+        opacity: 0.9;
+      }
+      82.8% {
+        /* F24: 6×5px */
+        transform: translate(0px, 0px) scaleX(1.2) scaleY(5.0);
+        opacity: 0.9;
+      }
+      86.2% {
+        /* F25: 5×5px */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(5.0);
+        opacity: 0.9;
+      }
+      89.7% {
+        /* F26: 6×5px */
+        transform: translate(0px, 0px) scaleX(1.2) scaleY(5.0);
+        opacity: 0.9;
+      }
+      93.1% {
+        /* F27: 5×5px */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(5.0);
+        opacity: 0.9;
+      }
+      96.6%, 100% {
+        /* F28: Back to line 5×1px */
+        transform: translate(0px, 0px) scaleX(1.0) scaleY(1.0);
+        opacity: 0.9;
+      }
+    }
+
+    .eye-left {
+      animation: yawn-eye-left 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .eye-right {
+      animation: yawn-eye-right 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    .mouth {
+      animation: yawn-mouth 7.39s linear infinite;
+      transform-origin: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eye-left,
+      .eye-right,
+      .mouth {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
+
+  <!-- Face outline -->
+  <circle cx="8" cy="8" r="7.9" fill="url(#grad)"/>
+  <circle cx="8" cy="8" r="7.63" stroke="#000" stroke-opacity=".9" stroke-width=".75"/>
+
+  <!-- Left eye (animated separately for horizontal movement) -->
+  <rect class="eye-left" x="4.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Right eye (animated separately for horizontal movement) -->
+  <rect class="eye-right" x="9.5" y="5" width="2" height="2" rx=".5" fill="#000" fill-opacity=".9"/>
+
+  <!-- Mouth - ONE ellipse that morphs from line to open mouth -->
+  <!-- Initial: 5px wide (rx=2.5), 1px tall (ry=0.5), positioned at Y=11 -->
+  <!-- Note: Using ellipse instead of rect because it scales better from line to circle -->
+  <ellipse class="mouth" cx="8" cy="11.73" rx="2.67" ry="0.53" fill="#000" fill-opacity=".9"/>
+</svg>
