@@ -1,6 +1,8 @@
 # New SVG Conversions
 
-This directory contains **newly converted SVG files** created from the GIF versions in the `gif/` folder.
+This directory contains our own **LLM-made SVG conversions** (January 2026) of three animated GIF smileys, now in `../old-gif/`.
+
+> **Update, 17 November 2026:** Tweakers has since released official SVG versions of all three (and of every other smiley). Those are in `../svg/`. These files are kept for comparison: the archive's [index page](../../index.html) shows the original GIF, our version and the official one side by side.
 
 ## Purpose
 
@@ -8,7 +10,9 @@ To separate newly created SVG conversions from the existing SVG files that were 
 
 ## Files in this folder
 
-- **yes.svg** - Converted from `gif/yes.gif` with nodding animation (CSS @keyframes)
+- **yes.svg** - Converted from `yes.gif`, nodding animation (CSS @keyframes)
+- **no.svg** - Converted from `no.gif`, head-shake animation
+- **lol.svg** - Converted from `lol.gif`, double-width laughing animation
 
 ## Conversion Approach
 
@@ -22,10 +26,9 @@ All new SVGs follow the established Tweakers pattern:
 
 | Folder | Files | Description |
 |--------|-------|-------------|
-| `svg/` | 38 | Original SVG versions from Tweakers |
-| `new-svg/` | 1+ | New GIF→SVG conversions |
-| `gif/` | 26 | Current GIF versions (not yet converted) |
-| `old-gif/` | 35 | Legacy GIF versions of current SVGs |
+| `svg/` | 64 | Official Tweakers SVGs (complete set, Nov 2026) |
+| `new-svg/` | 3 | Our own GIF → SVG conversions (Jan 2026) |
+| `old-gif/` | 61 | Legacy GIF versions |
 
 ## See Also
 
