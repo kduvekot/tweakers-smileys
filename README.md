@@ -41,7 +41,13 @@ The SVGs contain no dates or editor metadata, but the server's `Last-Modified` h
 | smile (reference) | Tue 5 Dec 2023, 13:12:41 | From the original vector redesign (Development-iteratie #270, Oct 2023) |
 | henk (reference) | Mon 30 Jun 2025, 11:37:05 | Updated separately in 2025 |
 
-These dates show when the files were placed on the server, not when they were drawn. The 26 new SVGs also share a format none of the older ones use (an explicit `viewBox` on a 15-unit grid, `fill="none"`, and minified CSS with generated class names like `e0`), which also points to one batch made with the same tool.
+**Official announcement:** six minutes after the deployment, Tweakers developer XWB posted in the Gathering of Tweakers topic *"Wordt het niet eens tijd voor verbeterde smileys?"* ([post, 26 Oct 2026 09:40](https://gathering.tweakers.net/forum/list_message/86431346#86431346)):
+
+> We hebben dit project uit de koelkast gehaald en de resterende smileys omgezet.
+>
+> (*"We took this project out of the fridge and converted the remaining smileys."*)
+
+The `Last-Modified` dates show when the files were placed on the server, not when they were drawn. The 26 new SVGs also share a format none of the older ones use (an explicit `viewBox` on a 15-unit grid, `fill="none"`, and minified CSS with generated class names like `e0`), which also points to one batch made with the same tool.
 
 ## How the files were collected
 
