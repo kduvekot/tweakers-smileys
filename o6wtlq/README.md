@@ -56,6 +56,8 @@ Tweakers' firewall blocks cloud servers, so the files were downloaded in a norma
 - **January 2026:** a browser console script (`scripts/download-smileys-iframe.js`) opened every file for saving. The legacy GIFs were found by trying the `.gif` name for each `.svg`.
 - **November 2026:** a bookmarklet run on tweakers.net fetched all 64 SVGs from `/g/s/` into one JSON file, which was split into separate files here.
 
-## License
+## Ownership
 
-These smileys are property of Tweakers.net.
+All smiley designs are the property of Tweakers.net (DPG Media). That covers the official SVGs in `tweakers-smileys/svg/`, the legacy GIFs in `tweakers-smileys/old-gif/`, and our own conversions in `tweakers-smileys/new-svg/` and `conversion-history/`, which are derivative works based on their designs.
+
+This repository is an unofficial, non-commercial archive and is not affiliated with Tweakers. If Tweakers.net would like anything removed, please [open an issue](https://github.com/kduvekot/tweakers-smileys/issues).
