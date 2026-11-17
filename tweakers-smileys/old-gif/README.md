@@ -1,50 +1,25 @@
-# Old GIF Versions
+# Legacy GIF Versions
 
-This folder contains **35 legacy GIF versions** of smileys that are now served as SVG files.
+This folder holds **61 legacy GIF versions** of smileys that Tweakers now serves as SVG.
 
-## What are these?
+## Two batches
 
-When Tweakers converted many of their smileys from GIF to SVG format for better scalability, they kept the old GIF versions on their server. These are the original animated/static GIF versions that were replaced by modern SVG files.
+**Replaced before January 2026 (35).** Found by testing whether the `.gif` name of each current `.svg` still existed at `tweakers.net/g/s/`:
 
-## Discovery
+biggrin, bloos, clown, confused, coool, cry, devil, devilish, eerie, emo, frown, heart, huh, kwijl, loveit, marrysmile, michel, nerd, nosmile2, paard, puh, puh2, rc5, redface, sadley, shiny, smile, thumbsup, unhappy, vork, wink, worshippy, xmas, yummie, yummie-beer
 
-These files were discovered by testing if `.gif` versions of current `.svg` files still exist at the same URLs on tweakers.net/g/s/.
+**Replaced between January and November 2026 (26).** These were still the live smileys in January 2026 (then in the `gif/` folder). By 17 November 2026 Tweakers served all of them as SVG:
 
-**Results:**
-- ✅ **35 old GIF versions found** (still available on server)
-- ❌ **3 SVGs never had GIF versions**: `henk.svg`, `ok.svg`, `tweakers.svg`
+belgie, bonk, bonk3, bye, facepalm, farewell, frusty, hup, hypocrite, knuf, lol, loveys, no, nopompom, nosmile, oranje, pompom, pukey, rozewolk, shadey, shutup, sintsmiley, sleepey, sleephappy, yawnee, yes
 
-## Files in this folder
-
-All 35 legacy GIF files:
-- biggrin.gif, bloos.gif, clown.gif, confused.gif, coool.gif, cry.gif
-- devil.gif, devilish.gif, eerie.gif, emo.gif, frown.gif, heart.gif
-- huh.gif, kwijl.gif, loveit.gif, marrysmile.gif, michel.gif, nerd.gif
-- nosmile2.gif, paard.gif, puh.gif, puh2.gif, rc5.gif, redface.gif
-- sadley.gif, shiny.gif, smile.gif, thumbsup.gif, unhappy.gif, vork.gif
-- wink.gif, worshippy.gif, xmas.gif, yummie.gif, yummie-beer.gif
-
-## Comparison
-
-| Folder | Files | Description |
-|--------|-------|-------------|
-| `svg/` | 38 | Current SVG versions (scalable, modern) |
-| `gif/` | 26 | Current GIF versions (animated smileys) |
-| `old-gif/` | 35 | Legacy GIF versions of current SVGs |
-
-**Total unique smileys:** 64 (38 SVG-only + 26 GIF-only)
-**Total files in archive:** 99 (64 current + 35 legacy)
+`henk`, `ok` and `tweakers` never had a GIF version.
 
 ## Why keep these?
 
-- **Historical preservation**: Shows the evolution of Tweakers smileys
-- **Comparison**: See differences between old GIF and new SVG versions
-- **Fallback**: Some old GIF versions may have animations or different designs
-- **Completeness**: Archive everything still available on the server
+- **Historical preservation:** shows how the Tweakers smileys evolved
+- **Comparison:** see the old bitmap next to the new vector version
+- **Reference:** the source material for our own conversions in `../new-svg/`
 
 ## Source URLs
 
-All legacy GIFs are still accessible at:
-`https://tweakers.net/g/s/[filename].gif`
-
-For example: `https://tweakers.net/g/s/smile.gif`
+The legacy GIFs were downloaded from `https://tweakers.net/g/s/[filename].gif`, for example `https://tweakers.net/g/s/smile.gif`.
