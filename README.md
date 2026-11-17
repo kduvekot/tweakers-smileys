@@ -8,7 +8,7 @@ An archive of all Tweakers.net forum smileys: the complete official SVG set, eve
 
 This repo started in January 2026 as an experiment in LLM-assisted conversion of the animated GIF smileys to SVG. At that time Tweakers served 38 smileys as SVG and 26 as animated GIF. We converted three of them ourselves (`yes`, `no` and `lol`, see [`conversion-history/`](conversion-history/)).
 
-By November 2026 Tweakers had converted the remaining 26 themselves, so **all 64 smileys are now official SVGs** (25 of them animated with CSS). No smileys were added or removed. The original goal has been reached by Tweakers, so this repo is now a finished archive.
+On **26 October 2026** Tweakers released SVG versions of the remaining 26 themselves, so **all 64 smileys are now official SVGs** (25 of them animated with CSS). No smileys were added or removed. The original goal has been reached by Tweakers, so this repo is now a finished archive.
 
 ## Contents
 
@@ -29,6 +29,19 @@ Files keep their original Tweakers names, e.g. `smile.svg` and `smile.gif`.
 - **26 GIFs became SVG:** belgie, bonk, bonk3, bye, facepalm, farewell, frusty, hup, hypocrite, knuf, lol, loveys, no, nopompom, nosmile, oranje, pompom, pukey, rozewolk, shadey, shutup, sintsmiley, sleepey, sleephappy, yawnee, yes. All except shadey, sintsmiley and sleephappy are animated.
 - **36 of the 38 existing SVGs are unchanged.**
 - **shiny and worshippy** changed only in how their CSS is written (renamed keyframes, classes instead of inline styles). The drawing and the animation are the same. The January versions remain in git history.
+
+## When Tweakers made the changes
+
+The SVGs contain no dates or editor metadata, but the server's `Last-Modified` headers (read with a bookmarklet on 17 Nov 2026) do:
+
+| Files | `Last-Modified` (UTC) | Meaning |
+|-------|-----------------------|---------|
+| All 26 new SVGs | Mon 26 Oct 2026, 08:34:59 | Released together in one deployment (09:34 Amsterdam time) |
+| shiny, worshippy | Tue 27 Oct 2026, 15:50:05 | Follow-up the next day: CSS rewritten in the same style as the new batch |
+| smile (reference) | Tue 5 Dec 2023, 13:12:41 | From the original vector redesign (Development-iteratie #270, Oct 2023) |
+| henk (reference) | Mon 30 Jun 2025, 11:37:05 | Updated separately in 2025 |
+
+These dates show when the files were placed on the server, not when they were drawn. The 26 new SVGs also share a format none of the older ones use (an explicit `viewBox` on a 15-unit grid, `fill="none"`, and minified CSS with generated class names like `e0`), which also points to one batch made with the same tool.
 
 ## How the files were collected
 
